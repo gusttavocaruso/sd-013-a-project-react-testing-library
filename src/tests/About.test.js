@@ -31,6 +31,7 @@ describe('Testa o componente About', () => {
     expect(getParagraph2).toBeInTheDocument();
   });
 
+  // Teste abaixo feito com a ajuda do repositório da pessoa estudante Carlos Gessé
   test('Testa se a página contém uma imagem', () => {
     renderWithRouter(<About />);
 

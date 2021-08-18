@@ -43,3 +43,5 @@ describe('Testa o componente FavoritePokemons', () => {
     expect(getPokemon).toBeInTheDocument();
   });
 });
+
+// Requisito feito com a ajuda do repositório da Pessoa Estudante Luiza Antiques
