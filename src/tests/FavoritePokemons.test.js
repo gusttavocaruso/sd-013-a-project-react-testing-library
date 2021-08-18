@@ -19,4 +19,7 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       expect(history.location.pathname).toEqual('/favorites');
       // Guarda na variável notFound o elemento com o texto "No favorite pokemon found".
       const notFound = screen.getByText(/No favorite pokemon found/i);
+      // Testa se o retorno da variável notFound está no documento
+      expect(notFound).toBeInTheDocument();
+    });
       
