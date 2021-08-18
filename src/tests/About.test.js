@@ -42,3 +42,7 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     // Testa se a variável paragraphs achou os dois paragrafos, comparando tamanho(2)
     expect(paragraphs).toHaveLength(2);
   });
+
+  test('Testando se a página contém uma imagem específica de uma Pokédex', () => {
+    // Renderizo na tela as rotas do componente About
+    renderWithRouter(<About />);
