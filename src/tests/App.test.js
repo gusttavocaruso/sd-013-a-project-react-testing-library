@@ -51,4 +51,16 @@ describe('Requisito 01 - Teste do componente .js', () => {
       expect(history.location.pathname).toEqual('/');
     });
 
+    test('a URL "/about", ao clicar no link About.', () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Será verificado se há um elemento do tipo link com o nome de "/about", e joga na variável about.
+      const about = screen.getByRole('link', { name: /about/i });
+      // Simula um click na variável about que contém o elemento link
+      userEvent.click(about);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
+      expect(history.location.pathname).toEqual('/about');
+    });
+
 });
