@@ -1,6 +1,5 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { render } from 'react-dom';
 import NotFound from '../components/NotFound';
 import renderWithRouter from '../components/renderWithRouter';
 
@@ -18,8 +17,10 @@ describe('Requisito 4', () => {
   it('A página mostra imagem', () => {
     renderWithRouter(<NotFound />);
 
-    const img = screen.getByAltText(/Pikachu crying because the page requested was not found/i);
+    const altText = /Pikachu crying because the page requested was not found/i;
+    const img = screen.getByAltText(altText);
 
-    expect(img.src).toEqual('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+    const endImg = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
+    expect(img.src).toEqual(endImg);
   });
 });
