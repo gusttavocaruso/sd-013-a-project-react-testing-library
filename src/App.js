@@ -65,6 +65,7 @@ class App extends Component {
       />
     );
   }
+  
 
   renderRoutes() {
     const { isPokemonFavoriteById } = this.state;
