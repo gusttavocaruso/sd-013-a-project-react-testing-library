@@ -29,3 +29,5 @@ describe('Requisito 04 - Teste o componente NotFound.js', () => {
     const imgURL = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
     // Verifica se na variável img, se o src dela é igual ao link que está guardado na variável imgURL
     expect(img.src).toEqual(imgURL);
+  });
+});
