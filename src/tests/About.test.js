@@ -26,3 +26,8 @@ describe('Requisito 02 - Testa o componente About.js', () => {
   test('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
+    // getByRole: usado para consultar todos os elementos expostos na árvore de acessibilidade. Com a name opção, você pode filtrar os elementos retornados por seus nomes acessíveis
+    const h2 = screen.getByRole('heading', { name: /about pokédex/i });
+    // Testa se a variável h2, que contem o elemento procurado acima está no documento
+    expect(h2).toBeInTheDocument();
+  });
