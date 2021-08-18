@@ -14,4 +14,9 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
         { name: /favorite pokémons/i });
       // Simula o click no elemento que está na variável favoritePokemons
       userEvent.click(favoritePokemons);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
+      expect(history.location.pathname).toEqual('/favorites');
+      // Guarda na variável notFound o elemento com o texto "No favorite pokemon found".
+      const notFound = screen.getByText(/No favorite pokemon found/i);
       
