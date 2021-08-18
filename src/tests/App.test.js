@@ -24,7 +24,8 @@ describe('Testing nav links', () => {
   });
 
   it('should work about link', () => {
-    const { history } = renderWithRouter(<App />);
+    // const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });
 
@@ -32,15 +33,17 @@ describe('Testing nav links', () => {
 
     userEvent.click(aboutLink);
 
-    // const titleAbout = screen.getByRole('heading', {
-    //   name: /about pokédex/i,
-    //   level: 2,
-    // });
+    // testar apenas se foi para o caminho certo, sem verificar
+    // o que tem dentro desse componente...
+    // const { pathname } = history.location;
 
-    // expect(titleAbout).toBeInTheDocument();
-    const { pathname } = history.location;
+    // expect(pathname).toBe('/about');
+    const titleAbout = screen.getByRole('heading', {
+      name: /about pokédex/i,
+      level: 2,
+    });
 
-    expect(pathname).toBe('/about');
+    expect(titleAbout).toBeInTheDocument();
   });
 
   it('should work favorite pokemons link', () => {
