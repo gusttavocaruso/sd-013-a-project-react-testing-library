@@ -27,4 +27,11 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
     () => {
       // Desconstroi o history do renderWithRouter do componente App
       const { history } = renderWithRouter(<App />);
+      // Busca um elemento link com o endereço "/more details" e guarda na variável moreDetails
+      const moreDetails = screen.getByRole('link', { name: /more details/i });
+      // Simula o click no elemento que está na variável moreDetails
+      userEvent.click(moreDetails);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/pokemons/25".
+      expect(history.location.pathname).toEqual('/pokemons/25');
       
