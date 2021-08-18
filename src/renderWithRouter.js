@@ -1,4 +1,4 @@
-//src/renderWithRouter.js
+// Código copiado do Course;
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
