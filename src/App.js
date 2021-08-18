@@ -101,6 +101,7 @@ class App extends Component {
           <Link className="link" to="/favorites">{`Favorite Pokémons`}</Link>
         </nav>
         {this.renderRoutes()}
+        <p>Primeiro commit ...</p>
       </div>
     );
   }
