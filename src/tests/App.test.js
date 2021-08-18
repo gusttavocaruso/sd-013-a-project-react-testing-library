@@ -5,8 +5,8 @@ import App from '../App';
 import RouterRender from './RouterRender';
 
 describe('Tests App.js', () => {
-  describe('Tests if Home, About and Favorite navigation links exist', () => {
-    it('tests if there is a fixed set of links: "Home", "About", "Favorite" ', () => {
+  describe('Tests if Home, About and Favorite navbar links exist', () => {
+    it('Tests if there is a fixed set of links: "Home", "About", "Favorite"', () => {
       RouterRender(<App />);
 
       const getAllLinks = screen.getAllByRole('link');
