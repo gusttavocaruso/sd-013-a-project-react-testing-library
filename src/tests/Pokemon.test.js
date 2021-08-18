@@ -10,6 +10,8 @@ describe('Teste o componente <Pokemon.js />', () => {
     expect(pokemonName).toBeInTheDocument();
     const pokemonType = screen.getByTestId('pokemon-type');
     expect(pokemonType).toHaveTextContent(/electric/i);
+    const pokemonWeight = screen.getByText(/Average weight: 6.0 kg/i);
+    expect(pokemonWeight).toBeInTheDocument();
 
     const img = screen.getByAltText(/pikachu sprite/i);
     expect(img.src).toContain('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
