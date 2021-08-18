@@ -24,7 +24,8 @@ describe('Componente <Pokemon />', () => {
     const type = screen.getByTestId(idType);
     const weight = screen.getByTestId(idWeight);
     const img = screen.getByAltText(`${nameStr} sprite`);
-    const { averageWeight } = pokemons[0]
+    const { averageWeight } = pokemons[0];
+
     expect(name).toBeInTheDocument();
     expect(name.textContent).toBeDefined();
     expect(type).toBeInTheDocument();
