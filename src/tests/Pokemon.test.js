@@ -115,4 +115,13 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         // Verifica se o elemento que está na variável starIcon está no documento
         expect(starIcon).toBeInTheDocument();
       });
+
+      test('A img tem src = "/star-icon.svg"', () => {
+        renderWithRouter(<App />);
+        // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+        const moreDetails = screen.getByRole('link', { name: /more details/i });
+        // Simula um click no elemento que está na variável moreDetails
+        userEvent.click(moreDetails);
+        // Busca um elemento label com o text "Pokémon favoritado?"
+        const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
   
