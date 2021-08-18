@@ -6,22 +6,22 @@ import About from '../components/About';
 afterEach(cleanup);
 
 describe('Teste o componente About.js', () => {
-  it('Testa se a página contém as informações "About Pokédex"', () => {
+  it('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
     renderWithRouter(<About />);
 
     const h2 = screen.getByRole('heading', { name: 'About Pokédex', level: 2 });
     expect(h2).toBeInTheDocument();
   });
 
-  it('Testa se a página contém um heading h2 about pokédex"', () => {
+  it('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
     renderWithRouter(<About />);
 
-    const p1Msg = /This application simulates a Pokédex, a digital encyclopedia/i;
-    const p2Msg = /One can filter Pokémons by type, and see more details for each one/i;
+    const msg1 = /This application simulates a Pokédex, a digital encyclopedia/i;
+    const mqs2 = /One can filter Pokémons by type, and see more details for each one/i;
 
-    const p1 = screen.getByText(p1Msg);
+    const p1 = screen.getByText(msg1);
     expect(p1).toBeInTheDocument();
-    const p2 = screen.getByText(p2Msg);
+    const p2 = screen.getByText(mqs2);
     expect(p2).toBeInTheDocument();
   });
 
