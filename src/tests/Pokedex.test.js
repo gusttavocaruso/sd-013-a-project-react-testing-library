@@ -116,3 +116,19 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
+
+      test('O botão All precisa estar sempre visível', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
+        uniquePokemonTypes.forEach((pokemonType, index) => {
+          // Simula um click no elemento encontrado conforme item index do data-test-id
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          // Simula o click em um elemento com o data-test-id 'next-pokemon'
+          userEvent.click(screen.getByTestId('next-pokemon'));
+          // Testa se há um elemento botão de name all no documento
+          expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
+        });
+      });
+    });
+  
