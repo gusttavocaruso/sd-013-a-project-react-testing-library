@@ -77,3 +77,15 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       expect(onlyOnePokemon).toHaveLength(1);
     });
   });
+
+  describe('Testa se a Pokédex tem os botões de filtro', () => {
+    test('Deve existir um botão para cada tipo de Pokémon, sem repetição', () => {
+      // Renderizo na tela as rotas do componente App.
+      renderWithRouter(<App />);
+      // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
+      uniquePokemonTypes.forEach((pokemonType, index) => {
+        // Testo se na tela, com o data-test-id, há um elemento com o texto de um tipo de pokemon. OU seja, verifica se para todos os tipos no array há um botão renderizado.
+        expect(screen.getAllByTestId(typeButtonTestId)[index])
+          .toHaveTextContent(pokemonType);
+      });
+    });
