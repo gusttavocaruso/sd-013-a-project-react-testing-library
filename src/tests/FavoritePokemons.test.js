@@ -22,4 +22,9 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       // Testa se o retorno da variável notFound está no documento
       expect(notFound).toBeInTheDocument();
     });
+
+    test('Teste se é exibido todos os cards de pokémons favoritados',
+    () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
       
