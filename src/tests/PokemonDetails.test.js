@@ -129,6 +129,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           // Testa se o elemento que está no starIcon não está no documento
           expect(starIcon).not.toBeInTheDocument();
         });
-        
+
     });
+    
 });
