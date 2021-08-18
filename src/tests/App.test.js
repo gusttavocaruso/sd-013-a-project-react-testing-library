@@ -27,7 +27,7 @@ describe('Test do App', () => {
 
     fireEvent.click(about);
     expect(history.location.pathname).toBe('/about');
-
+// lint?
     fireEvent.click(favoritePokemon);
     expect(history.location.pathname).toBe('/favorites');
   });
