@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
-describe('Test App component', () => {
+describe('Test "Home" page', () => {
   const favoritePokesText = 'Favorite Pokémons';
 
   it('Renders navigation links', () => {
