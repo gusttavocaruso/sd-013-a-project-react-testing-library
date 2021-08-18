@@ -27,6 +27,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Testo que espero que a variável about esteja no documento
       expect(about).toBeInTheDocument();
     });
+
     test('O terceiro link deve possuir o texto Favorite Pokémons', () => {
       // Renderizo na tela as rotas do componente App
       renderWithRouter(<App />);
@@ -36,4 +37,18 @@ describe('Requisito 01 - Teste do componente .js', () => {
       expect(favPokemons).toBeInTheDocument();
     });
   });
+
+  describe('Testando se a aplicação é redirecionada para:', () => {
+    test('a URL "/" ao clicar no link Home.', () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Será verificado se há um elemento do tipo link com o nome de "/home", e joga na variável home.
+      const home = screen.getByRole('link', { name: /home/i });
+      // Simula um click na variável home que contém o elemento link
+      userEvent.click(home);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/".
+      expect(history.location.pathname).toEqual('/');
+    });
+
 });
