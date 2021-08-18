@@ -1,12 +1,13 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
+
 import About from '../components/About';
 
 describe('Testar o About', () => {
   test('Teste se a página contém informações sobre a Pokédex', () => {
     renderWithRouter(<About />);
-    const aboutAll = screen.getByText(/About Pokédex/);
+    const aboutAll = screen.getByText(/About Pokédex/i);
     expect(aboutAll).toBeInTheDocument();
   });
 
