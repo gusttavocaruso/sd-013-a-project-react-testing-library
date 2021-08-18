@@ -24,23 +24,18 @@ describe('Componente <Pokemon />', () => {
     const type = screen.getByTestId(idType);
     const weight = screen.getByTestId(idWeight);
     const img = screen.getByAltText(`${nameStr} sprite`);
-    let source = '';
-    let typeCheck = '';
-    pokemons.forEach((pokemon) => {
-      if (pokemon.name === nameStr) {
-        source = pokemon.image;
-        typeCheck = pokemon.type;
-      }
-    });
+    const { averageWeight } = pokemons[0]
     expect(name).toBeInTheDocument();
     expect(name.textContent).toBeDefined();
     expect(type).toBeInTheDocument();
     expect(type.textContent).toBeDefined();
-    expect(type.textContent).toBe(typeCheck);
+    expect(type.textContent).toBe(pokemons[0].type);
     expect(weight).toBeInTheDocument();
     expect(weight.textContent).toBeDefined();
+    expect(weight.textContent)
+      .toBe(`Average weight: ${averageWeight.value} ${averageWeight.measurementUnit}`);
     expect(img).toBeInTheDocument();
-    expect(img.src).toBe(source);
+    expect(img.src).toBe(pokemons[0].image);
   });
 
   test('card do Pokémon na Pokédex contém um link para exibir detalhes', () => {
