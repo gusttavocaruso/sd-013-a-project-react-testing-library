@@ -11,3 +11,5 @@ const firstPokemon = pokemons[0];
 
 describe('Requisito 02 - Testa o componente About.js', () => {
   test('Teste se a página contém as informações sobre a Pokédex', () => {
+    // Renderizo na tela as rotas do componente About
+    renderWithRouter(<About />);
