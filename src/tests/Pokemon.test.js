@@ -24,3 +24,12 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         // Testo se o elemento que está na variável pokemonName possui o texto do primeiro pokemon
         expect(pokemonName).toHaveTextContent(firstPokemon.name);
       });
+
+      test('O tipo correto do pokémon deve ser mostrado na tela', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Guarda na variável pokemonType o elemento datatestId com 'pokemon-type'
+        const pokemonType = screen.getByTestId(typeTestId);
+        // Testo se o elemento que está na variável pokemonType possui o texto do primeiro pokemon
+        expect(pokemonType).toHaveTextContent(firstPokemon.type);
+      });
