@@ -133,7 +133,5 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       // testo se o segundo elemento do array criado acima com as img possuem o atributo scr = "/star-icon.svg"
       expect(images[1]).toHaveAttribute('src', '/star-icon.svg');
     });
-
   });
-  
 });
