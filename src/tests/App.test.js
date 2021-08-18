@@ -62,5 +62,17 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
       expect(history.location.pathname).toEqual('/about');
     });
+    test('a URL /favorites, ao clicar no link Favorite Pokémons.', () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Será verificado se há um elemento do tipo link com o nome de "/favorite pokémons", e joga na variável favoritePokemons.
+      const favoritePokemons = screen.getByRole('link',
+        { name: /favorite pokémons/i });
+      // Simula um click na variável favoritePokemons que contém o elemento link
+      userEvent.click(favoritePokemons);
+      // history.location.pathname pega o endereço da página.
+      // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/favorites".
+      expect(history.location.pathname).toEqual('/favorites');
+    });
 
 });
