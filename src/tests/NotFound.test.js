@@ -20,3 +20,8 @@ describe('Requisito 04 - Teste o componente NotFound.js', () => {
   test('Testa se página mostra uma imagem específica', () => {
     // Renderizo na tela as rotas do componente NotFound
     renderWithRouter(<NotFound />);
+    // Guarda texto na variável "message"
+    const message = 'Pikachu crying because the page requested was not found';
+    // getByAltText: Se o seu elemento é aquele que suporta alttexto ( img, areae input), então você pode usar isso para encontrar esse elemento.
+    // Busca um elemento img através do getByAltText com o conteúdo da variável message
+    const img = screen.getByAltText(message);
