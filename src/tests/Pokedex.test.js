@@ -103,3 +103,16 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
         });
       });
+
+      test('O texto do botão deve corresponder ao nome do tipo, ex. Psychic',
+      () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
+        uniquePokemonTypes.forEach((pokemonType, index) => {
+          // Simula um click no elemento encontrado conforme item index do data-test-id
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          // Testo na tela com o data-test-id tem o texto do elemento atual
+          expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
+        });
+      });
