@@ -3,9 +3,6 @@ import { screen, render } from '@testing-library/react';
 import About from '../components/About';
 
 describe('Testa o componente About.js', () => {
-  // test('Se a página contém as informações sobre a Pokédex', () => {
-  //   render(<About />);
-  // });
   test('Se a página contém um heading h2 com o texto "About Pokédex"', () => {
     render(<About />);
 
