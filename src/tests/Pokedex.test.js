@@ -17,3 +17,14 @@ const pokemonTypes = pokemons.map((pokemon) => pokemon.type);
 // Cria na constante uniquePokemonTypes um array de tipos de pokemon, tirando os valores repetidos.
 const uniquePokemonTypes = [...new Set(pokemonTypes)];
 
+describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
+  describe('Testa o heading da página', () => {
+    test('Testa se página contém um h2 com o texto Encountered pokémons', () => {
+      // Renderizo na tela as rotas do componente App.
+      renderWithRouter(<App />);
+      // Busca na tela se há um heading(h1,h2,h3...) com name "Encountered pokémons"
+      const h2 = screen.getByRole('heading', { name: /Encountered pokémons/i });
+      // Verifica se o elemento que está na h2 está no documento
+      expect(h2).toBeInTheDocument();
+    });
+  });
