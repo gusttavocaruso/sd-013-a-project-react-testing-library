@@ -62,7 +62,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
       expect(history.location.pathname).toEqual('/about');
     });
-    
+
     test('a URL /favorites, ao clicar no link Favorite Pokémons.', () => {
       // Desconstroi o history do renderWithRouter do componente App
       const { history } = renderWithRouter(<App />);
@@ -76,4 +76,16 @@ describe('Requisito 01 - Teste do componente .js', () => {
       expect(history.location.pathname).toEqual('/favorites');
     });
 
+    test('a página Not Found ao entrar em uma URL desconhecida.', () => {
+      // Desconstroi o history do renderWithRouter do componente App
+      const { history } = renderWithRouter(<App />);
+      // Passo como argumento um link que não existe dentro de nossa aplicação
+      history.push('/pagina/que-nao-existe');
+      // getByText: pode ser usado para localizar elementos não interativos (como divs, spans e parágrafos).
+      // Cria a variável notFound para localizar texto na tela
+      const notFound = screen.getByText(/Page requested not found/i);
+      // Testa se a variável notFound está no documento
+      expect(notFound).toBeInTheDocument();
+    });
+  });
 });
