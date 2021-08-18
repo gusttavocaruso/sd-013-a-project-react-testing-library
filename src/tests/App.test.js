@@ -19,18 +19,18 @@ describe('App.js tests', () => {
     expect(linkFavorite).toBeInTheDocument();
   });
 
-  test('os links redirecionam corretamente', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+  // test('os links redirecionam corretamente', () => {
+  //   render(
+  //     <BrowserRouter>
+  //       <App />
+  //     </BrowserRouter>,
+  //   );
 
-    const linkHome = screen.getByText('Home');
-    const linkAbout = screen.getByText('About');
-    const linkFavorite = screen.getByText('Favorite Pokémons');
-    expect(linkHome).toBeInTheDocument();
-    expect(linkAbout).toBeInTheDocument();
-    expect(linkFavorite).toBeInTheDocument();
-  });
+  //   const linkHome = screen.getByText('Home');
+  //   const linkAbout = screen.getByText('About');
+  //   const linkFavorite = screen.getByText('Favorite Pokémons');
+  //   expect(linkHome).toBeInTheDocument();
+  //   expect(linkAbout).toBeInTheDocument();
+  //   expect(linkFavorite).toBeInTheDocument();
+  // });
 });
