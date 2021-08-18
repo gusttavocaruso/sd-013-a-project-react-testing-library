@@ -12,4 +12,6 @@ describe('Requisito 03 - Teste o componente <FavoritePokemons.js />', () => {
       // Busca um elemento link com o endereço "/favorite pokémons" e guarda na variável favoritePokemons
       const favoritePokemons = screen.getByRole('link',
         { name: /favorite pokémons/i });
+      // Simula o click no elemento que está na variável favoritePokemons
+      userEvent.click(favoritePokemons);
       
