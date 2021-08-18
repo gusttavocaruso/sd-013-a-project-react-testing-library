@@ -16,6 +16,10 @@ describe('Testa o componente About.js', () => {
   it('Testa se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     const paragraphs = screen.getAllByTestId('paragraph-test');
     expect(paragraphs.length).toEqual(2);
+    const firstParagraph = 'This application simulates a Pokédex, a';
+    const secondParagraph = 'One can filter Pokémons by type, and see more details';
+    expect(paragraphs[0]).toHaveTextContent(firstParagraph);
+    expect(paragraphs[1]).toHaveTextContent(secondParagraph);
   });
 
   it('Teste se a página contém a imagem específica de uma Pokédex.', () => {
