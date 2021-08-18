@@ -23,5 +23,17 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         // Testo se o elemento heading está no documento
         expect(h2).toBeInTheDocument();
       });
-
       
+      test('Não deve existir link de navegação para detalhes do Pokémon selecionado',
+        () => {
+          // Renderizo na tela as rotas do componente App.
+          renderWithRouter(<App />);
+          // Busca um elemento do tipo link com name/texto "more details"
+          const moreDetails = screen.getByRole('link', { name: /more details/i });
+          // Simula um click neste elemento encontrado acima
+          userEvent.click(moreDetails);
+          // Testo se o elemento "more details" não está renderizado no documento
+          expect(moreDetails).not.toBeInTheDocument();
+        });
+
+
