@@ -17,3 +17,5 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     const pokedexInfo01 = screen.getByText(/digital encyclopedia/i);
     // Adiciona à variável pokedexInfo02 se foi encontrado o texto "filter pokémons by type" no documento /about
     const pokedexInfo02 = screen.getByText(/filter pokémons by type/i);
+    // Testa se a informação da variável pokedexInfo01 está no documento
+    expect(pokedexInfo01).toBeInTheDocument();
