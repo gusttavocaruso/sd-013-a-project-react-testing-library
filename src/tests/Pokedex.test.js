@@ -76,11 +76,4 @@ describe('Tests for Pokedex.js', () => {
       });
     });
   });
-
-  // it('Check that there are elements with pokemon-type-button testid', () => {
-  //   renderWithRouter(<App />);
-
-  //   const typeBtn = screen.getAllByTestId('pokemon-type-button');
-  //   typeBtn.forEach((btn) => { expect(btn).toBeInTheDocument(); });
-  // });
 });
