@@ -1,10 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import renderWithRouter from '../../renderWithRouter';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 
 describe('Testando o componente App.js', () => {
   it('Deve conter o link "Home", "About" e "Favorite Pokémons"', () => {
-    render(<App />);
+    renderWithRouter(<App />);
 
     const linkHome = screen.getByRole('link', {
       name: /Home/i,
@@ -13,11 +15,22 @@ describe('Testando o componente App.js', () => {
       name: /about/i,
     });
     const linkFavoritePokemons = screen.getByRole('link', {
-      name: /favorite pokemons/i,
+      name: /favorite pokémons/i,
     });
 
     expect(linkHome).toBeInTheDocument();
     expect(linkAbout).toBeInTheDocument();
     expect(linkFavoritePokemons).toBeInTheDocument();
+  });
+
+  it('Deve ser redirecionado para URL "/" ao clicar no link Home', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const linkHome = screen.getByRole('link', { name: /home/i });
+    const { location: { pathname } } = history;
+
+    userEvent.click(linkHome);
+
+    expect(pathname).toBe('/');
   });
 });
