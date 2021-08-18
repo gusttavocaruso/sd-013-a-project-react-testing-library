@@ -161,6 +161,8 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           // Através da importação de dados de pokemons na "pokemons" faço um foreach para ler cada um dos pokemons, testando se mostra todos os pokemons
           getAllPokemons(nextPkmBtn);
         });
+
       });
+      
   });
 });
