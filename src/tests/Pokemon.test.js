@@ -66,7 +66,7 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       });
     });
 
-    describe('Testa se o card do Pokémon contém link de navegação para os detalhes deste',
+  describe('Testa se o card do Pokémon contém link de navegação para os detalhes deste',
     () => {
       test('O link deve possuir a URL /pokemons/<id>', () => {
         // Renderizo na tela as rotas do componente App.
@@ -78,7 +78,7 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       });
     });
 
-    describe('Testa se ao clicar em Mais detalhes, há redirect para os detalhes do Pokemon',
+  describe('Testa se ao clicar em Mais detalhes, há redirect para os detalhes do Pokemon',
     () => {
       test('Testa se ao clicar em Mais detalhes, há redirect para os detalhes do Pokemon',
         () => {
@@ -100,28 +100,38 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         });
     });
 
-    describe('Testa se existe um ícone de estrela nos Pokémons favoritados', () => {
-      test('A img tem alt="<pokemon> is marked as favorite"', () => {
-        renderWithRouter(<App />);
-        // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
-        const moreDetails = screen.getByRole('link', { name: /more details/i });
-        // Simula um clock no elemento que está na variável moreDetails
-        userEvent.click(moreDetails);
-        // Busca um elemento label com o text "Pokémon favoritado?"
-        const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
-        // Simula um clock no elemento que está na variável favorite
-        userEvent.click(favorite);
-        const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
-        // Verifica se o elemento que está na variável starIcon está no documento
-        expect(starIcon).toBeInTheDocument();
-      });
+  describe('Testa se existe um ícone de estrela nos Pokémons favoritados', () => {
+    test('A img tem alt="<pokemon> is marked as favorite"', () => {
+      renderWithRouter(<App />);
+      // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+      const moreDetails = screen.getByRole('link', { name: /more details/i });
+      // Simula um clock no elemento que está na variável moreDetails
+      userEvent.click(moreDetails);
+      // Busca um elemento label com o text "Pokémon favoritado?"
+      const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+      // Simula um clock no elemento que está na variável favorite
+      userEvent.click(favorite);
+      const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
+      // Verifica se o elemento que está na variável starIcon está no documento
+      expect(starIcon).toBeInTheDocument();
+    });
 
-      test('A img tem src = "/star-icon.svg"', () => {
-        renderWithRouter(<App />);
-        // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
-        const moreDetails = screen.getByRole('link', { name: /more details/i });
-        // Simula um click no elemento que está na variável moreDetails
-        userEvent.click(moreDetails);
-        // Busca um elemento label com o text "Pokémon favoritado?"
-        const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
-  
+    test('A img tem src = "/star-icon.svg"', () => {
+      renderWithRouter(<App />);
+      // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+      const moreDetails = screen.getByRole('link', { name: /more details/i });
+      // Simula um click no elemento que está na variável moreDetails
+      userEvent.click(moreDetails);
+      // Busca um elemento label com o text "Pokémon favoritado?"
+      const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+      // Simula um click no elemento da variável favorite
+      userEvent.click(favorite);
+      // Simula mais um click no elemento da variável favorite
+      userEvent.click(favorite);
+      // Pega todos os elementos img e guarda na variável fireEvent
+      const images = screen.getAllByRole('img');
+      // testo se o segundo elemento do array criado acima com as img possuem o atributo scr = "/star-icon.svg"
+      expect(images[1]).toHaveAttribute('src', '/star-icon.svg');
+    });
+  });
+});
