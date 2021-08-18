@@ -23,41 +23,23 @@ describe('Testa componente "Pokedex"', () => {
       name: /próximo pokémon/i,
     });
 
-    userEvent.click(buttonNext);
-    let nextPokemon = screen.getByText(/charmander/i);
-    expect(nextPokemon).toBeInTheDocument();
+    const arrayPokemons = [
+      'Charmander',
+      'Caterpie',
+      'Ekans',
+      'Alakazam',
+      'Mew',
+      'Rapidash',
+      'Snorlax',
+      'Dragonair',
+      'Pikachu',
+    ];
 
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/Caterpie/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/Ekans/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/Alakazam/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/mew/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/rapidash/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/snorlax/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/dragonair/i);
-    expect(nextPokemon).toBeInTheDocument();
-
-    userEvent.click(buttonNext);
-    nextPokemon = screen.getByText(/pikachu/i);
-    expect(nextPokemon).toBeInTheDocument();
+    arrayPokemons.forEach((pokemonName) => {
+      userEvent.click(buttonNext);
+      const nextPokemon = screen.getByText(pokemonName);
+      expect(nextPokemon).toBeInTheDocument();
+    });
   });
 
   it('Teste se é mostrado um pokemon por vez', () => {
