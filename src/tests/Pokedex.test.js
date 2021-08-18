@@ -66,3 +66,14 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         expect(firstPokemon).toHaveTextContent(pokemons[0].name);
       });
   });
+
+  describe('Testa se é mostrado apenas um Pokémon por vez', () => {
+    test('Testa se é mostrado apenas um Pokémon por vez', () => {
+      // Renderizo na tela as rotas do componente App.
+      renderWithRouter(<App />);
+      // Busca pelo data-test-id se o pokemon name é trazido uma vez
+      const onlyOnePokemon = screen.getAllByTestId('pokemon-name');
+      // Testa se o tamanho da variável é d e1
+      expect(onlyOnePokemon).toHaveLength(1);
+    });
+  });
