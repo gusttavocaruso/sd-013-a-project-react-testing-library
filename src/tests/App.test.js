@@ -19,6 +19,14 @@ describe('Requisito 01 - Teste do componente .js', () => {
       expect(home).toBeInTheDocument();
     });
 
+    test('O segundo link deve possuir o texto About', () => {
+      // Renderizo na tela as rotas do componente App
+      renderWithRouter(<App />);
+      // Verifico na tela, se há um elemento do tipo link com o name "about", e se tiver coloca o elemento na variável about.
+      const about = screen.getByRole('link', { name: /about/i });
+      // Testo que espero que a variável about esteja no documento
+      expect(about).toBeInTheDocument();
+    });
 
   });
 });
