@@ -48,7 +48,7 @@ describe('Teste o componente Pokedex.js', () => {
 
     const allBtn = screen.getByRole('button', { name: 'All' });
     expect(allBtn).toBeInTheDocument();
-
+    // baseado no codigo do aluno Gabriel Gaspar
     arr.forEach((t) => {
       const typeBtn = screen.getByRole('button', { name: t });
       expect(typeBtn).toBeInTheDocument();

@@ -29,6 +29,7 @@ describe('Teste o componente PokemonDetails.js', () => {
     renderWithRouter(<App />);
     userEvent.click(screen.getByRole('link', { name: linkText }));
 
+    // baseado no codigo do aluno Gabriel Gaspar
     const loc = screen.getByRole('heading', { name: `Game Locations of ${name}` });
     expect(loc).toBeInTheDocument();
     const maps = screen.getAllByAltText(`${name} location`);
