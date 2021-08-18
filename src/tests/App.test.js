@@ -6,17 +6,17 @@ import App from '../App';
 describe('Tests app.js component', () => {
   it('Checks the links in the navbar', () => {
     renderWithRouter(<App />);
-    // Catches the home link
+    // This should be equal to the home link
     const homeLink = screen.getByRole('link', {
       name: 'Home',
     });
     expect(homeLink).toBeInTheDocument();
-    // Catches the about link
+    // This should be equal to the about link
     const aboutLink = screen.getByRole('link', {
       name: 'About',
     });
     expect(aboutLink).toBeInTheDocument();
-    // Catches the Favorite Pokémons link
+    // This should be equal to the Favorite Pokémons link
     const FavoriteLink = screen.getByRole('link', {
       name: 'Favorite Pokémons',
     });
@@ -26,7 +26,7 @@ describe('Tests app.js component', () => {
     const { history } = renderWithRouter(<App />);
     // inserts / path into history
     history.push('/');
-    // Catches the home link
+    // This should be equal to the home link
     const homeLink = screen.getByRole('link', {
       name: 'Home',
     });
@@ -39,7 +39,7 @@ describe('Tests app.js component', () => {
     const { history } = renderWithRouter(<App />);
     // inserts /about path into history
     history.push('/about');
-    // Catches the about link
+    // This should be equal to the about link
     const aboutLink = screen.getByRole('link', {
       name: 'About',
     });
@@ -52,7 +52,7 @@ describe('Tests app.js component', () => {
     const { history } = renderWithRouter(<App />);
     // inserts /favorites path into history
     history.push('/favorites');
-    // Catches the favorites link
+    // This should be equal to the favorites link
     const FavoriteLink = screen.getByRole('link', {
       name: 'Favorite Pokémons',
     });
@@ -65,9 +65,9 @@ describe('Tests app.js component', () => {
     const { history } = renderWithRouter(<App />);
     // inserts nonexistent path into history
     history.push('/jay-z-the-goat');
-    const { pathname } = history.location;
-    expect(pathname).toBe('/jay-z-the-goat');
-    const notFoundMessage = 'Page requested not found Crying emoji';
+    // Text to compare
+    const notFoundMessage = /page requested not found/i;
+    // This should be equal to the h2
     const notFoundElement = screen.getByRole('heading', {
       name: notFoundMessage,
       level: 2,
