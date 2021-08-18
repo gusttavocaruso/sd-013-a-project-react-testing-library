@@ -48,4 +48,17 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           expect(h2).toBeInTheDocument();
         });
 
+        test('A seção de detalhes deve conter parágrafo com resumo do Pokémon visualizado',
+        () => {
+          // Renderizo na tela as rotas do componente App.
+          renderWithRouter(<App />);
+          // Simulo um click no elemento link com name/texto "more details".
+          userEvent.click(screen.getByRole('link', { name: /more details/i }));
+          // Guarda na variável summary o summary do primeiro pokemon
+          const summary = screen.getByText(firstPokemon.summary);
+          // Testa se o summary está no documento
+          expect(summary).toBeInTheDocument();
+        });
+    });
+
 
