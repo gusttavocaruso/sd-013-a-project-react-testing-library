@@ -1,10 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../RenderWithRouter';
 import App from '../App';
 
 describe('Testes para componente App', () => {
-  it('Os link deve possuir o texto Home, About e Favorite Pokemons', () => {
+  it('Os links devem possuir o texto Home, About e Favorite Pokemons', () => {
     renderWithRouter(<App />);
     const home = screen.getByRole('link',
       { name: /Home/ });
@@ -17,8 +18,10 @@ describe('Testes para componente App', () => {
     expect(favorite).toBeInTheDocument();
   });
   it('Testa se com a / é redirecionado para Home', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/');
+    renderWithRouter(<App />);
+    const home = screen.getByRole('link',
+      { name: /Home/ });
+    userEvent.click(home);
     const textPokedex = screen.getByRole('heading', {
       name: /Encountered pokémons/i,
       level: 2,
@@ -26,8 +29,10 @@ describe('Testes para componente App', () => {
     expect(textPokedex).toBeInTheDocument();
   });
   it('Testa se com a /about é redirecionado para About', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/about');
+    renderWithRouter(<App />);
+    const about = screen.getByRole('link',
+      { name: /About/ });
+    userEvent.click(about);
     const textAbout = screen.getByRole('heading', {
       name: /About Pokédex/i,
       level: 2,
@@ -35,8 +40,10 @@ describe('Testes para componente App', () => {
     expect(textAbout).toBeInTheDocument();
   });
   it('Testa se com a /favorites é redirecionado para Favorites Pokémons', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/favorites');
+    renderWithRouter(<App />);
+    const favorite = screen.getByRole('link',
+      { name: /Favorite Pokémons/ });
+    userEvent.click(favorite);
     const textFavorite = screen.getByRole('heading', {
       name: /Favorite pokémons/i,
       level: 2,
