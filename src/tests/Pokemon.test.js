@@ -65,3 +65,17 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         expect(pokemonImage).toHaveAttribute('src', firstPokemon.image);
       });
     });
+
+    describe('Testa se o card do Pokémon contém link de navegação para os detalhes deste',
+    () => {
+      test('O link deve possuir a URL /pokemons/<id>', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+        const moreDetails = screen.getByRole('link', { name: /more details/i });
+        // Testo se o elemento na variável moreDetails tem o atributo href com "/pokemons/$firstPokemon.id"
+        expect(moreDetails).toHaveAttribute('href', `/pokemons/${firstPokemon.id}`);
+      });
+    });
+
+    
