@@ -89,3 +89,17 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
           .toHaveTextContent(pokemonType);
       });
     });
+
+    test('Se selecionado Tipo, a Pokédex deve circular apenas por pokémons daquele tipo',
+      () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Com o array de tipos de pokemon, sem estarem repetidos, percorro ele todo com o foreach
+        uniquePokemonTypes.forEach((pokemonType, index) => {
+          userEvent.click(screen.getAllByTestId(typeButtonTestId)[index]);
+          // Simula click no elemento que tem o data-test-id de id next-pokemon
+          userEvent.click(screen.getByTestId('next-pokemon'));
+          // Testo na tela com o data-test-id tem o texto do elemento atual
+          expect(screen.getByTestId(typeTestId)).toHaveTextContent(pokemonType);
+        });
+      });
