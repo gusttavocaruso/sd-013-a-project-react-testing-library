@@ -22,3 +22,5 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     // Testa se a informação da variável pokedexInfo02 está no documento
     expect(pokedexInfo02).toBeInTheDocument();
   });
+
+  test('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
