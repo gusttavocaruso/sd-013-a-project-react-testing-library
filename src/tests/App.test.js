@@ -27,10 +27,21 @@ describe('Testando o componente App.js', () => {
     const { history } = renderWithRouter(<App />);
 
     const linkHome = screen.getByRole('link', { name: /home/i });
-    const { location: { pathname } } = history;
-
     userEvent.click(linkHome);
 
+    const { location: { pathname } } = history;
+
     expect(pathname).toBe('/');
+  });
+
+  it('Deve ser redirecionado para URL "/about" ao clicar no link About', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const linkAbout = screen.getByRole('link', { name: /about/i });
+
+    userEvent.click(linkAbout);
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/about');
   });
 });
