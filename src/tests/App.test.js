@@ -7,10 +7,6 @@ import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
 describe('Teste de do component App.js', () => {
-  beforeAll(() => {
-
-  });
-
   test('Teste do conjunto fixo de links de navegação.', () => {
     render(
       <BrowserRouter>
