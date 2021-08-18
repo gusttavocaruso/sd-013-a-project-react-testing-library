@@ -61,4 +61,19 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         });
     });
 
+    describe('Testa se há na página seção com mapas contendo as localizações do pokémon',
+    () => {
+      test('Deverá existir um h2 com o texto Game Locations of <name>', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Simulo um click no elemento link com name/texto "more details".
+        userEvent.click(screen.getByRole('link', { name: /more details/i }));
+        // Guarda na variável locations o texto abaixo com o name/texto do primeiro pokemon
+        const locations = `Game Locations of ${firstPokemon.name}`;
+        // Guarda na variável locationHeading o heading(h1,h2,h3..) com o name/texto do locations
+        const locationHeading = screen.getByRole('heading', { name: locations });
+        // Testa se o heading acima foi encontrado e está no documento
+        expect(locationHeading).toBeInTheDocument();
+      });
+
 
