@@ -33,7 +33,7 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         // Testo se o elemento que está na variável pokemonType possui o texto do primeiro pokemon
         expect(pokemonType).toHaveTextContent(firstPokemon.type);
       });
-      
+
       test('O peso médio do pokémon deve ser exibido com um texto no formato correto',
         () => {
           // Renderizo na tela as rotas do componente App.
@@ -49,3 +49,19 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
           // Testa se o elemento encontrado acima tem o conteúdo do "measurementUnit" desconstruído acima
           expect(pokemonWeight).toHaveTextContent(measurementUnit);
         });
+
+      test('A imagem do Pokémon deve ser exibida', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Guarda na variável abaixo o name da função primeiropokemon com o texto sprite
+        const imageName = `${firstPokemon.name} sprite`;
+        // Guarda na variável pokemonImage um elemento image com o name/texto da variável imageName
+        const pokemonImage = screen.getByRole('img', { name: imageName });
+        // Testa se o elemento da variável pokemonImage está no documento
+        expect(pokemonImage).toBeInTheDocument();
+        // Testa se o elemento da variável pokemonImage.name tem o atributo alt de "$name sprite" da função firstPokemon que está declarada no início do .js
+        expect(pokemonImage).toHaveAttribute('alt', `${firstPokemon.name} sprite`);
+        // Testa se o elemento da variável pokemonImage tem no seu src o $image da função firstPokemon que está declarada no início do .js
+        expect(pokemonImage).toHaveAttribute('src', firstPokemon.image);
+      });
+    });
