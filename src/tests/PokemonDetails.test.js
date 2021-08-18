@@ -76,4 +76,30 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         expect(locationHeading).toBeInTheDocument();
       });
 
+      test('Devem ser exibidos o nome da localização e uma imagem do mapa', () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        // Simulo um click no elemento link com name/texto "more details".
+        userEvent.click(screen.getByRole('link', { name: /more details/i }));
+        // Guarda na variável locations o texto abaixo com o name/texto do primeiro pokemon
+        const locations = `Game Locations of ${firstPokemon.name}`;
+        // Guarda na variável locationHeading o heading(h1,h2,h3..) com o name/texto do locations
+        const locationHeading = screen.getByRole('heading', { name: locations });
+        // Testa se o heading acima foi encontrado e está no documento
+        expect(locationHeading).toBeInTheDocument();
+        // o foundAt é desconstruído abaixo pois nele tem um array das localizações onde este pokemon é encontrado
+        const { foundAt } = firstPokemon;
+        // Percorre o array das localizações, desconstruindo no elemento o location(local) e o map(endereço)
+        foundAt.forEach(({ location, map }, index) => {
+          // Testo se o elemento que possui o location deste pokemon está no documento
+          expect(screen.getByText(location)).toBeInTheDocument();
+          // Testa img por img, conforme index do array, se tem o atributo src com link do "map" que possui o endereço do pokemon
+          expect(screen.getAllByRole('img')[index + 1]).toHaveAttribute('src', map);
+          // Guarda na variável altText o name/texto com o texto location
+          const altText = `${firstPokemon.name} location`;
+          // Busca todos os alt text, com o texto que está na variável altText, no index de referência do forEach, se está no documento
+          expect(screen.getAllByAltText(altText)[index]).toBeInTheDocument();
+        });
+      });
+    });
 
