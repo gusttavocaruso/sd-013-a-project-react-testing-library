@@ -79,9 +79,8 @@ describe('Testa o componente Pokedex.js', () => {
       <Pokedex pokemons={ pokemons } isPokemonFavoriteById={ isPokemonFavoriteById } />,
     );
 
-    const allButton = screen.getByTestId('');
+    const allButton = screen.getByText(/All/i);
     expect(allButton).toBeInTheDocument();
-    expect(allButton).toHaveTextContent(/All/i);
 
     const filterButtons = screen.getAllByTestId('pokemon-type-button');
     expect(filterButtons.length).toBe(2);
@@ -106,9 +105,8 @@ describe('Testa o componente Pokedex.js', () => {
       <Pokedex pokemons={ pokemons } isPokemonFavoriteById={ isPokemonFavoriteById } />,
     );
 
-    const allButton = screen.getByTestId('');
+    const allButton = screen.getByText(/All/i);
     expect(allButton).toBeInTheDocument();
-    expect(allButton).toHaveTextContent(/All/i);
 
     const filterButtons = screen.getAllByTestId('pokemon-type-button');
 
