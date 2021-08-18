@@ -50,3 +50,19 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
         getAllPokemons(nextPkmBtn);
       });
 
+      test('O primeiro Pokémon deve ser mostrado se estiver no último Pokémon da lista',
+      () => {
+        // Renderizo na tela as rotas do componente App.
+        renderWithRouter(<App />);
+        const nextPkmBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
+        // Percorro a lista de pokemons
+        pokemons.forEach(() => {
+          // Simulo o click no botão de próximo pokemon
+          userEvent.click(nextPkmBtn);
+        });
+        // através do data-test-id pega o elemento com o name abaixo
+        const firstPokemon = screen.getByTestId(nameTestId);
+        // Testa se o pokemon pego acima tem a mesma descrição do primeiro pokemon a ser pego no foreach acima
+        expect(firstPokemon).toHaveTextContent(pokemons[0].name);
+      });
+  });
