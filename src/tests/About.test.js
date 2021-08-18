@@ -11,11 +11,13 @@ describe('Testa o componente About.js', () => {
       name: /About Pokédex/i,
     });
     expect(heading).toBeInTheDocument();
+    expect(heading).toHaveTextContent(/About Pokédex/i);
   });
 
   it('Testa se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
-    const paragraphs = screen.getAllByTestId('paragraph-test');
+    const paragraphs = screen.getAllByText(/Pokémons/i);
     expect(paragraphs.length).toEqual(2);
+
     const firstParagraph = 'This application simulates a Pokédex, a';
     const secondParagraph = 'One can filter Pokémons by type, and see more details';
     expect(paragraphs[0]).toHaveTextContent(firstParagraph);
