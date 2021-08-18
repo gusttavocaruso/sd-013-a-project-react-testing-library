@@ -12,11 +12,15 @@ describe('Verifica o component About', () => {
 
   it('Verifica se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     renderWithRouter(<About />);
-    const ParagrafoAbout = screen.getAllByTestId(/custom-paragraph/i);
-    expect(ParagrafoAbout).toHaveLength(2);
+    const aboutParagraph1 = /This application simulates a Pokédex/i;
+    const aboutParagraph2 = /One can filter Pokémons by type/i;
+    const readTheElement1 = screen.getByText(aboutParagraph1);
+    const readTheElement2 = screen.getByText(aboutParagraph2);
+    expect(readTheElement1).toBeInTheDocument();
+    expect(readTheElement2).toBeInTheDocument();
   });
 
-  it('Verifica se a página contém a seguinte imagem de uma Pokédex:', () => {
+  it('Verifica se a página contém a imagem de uma Pokédex:', () => {
     renderWithRouter(<About />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
