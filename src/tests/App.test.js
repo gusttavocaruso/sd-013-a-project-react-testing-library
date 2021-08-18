@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Test do App', () => {
@@ -27,7 +27,7 @@ describe('Test do App', () => {
 
     fireEvent.click(about);
     expect(history.location.pathname).toBe('/about');
-// lint?
+
     fireEvent.click(favoritePokemon);
     expect(history.location.pathname).toBe('/favorites');
   });
