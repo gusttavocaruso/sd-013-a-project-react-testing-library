@@ -58,6 +58,7 @@ describe('Teste o componente Pokedex.js', () => {
   it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
 
+    // baseado no codigo do aluno Gabriel Gaspar
     const arr = [...new Set(Pokemons.reduce((types, { type }) => [...types, type], []))];
     arr.forEach((type) => {
       userEvent.click(screen.getByRole('button', { name: type }));
