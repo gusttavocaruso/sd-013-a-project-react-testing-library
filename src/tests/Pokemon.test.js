@@ -78,4 +78,24 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
       });
     });
 
-    
+    describe('Testa se ao clicar em Mais detalhes, há redirect para os detalhes do Pokemon',
+    () => {
+      test('Testa se ao clicar em Mais detalhes, há redirect para os detalhes do Pokemon',
+        () => {
+          // Renderizo na tela as rotas do componente App e desconstroi o history dela que contem o histórico de localização.
+          const { history } = renderWithRouter(<App />);
+          // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+          const moreDetails = screen.getByRole('link', { name: /more details/i });
+          // Simula o click no elemento que está na variável moreDetails
+          userEvent.click(moreDetails);
+          // Desconstroi o name e o id da função firstPokemon
+          const { name, id } = firstPokemon;
+          // Pega o elemento heading(h2) com o name "$name Details"
+          const h2 = screen.getByRole('heading', { name: `${name} Details` });
+          // Com o elemento acima, verifica se está no documento
+          expect(h2).toBeInTheDocument();
+          // history.location.pathname pega o endereço da página.
+          // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/pokemons/$id".
+          expect(history.location.pathname).toEqual(`/pokemons/${id}`);
+        });
+    });
