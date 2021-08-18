@@ -33,4 +33,3 @@ describe('Teste o componente About.js', () => {
     expect(src).toBeTruthy();
   });
 });
-

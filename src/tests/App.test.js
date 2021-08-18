@@ -14,7 +14,7 @@ describe('Teste do component App', () => {
     expect(home).toBeInTheDocument();
     const about = screen.getByRole('link', { name: 'About' });
     expect(about).toBeInTheDocument();
-    const favorite = screen.getByRole('link', { name: 'Favorite' });
+    const favorite = screen.getByRole('link', { name: 'Favorite Pokémons' });
     expect(favorite).toBeInTheDocument();
   });
 
@@ -23,7 +23,7 @@ describe('Teste do component App', () => {
     userEvent.click(screen.getByRole('link', { name: 'Home' }));
 
     const { pathname } = history.location;
-    expect(pathname.toBe('/'));
+    expect(pathname).toBe('/');
   });
 
   it('Testa se a aplicação é redirecionada para a página de About', () => {
@@ -31,7 +31,7 @@ describe('Teste do component App', () => {
     userEvent.click(screen.getByRole('link', { name: 'About' }));
 
     const { pathname } = history.location;
-    expect(pathname.toBe('/about'));
+    expect(pathname).toBe('/about');
   });
 
   it('Testa se a aplicação é redirecionada para Pokémons Favoritados', () => {
@@ -39,7 +39,7 @@ describe('Teste do component App', () => {
     userEvent.click(screen.getByRole('link', { name: 'Favorite Pokémons' }));
 
     const { pathname } = history.location;
-    expect(pathname.toBe('/favorites'));
+    expect(pathname).toBe('/favorites');
   });
 
   it('Testa se a aplicação é redirecionada para a página Not Found', () => {
