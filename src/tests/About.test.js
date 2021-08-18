@@ -13,3 +13,7 @@ describe('Requisito 02 - Testa o componente About.js', () => {
   test('Teste se a página contém as informações sobre a Pokédex', () => {
     // Renderizo na tela as rotas do componente About
     renderWithRouter(<About />);
+    // Adiciona à variável pokedexInfo01 se foi encontrado o texto "digital encyclopedia" no documento /about
+    const pokedexInfo01 = screen.getByText(/digital encyclopedia/i);
+    // Adiciona à variável pokedexInfo02 se foi encontrado o texto "filter pokémons by type" no documento /about
+    const pokedexInfo02 = screen.getByText(/filter pokémons by type/i);
