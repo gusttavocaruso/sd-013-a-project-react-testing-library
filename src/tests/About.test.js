@@ -32,4 +32,13 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     expect(h2).toBeInTheDocument();
   });
 
-  
+  test('Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
+    // Renderizo na tela as rotas do componente About
+    renderWithRouter(<About />);
+    // Guarda no regExp quais paragrafos estão sendo procurados
+    const regExp = /digital encyclopedia|filter pokémons by type/i;
+    // Guarda no paragraphs os elementos de texto procurados acima
+    const paragraphs = screen.getAllByText(regExp);
+    // Testa se a variável paragraphs achou os dois paragrafos, comparando tamanho(2)
+    expect(paragraphs).toHaveLength(2);
+  });
