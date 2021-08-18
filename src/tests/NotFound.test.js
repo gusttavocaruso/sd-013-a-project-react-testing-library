@@ -17,4 +17,6 @@ describe('Requisito 04 - Teste o componente NotFound.js', () => {
     expect(cryingEmoji).toBeInTheDocument();
   });
 
-  
+  test('Testa se página mostra uma imagem específica', () => {
+    // Renderizo na tela as rotas do componente NotFound
+    renderWithRouter(<NotFound />);
