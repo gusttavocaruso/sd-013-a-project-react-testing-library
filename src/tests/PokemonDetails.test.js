@@ -103,3 +103,32 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
       });
     });
 
+    describe('Testa se o usuário pode favoritar um pokémon através da página de detalhes',
+    () => {
+      test('A página deve exibir um checkbox que permite favoritar o Pokémon',
+        () => {
+          // Renderizo na tela as rotas do componente App.
+          renderWithRouter(<App />);
+          // Simulo um click no elemento link com name/texto "more details".
+          userEvent.click(screen.getByRole('link', { name: /more details/i }));
+          // Busca um elemento com a label text de "Pokemon favoritado" e guarda na variável favorite
+          const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+          // Busca um elemento checkbox com o name/texto de "Pokémon favoritado" e guarda na variável checkbox
+          const checkbox = screen.getByRole('checkbox', { name: /Pokémon favoritado?/i });
+          // Testo se o elemento que está na variável checkbox está no documento
+          expect(checkbox).toBeInTheDocument();
+          // Testo se o elemento que está na variável favorite está no documento
+          expect(favorite).toBeInTheDocument();
+          // Simula um click no elemento que está na variável checkbox
+          userEvent.click(checkbox);
+          // Guarda no starIcon o elemento img na posição 1
+          const starIcon = screen.getAllByRole('img')[1];
+          // Testa se o elemento que está na starIcon está no documento
+          expect(starIcon).toBeInTheDocument();
+          // Simula um click no elemento que está na variável favorite
+          userEvent.click(favorite);
+          // Testa se o elemento que está no starIcon não está no documento
+          expect(starIcon).not.toBeInTheDocument();
+        });
+    });
+});
