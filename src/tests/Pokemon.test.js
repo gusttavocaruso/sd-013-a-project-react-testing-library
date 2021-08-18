@@ -111,7 +111,6 @@ describe('Componente <Pokemon />', () => {
 
     const starImg = screen.getByAltText(`${nameStr} is marked as favorite`);
     expect(starImg).toBeInTheDocument();
-    console.log(starImg.src);
     expect(starImg.src).toBe('http://localhost/star-icon.svg');
   });
 });
