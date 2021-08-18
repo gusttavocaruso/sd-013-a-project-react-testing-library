@@ -33,3 +33,19 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
         // Testo se o elemento que está na variável pokemonType possui o texto do primeiro pokemon
         expect(pokemonType).toHaveTextContent(firstPokemon.type);
       });
+      
+      test('O peso médio do pokémon deve ser exibido com um texto no formato correto',
+        () => {
+          // Renderizo na tela as rotas do componente App.
+          renderWithRouter(<App />);
+          // Guarda na variável abaixo o elemento que possui o datatestId 'pokemon-weight'
+          const pokemonWeight = screen.getByTestId(weightTestId);
+          // Testa se o elemento pego acima possui o conteúdo de "Average weight". O "/" é como se fosse uma procura com "%" e o "i" é case sensitive
+          expect(pokemonWeight).toHaveTextContent(/Average weight:/i);
+          // Desconstroi os dois itens do objeto averageWeight do data.js
+          const { value, measurementUnit } = firstPokemon.averageWeight;
+          // Testa se o elemento encontrado acima tem o conteúdo do "value" desconstruído acima
+          expect(pokemonWeight).toHaveTextContent(value);
+          // Testa se o elemento encontrado acima tem o conteúdo do "measurementUnit" desconstruído acima
+          expect(pokemonWeight).toHaveTextContent(measurementUnit);
+        });
