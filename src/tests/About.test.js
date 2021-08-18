@@ -18,6 +18,7 @@ describe('Testa o componente About.js', () => {
   });
   it('Testa se existem dois paragrafos com texto na About', () => {
     renderWithRouter(<About />);
+    // Aqui eu testo usando a getAllByText, se de fato existem 2 paragrafos diferentes, com textos diferentes.
     const allText = screen.getAllByText(/application simulates|filter pokémons/i);
     expect(allText).toHaveLength(2);
   });

@@ -12,6 +12,7 @@ describe('Testa o componente FavoritePokemon.js', () => {
   });
   it('Testa se ao favoritar um pokémon, ele vai para a página de favoritos', () => {
     const { history } = renderWithRouter(<App />);
+    // Aqui eu texto se ao favoritar o pikachu, ele irá aparecer na tela de pokemons favoritos.
     const detailsButton = screen.getByText('More details');
     fireEvent.click(detailsButton);
     const favoriteCheckbox = screen.getByText('Pokémon favoritado?');
