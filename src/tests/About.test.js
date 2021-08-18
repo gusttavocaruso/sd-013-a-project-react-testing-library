@@ -1,7 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import About from '../components/About';
+
+afterEach(cleanup);
 
 describe('Testando a página Sobre', () => {
   it('A página deve conter um h2 com o texto "About Pokédex"', () => {
