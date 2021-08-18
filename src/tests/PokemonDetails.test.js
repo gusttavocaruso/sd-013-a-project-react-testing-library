@@ -36,7 +36,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           expect(moreDetails).not.toBeInTheDocument();
         });
 
-        test('A seção de detalhes deve conter um heading h2 com o texto Summary',
+      test('A seção de detalhes deve conter um heading h2 com o texto Summary',
         () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
@@ -48,7 +48,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
           expect(h2).toBeInTheDocument();
         });
 
-        test('A seção de detalhes deve conter parágrafo com resumo do Pokémon visualizado',
+      test('A seção de detalhes deve conter parágrafo com resumo do Pokémon visualizado',
         () => {
           // Renderizo na tela as rotas do componente App.
           renderWithRouter(<App />);
@@ -61,7 +61,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         });
     });
 
-    describe('Testa se há na página seção com mapas contendo as localizações do pokémon',
+  describe('Testa se há na página seção com mapas contendo as localizações do pokémon',
     () => {
       test('Deverá existir um h2 com o texto Game Locations of <name>', () => {
         // Renderizo na tela as rotas do componente App.
@@ -102,8 +102,7 @@ describe('Requisito 07 - Teste o componente <PokemonDetails.js />', () => {
         });
       });
     });
-
-    describe('Testa se o usuário pode favoritar um pokémon através da página de detalhes',
+  describe('Testa se o usuário pode favoritar um pokémon através da página de detalhes',
     () => {
       test('A página deve exibir um checkbox que permite favoritar o Pokémon',
         () => {
