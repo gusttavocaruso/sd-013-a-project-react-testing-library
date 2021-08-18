@@ -28,3 +28,14 @@ describe('Requisito 05 - Teste o componente <Pokedex.js />', () => {
       expect(h2).toBeInTheDocument();
     });
   });
+  
+  describe('Testa se exibe o próximo Pokémon se Próximo pokémon é clicado', () => {
+    test('O botão deve conter o texto Próximo pokémon', () => {
+      // Renderizo na tela as rotas do componente App.
+      renderWithRouter(<App />);
+      // Busca elemento button com name "Próximo pokémon"
+      const nextPkmBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
+      // Testa se o elemento acima buscado está no documento
+      expect(nextPkmBtn).toBeInTheDocument();
+    });
+
