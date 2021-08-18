@@ -24,3 +24,5 @@ describe('Requisito 02 - Testa o componente About.js', () => {
   });
 
   test('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
+    // Renderizo na tela as rotas do componente About
+    renderWithRouter(<About />);
