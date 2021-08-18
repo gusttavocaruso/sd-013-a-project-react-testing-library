@@ -62,6 +62,7 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Verificamos se o texto que aparece quando clicamos nesse link no navegador é o "/about".
       expect(history.location.pathname).toEqual('/about');
     });
+    
     test('a URL /favorites, ao clicar no link Favorite Pokémons.', () => {
       // Desconstroi o history do renderWithRouter do componente App
       const { history } = renderWithRouter(<App />);
