@@ -5,8 +5,8 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Testa o componente App.js', () => {
-  test('Se o primeiro link possui o texto "Home"',
-    'e se ao clicar a aplicação é redirecionada para a url "/"', () => {
+  it('Se o primeiro link possui o texto "Home" e se redireciona para a url correta',
+    () => {
       const { history } = renderWithRouter(<App />);
 
       const home = screen.getByRole('link', { name: /home/i });
@@ -17,8 +17,8 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/');
     });
-  test('Verifica se o segundo link possui o texto "About"',
-    'e se ao clicar a aplicação é redirecionada para a url "/about"', () => {
+  it('Se o segundo link possui o texto "About" e se redireciona para a url correta',
+    () => {
       const { history } = renderWithRouter(<App />);
 
       const about = screen.getByRole('link', { name: /about/i });
@@ -29,8 +29,8 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/about');
     });
-  test('Verifica se o terceiro link possui o texto "Favorite Pokémons"',
-    'e se ao clicar a aplicação é redirecionada para a url "/favorites"', () => {
+  it('Se o último link possui o texto "Favorite Pokémons" e redireciona para a url certa',
+    () => {
       const { history } = renderWithRouter(<App />);
 
       const favorites = screen.getByRole('link', { name: /favorite pokémons/i });
@@ -41,8 +41,8 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/favorites');
     });
-  test('Verifica se a aplicação é redirecionada para a página "Not Found"',
-    'ao entrar em uma URL desconhecida', () => {
+  it('Se a aplicação é redirecionada para a página "Not Found" ao entrar em outra URL ',
+    () => {
       const { history } = renderWithRouter(<App />);
 
       history.push('/qualquer-caminho');
