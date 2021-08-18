@@ -75,4 +75,18 @@ describe('Tests for Pokedex.js', () => {
       });
     });
   });
+
+  it('Check that there are elements with pokemon-type-button testid', () => {
+    renderWithRouter(<App />);
+
+    const typeBtn = screen.getAllByTestId('pokemon-type-button');
+    typeBtn.forEach((btn) => { expect(btn).toBeInTheDocument(); });
+  });
+
+  it('Check that there is a button with text "Próximo pokémon"', () => {
+    renderWithRouter(<App />);
+
+    const nextBtn = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextBtn).toBeInTheDocument();
+  });
 });
