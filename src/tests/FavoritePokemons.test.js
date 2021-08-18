@@ -11,13 +11,14 @@ describe('Testa o componente FavoritePokemons.js', () => {
     expect(notFound).toBeInTheDocument();
   });
 
-  it('Teste se é exibido todos os cards de pokémons favoritados', () => {
+  it('Testa se é exibido todos os cards de pokémons favoritados', () => {
     const pokemons = [
       { id: 1, name: 'Pikachu', averageWeight: { measurementUnit: 'm', value: '5' } },
       { id: 2, name: 'Bulbassauro', averageWeight: { measurementUnit: 'm', value: '5' } },
       { id: 3, name: 'Charmander', averageWeight: { measurementUnit: 'm', value: '5' } },
     ];
     renderWithRouter(<FavoritePokemons pokemons={ pokemons } />);
+
     const pikachu = screen.getByText(/Pikachu/i);
     expect(pikachu).toBeInTheDocument();
     const names = screen.getAllByTestId('pokemon-name');
