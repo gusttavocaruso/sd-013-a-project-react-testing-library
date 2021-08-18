@@ -19,3 +19,6 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     const pokedexInfo02 = screen.getByText(/filter pokémons by type/i);
     // Testa se a informação da variável pokedexInfo01 está no documento
     expect(pokedexInfo01).toBeInTheDocument();
+    // Testa se a informação da variável pokedexInfo02 está no documento
+    expect(pokedexInfo02).toBeInTheDocument();
+  });
