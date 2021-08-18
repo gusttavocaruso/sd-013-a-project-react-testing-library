@@ -25,3 +25,5 @@ describe('Requisito 04 - Teste o componente NotFound.js', () => {
     // getByAltText: Se o seu elemento é aquele que suporta alttexto ( img, areae input), então você pode usar isso para encontrar esse elemento.
     // Busca um elemento img através do getByAltText com o conteúdo da variável message
     const img = screen.getByAltText(message);
+    // Guarda no imgURL o link da imagem definida no README
+    const imgURL = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
