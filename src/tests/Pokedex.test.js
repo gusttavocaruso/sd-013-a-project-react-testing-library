@@ -21,7 +21,8 @@ describe('Tests for Pokedex.js', () => {
     renderWithRouter(<App />);
 
     userEvent.click(screen.getByRole('button', { name: 'All' }));
-    const nextBtn = screen.getByTestId('next-pokemon');
+    const nextBtn = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextBtn).toBeInTheDocument();
     const names = Pokemons.map((p) => p.name);
     names.forEach((p, index) => {
       userEvent.click(nextBtn);
@@ -49,9 +50,9 @@ describe('Tests for Pokedex.js', () => {
     const allBtn = screen.getByRole('button', { name: 'All' });
     expect(allBtn).toBeInTheDocument();
 
-    arr.forEach((t) => {
-      const typeBtn = screen.getByRole('button', { name: t });
-      expect(typeBtn).toBeInTheDocument();
+    const typeBtn = screen.getAllByTestId('pokemon-type-button');
+    arr.forEach((t, index) => {
+      expect(typeBtn[index].innerHTML === t).toBeTruthy();
     });
   });
 
@@ -76,17 +77,10 @@ describe('Tests for Pokedex.js', () => {
     });
   });
 
-  it('Check that there are elements with pokemon-type-button testid', () => {
-    renderWithRouter(<App />);
+  // it('Check that there are elements with pokemon-type-button testid', () => {
+  //   renderWithRouter(<App />);
 
-    const typeBtn = screen.getAllByTestId('pokemon-type-button');
-    typeBtn.forEach((btn) => { expect(btn).toBeInTheDocument(); });
-  });
-
-  it('Check that there is a button with text "Próximo pokémon"', () => {
-    renderWithRouter(<App />);
-
-    const nextBtn = screen.getByRole('button', { name: 'Próximo pokémon' });
-    expect(nextBtn).toBeInTheDocument();
-  });
+  //   const typeBtn = screen.getAllByTestId('pokemon-type-button');
+  //   typeBtn.forEach((btn) => { expect(btn).toBeInTheDocument(); });
+  // });
 });
