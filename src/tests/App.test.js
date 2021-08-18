@@ -27,6 +27,13 @@ describe('Requisito 01 - Teste do componente .js', () => {
       // Testo que espero que a variável about esteja no documento
       expect(about).toBeInTheDocument();
     });
-
+    test('O terceiro link deve possuir o texto Favorite Pokémons', () => {
+      // Renderizo na tela as rotas do componente App
+      renderWithRouter(<App />);
+      // Verifico na tela, se há um elemento do tipo link com o name "favorite pokémons", e se tiver coloca o elemento na variável about.
+      const favPokemons = screen.getByRole('link', { name: /favorite pokémons/i });
+      // Testo que espero que a variável favPokemons esteja no documento
+      expect(favPokemons).toBeInTheDocument();
+    });
   });
 });
