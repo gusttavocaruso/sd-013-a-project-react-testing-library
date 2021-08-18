@@ -31,3 +31,5 @@ describe('Requisito 02 - Testa o componente About.js', () => {
     // Testa se a variável h2, que contem o elemento procurado acima está no documento
     expect(h2).toBeInTheDocument();
   });
+
+  
