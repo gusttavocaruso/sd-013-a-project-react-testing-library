@@ -99,3 +99,20 @@ describe('Requisito 06 - Testa o componente <Pokemon.js />', () => {
           expect(history.location.pathname).toEqual(`/pokemons/${id}`);
         });
     });
+
+    describe('Testa se existe um ícone de estrela nos Pokémons favoritados', () => {
+      test('A img tem alt="<pokemon> is marked as favorite"', () => {
+        renderWithRouter(<App />);
+        // Busca um elemento link com o endereço "/more details" e o coloca na variável moreDetails
+        const moreDetails = screen.getByRole('link', { name: /more details/i });
+        // Simula um clock no elemento que está na variável moreDetails
+        userEvent.click(moreDetails);
+        // Busca um elemento label com o text "Pokémon favoritado?"
+        const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+        // Simula um clock no elemento que está na variável favorite
+        userEvent.click(favorite);
+        const starIcon = screen.getByAltText(`${firstPokemon.name} is marked as favorite`);
+        // Verifica se o elemento que está na variável starIcon está no documento
+        expect(starIcon).toBeInTheDocument();
+      });
+  
