@@ -44,4 +44,17 @@ describe('Testando o componente App.js', () => {
 
     expect(pathname).toBe('/about');
   });
+
+  it('Deve ser redirecionado para URL "/favorites" ao clicar Favorite Pokemóns', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const linkFavoritePokemons = screen.getByRole('link', {
+      name: /favorite pokémons/i,
+    });
+
+    userEvent.click(linkFavoritePokemons);
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/favorites');
+  });
 });
