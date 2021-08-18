@@ -8,3 +8,5 @@ import pokemons from '../data';
 
 // Guarda no firstPokemon o primeiro pokemon do array
 const firstPokemon = pokemons[0];
+
+describe('Requisito 02 - Testa o componente About.js', () => {
