@@ -50,7 +50,7 @@ describe('Teste os links de navegação.', () => {
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
-      expect(homeAll.textContent).toBe('Encountered pokémons');
+      expect(homeAll.textContent).toMatch('Encountered pokémons');
       expect(history.location.pathname).toBe(exepected);
     });
 
@@ -68,7 +68,7 @@ describe('Teste os links de navegação.', () => {
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
-      expect(homeAll.textContent).toBe('About Pokédex');
+      expect(homeAll.textContent).toMatch('About Pokédex');
       expect(history.location.pathname).toBe(exepected);
     });
 
@@ -86,7 +86,7 @@ describe('Teste os links de navegação.', () => {
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
-      expect(homeAll.textContent).toBe('Favorite pokémons');
+      expect(homeAll.textContent).toMatch('Favorite pokémons');
       expect(history.location.pathname).toBe(exepected);
     });
 
@@ -102,7 +102,7 @@ describe('Teste os links de navegação.', () => {
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
-      expect(homeAll.textContent).toBe('Page requested not found 😭');
+      expect(homeAll.textContent).toMatch('Page requested not found 😭');
       expect(history.location.pathname).toBe(exepected);
     });
   });
