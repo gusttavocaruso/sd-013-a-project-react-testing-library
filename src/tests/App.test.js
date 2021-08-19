@@ -14,7 +14,7 @@ describe(' Teste o componente "<App.js />"', () => {
         <App />
       </Router>,
     );
-
+    // Pega o tag nav
     const navBarElement = screen.getByRole('navigation');
     const listTextContent = within(navBarElement).getAllByRole('link')
       .map((link) => link.textContent);
