@@ -7,6 +7,7 @@ import { pokemonType } from '../types';
 import './pokemon.css';
 
 const Pokemon = ({ pokemon, showDetailsLink, isFavorite }) => {
+  // console.log(pokemon);
   const { averageWeight, id, image, name, type } = pokemon;
   const { measurementUnit, value } = averageWeight;
 
