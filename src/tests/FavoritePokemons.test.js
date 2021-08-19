@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../renderWithRouter';
 import { FavoritePokemons } from '../components';
 import App from '../App';
+import renderWithRouter from '../renderWithRouter';
 
 describe('requisito 3', () => {
   it('Verifica se a pagina renderiza o texto correto', () => {

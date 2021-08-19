@@ -1,7 +1,7 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithRouter from '../renderWithRouter';
+import React from 'react';
 import About from '../components/About';
+import renderWithRouter from '../renderWithRouter';
 
 describe('Requisito 2', () => {
   it('Testa se tem 2 paragrafos trazendo as informacoes sobre a pokedex', () => {

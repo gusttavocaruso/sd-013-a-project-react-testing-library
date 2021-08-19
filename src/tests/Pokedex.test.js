@@ -1,8 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../renderWithRouter';
 import App from '../App';
+import renderWithRouter from '../renderWithRouter';
 
 describe('Requisito 5', () => {
   it('Verficia se ha um H2 com texto correto', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithRouter from '../renderWithRouter';
 import { NotFound } from '../components';
+import renderWithRouter from '../renderWithRouter';
 
 describe('Requisito 4', () => {
   it('Testando verifica se o textoesta correto', () => {

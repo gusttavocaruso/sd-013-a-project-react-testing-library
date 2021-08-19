@@ -1,8 +1,8 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../renderWithRouter';
 import App from '../App';
+import renderWithRouter from '../renderWithRouter';
 
 describe('Testa os links do top da aplicacao', () => {
   it('Verifica se aplicacao é redirecionada para Home', () => {
