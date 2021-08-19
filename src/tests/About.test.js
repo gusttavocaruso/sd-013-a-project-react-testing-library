@@ -1,3 +1,1 @@
-test('sss', () => {
-  /* Iniciando o projeto */
-});
+test('', () => {});
