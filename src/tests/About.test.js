@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helper/renderWithRouter';
 import About from '../components/About';
 
@@ -32,3 +31,5 @@ describe('Testa o componente About', () => {
     expect(imgPokedex.src).toBe(src);
   });
 });
+
+// src ajuda do pull request da julia baptista: https://github.com/tryber/sd-013-a-project-react-testing-library/pull/64/files
