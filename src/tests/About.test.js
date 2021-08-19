@@ -13,18 +13,15 @@ describe('Verifica componente About', () => {
 
   test('Verifica se os dois paragrafos estão sendo renderizados', () => {
     renderWithRouter(<About />);
-    const firstParagraph = screen.getByTestId('first paragraph');
-    expect(firstParagraph).toBeInTheDocument();
-
-    const secondParagraph = screen.getByTestId('second paragraph');
-    expect(secondParagraph).toBeInTheDocument();
+    const firstParagraph = screen.getByText(/This application simulates a Pokédex/i);
+    const secondParagraph = screen.getByText(/and see more details for each one of /i);
+    expect(firstParagraph && secondParagraph).toBeInTheDocument();
   });
-
   test('Verifica se a imagem correta esta sendo renderizada', () => {
     renderWithRouter(<About />);
-    const imgAbout = screen.getByAltText('Pokédex');
-    const srcImgAbout = imgAbout.src.includes('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+    const imgAbout = screen.getByRole('img');
     expect(imgAbout).toBeInTheDocument();
+    const srcImgAbout = imgAbout.src.includes('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
     expect(srcImgAbout).toBeTruthy();
   });
 });
