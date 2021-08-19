@@ -4,10 +4,10 @@ import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 
 const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
+  const historyMock = createMemoryHistory();
   return ({
     ...render(
-    <Router history={history}>{component}</Router>), history,
+    <Router history={historyMock}>{component}</Router>), history,
   });
 };
 
