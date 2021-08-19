@@ -1,8 +1,25 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
+import { createMemoryHistory } from 'history';
+import NotFound from '../components/NotFound';
+
+function renderWithRouter(component) {
+  const historyMock = createMemoryHistory();
+
+  const objectRender = render(
+    <Router history={ historyMock }>
+      {component}
+    </Router>,
+  );
+
+  return {
+    ...objectRender,
+    history: historyMock,
+  };
+}
 
 describe('App.js tests', () => {
   test('Verifica se ao clicar no Home renderiza a página inicial', () => {
@@ -55,5 +72,14 @@ describe('App.js tests', () => {
     const favoriteText = screen.getByText('Favorite pokémons');
 
     expect(favoriteText).toBeInTheDocument();
+  });
+  test('Verifica se carrega pagina Not Found', () => {
+    const { history } = renderWithRouter( <NotFound /> );
+
+    history.push('/rota-teste');
+
+    const notFoundText = screen.getByText('Page requested not found');
+
+    expect (notFoundText).toBeInTheDocument();
   });
 });
