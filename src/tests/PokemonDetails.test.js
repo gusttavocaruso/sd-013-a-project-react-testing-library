@@ -6,9 +6,7 @@ import renderWithRouter from './renderWithRouter';
 import pokemons from '../data';
 
 describe('Test "PokemonDetails" page', () => {
-  const { id, name, type, image, summary,
-    averageWeight: { value, measurementUnit },
-    foundAt } = pokemons[0];
+  const { name, foundAt, summary } = pokemons[0];
 
   it('Renders selected pokemon informations', () => {
     renderWithRouter(<App />);
