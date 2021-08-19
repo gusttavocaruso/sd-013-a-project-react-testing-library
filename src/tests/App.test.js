@@ -7,7 +7,7 @@ import App from '../App';
 
 describe(' Teste o componente "<App.js />"', () => {
   describe('Teste se o topo da aplicação contém um conjunto fixo de links.', () => {
-    const exepected = 3;
+    const expected = 3;
     const history = createMemoryHistory();
     render(
       <Router history={ history }>
@@ -20,7 +20,7 @@ describe(' Teste o componente "<App.js />"', () => {
       .map((link) => link.textContent);
 
     it('Testa se o navBar tem 3 link', () => {
-      expect(listTextContent.length).toBe(exepected);
+      expect(listTextContent.length).toBe(expected);
     });
     it('O primeiro link deve possuir o texto Home.', () => {
       expect(listTextContent[0]).toBe('Home');
@@ -38,7 +38,7 @@ describe('Teste os links de navegação.', () => {
   describe('Testa os Links Home, About, Favorite Pokémons e NotFound', () => {
     it('Ao clicar no link Home redirecionada para URL "/"', () => {
       const history = createMemoryHistory();
-      const exepected = '/';
+      const expected = '/';
       render(
         <Router history={ history }>
           <App />
@@ -51,12 +51,12 @@ describe('Teste os links de navegação.', () => {
 
       expect(homeAll).toBeInTheDocument();
       expect(homeAll.textContent).toMatch('Encountered pokémons');
-      expect(history.location.pathname).toBe(exepected);
+      expect(history.location.pathname).toBe(expected);
     });
 
     it('Ao clicar no link About redirecionada para URL "/about"', () => {
       const history = createMemoryHistory();
-      const exepected = '/about';
+      const expected = '/about';
       render(
         <Router history={ history }>
           <App />
@@ -68,13 +68,13 @@ describe('Teste os links de navegação.', () => {
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
-      expect(homeAll.textContent).toMatch('About Pokédex');
-      expect(history.location.pathname).toBe(exepected);
+      expect(homeAll.textContent).toBe('About Pokédex');
+      expect(history.location.pathname).toBe(expected);
     });
 
     it('Ao clicar no link Favorite Pokémons redirecionada para URL "/favorites"', () => {
       const history = createMemoryHistory();
-      const exepected = '/favorites';
+      const expected = '/favorites';
       render(
         <Router history={ history }>
           <App />
@@ -87,23 +87,23 @@ describe('Teste os links de navegação.', () => {
 
       expect(homeAll).toBeInTheDocument();
       expect(homeAll.textContent).toMatch('Favorite pokémons');
-      expect(history.location.pathname).toBe(exepected);
+      expect(history.location.pathname).toBe(expected);
     });
 
     it('Ao digita um URL invalida redirecionada para página "Not Found"', () => {
       const history = createMemoryHistory();
-      const exepected = '/pagina/que-nao-existe/';
+      const expected = '/pagina/que-nao-existe/';
       render(
         <Router history={ history }>
           <App />
         </Router>,
       );
-      history.push(exepected);
+      history.push(expected);
       const homeAll = screen.getByRole('heading', { level: 2 });
 
       expect(homeAll).toBeInTheDocument();
       expect(homeAll.textContent).toMatch('Page requested not found 😭');
-      expect(history.location.pathname).toBe(exepected);
+      expect(history.location.pathname).toBe(expected);
     });
   });
 });
