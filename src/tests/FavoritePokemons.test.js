@@ -19,6 +19,7 @@ describe('Testar o Favorite', () => {
     });
     userEvent.click(detailsLink);
 
+    // https://www.cluemediator.com/check-a-checkbox-using-react-testing-library
     const inputCheckBox = screen.getByRole('checkbox');
     userEvent.click(inputCheckBox);
 
