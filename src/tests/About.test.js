@@ -8,14 +8,14 @@ describe('Teste o componente <About.js />. (req2)', () => {
   it('contém um heading h2 com o texto "About Pokédex"', () => {
     // Acessa os elementos da tela
     renderWithRouter(<About />);
-    const h2Heading = screen.getByRole('heading', 
-    { name: /About Pokédex/i,
-      level: 2, });
+    const h2Heading = screen.getByRole('heading',
+      { name: /About Pokédex/i,
+        level: 2 });
 
     // Faz o teste
     expect(h2Heading).toBeInTheDocument();
   });
-  
+
   it('contém dois parágrafos com texto sobre a Pokédex', () => {
     // Acessa os elementos da tela
     renderWithRouter(<About />);
@@ -36,5 +36,3 @@ describe('Teste o componente <About.js />. (req2)', () => {
     expect(image.src).toBe('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
-
- 
