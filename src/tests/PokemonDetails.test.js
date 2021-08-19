@@ -7,11 +7,12 @@ import pokemons from '../data';
 
 describe('Test "PokemonDetails" page', () => {
   const { name, foundAt, summary } = pokemons[0];
+  const MORE_DETAILS = 'More details';
 
   it('Renders selected pokemon informations', () => {
     renderWithRouter(<App />);
 
-    const detailsLink = screen.getByRole('link', { name: 'More details' });
+    const detailsLink = screen.getByRole('link', { name: MORE_DETAILS });
     userEvent.click(detailsLink);
 
     const pokeNameDetails = screen.getByRole('heading', { name: `${name} Details` });
@@ -28,7 +29,7 @@ describe('Test "PokemonDetails" page', () => {
   it('Renders map locations section', () => {
     renderWithRouter(<App />);
 
-    const detailsLink = screen.getByRole('link', { name: 'More details' });
+    const detailsLink = screen.getByRole('link', { name: MORE_DETAILS });
     userEvent.click(detailsLink);
 
     const mapHeading = screen.getByRole('heading', { name: `Game Locations of ${name}` });
@@ -48,7 +49,7 @@ describe('Test "PokemonDetails" page', () => {
   it('Tests if user can favorite a pokemon from details page', () => {
     renderWithRouter(<App />);
 
-    const detailsLink = screen.getByRole('link', { name: 'More details' });
+    const detailsLink = screen.getByRole('link', { name: MORE_DETAILS });
     userEvent.click(detailsLink);
 
     const favCheck = screen.getByLabelText('Pokémon favoritado?');
