@@ -9,23 +9,17 @@ describe('Testa todo o componente Pokedex', () => {
     renderWithRouter(<App />);
 
     const h2Text = screen.getByRole('heading', { name: /Encountered pokémons/i });
-
     expect(h2Text).toBeInTheDocument();
   });
 
   it('Teste se é exibido o próximo Pokémon da lista', () => {
     renderWithRouter(<App />);
 
-    expect(screen.getByText('Pikachu')).toBeInTheDocument();
-
     const nextButton = screen.getByRole('button', { name: 'Próximo pokémon' });
-
+    expect(screen.getByText('Pikachu')).toBeInTheDocument();
     userEvent.click(nextButton);
-
     expect(screen.getByText('Charmander')).toBeInTheDocument();
-
     userEvent.click(nextButton);
-
     expect(screen.getByText('Caterpie')).toBeInTheDocument();
   });
 
@@ -33,7 +27,6 @@ describe('Testa todo o componente Pokedex', () => {
     renderWithRouter(<App />);
 
     const pokemon = screen.getAllByTestId('pokemon-name');
-
     expect(pokemon.length).toBe(1);
   });
 
@@ -42,9 +35,7 @@ describe('Testa todo o componente Pokedex', () => {
 
     const buttons = screen.getAllByTestId('pokemon-type-button');
     const types = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
-
     expect(buttons.length).toBe(types.length);
-
     buttons.forEach((button, index) => expect(button).toHaveTextContent(types[index]));
   });
 
@@ -52,12 +43,9 @@ describe('Testa todo o componente Pokedex', () => {
     renderWithRouter(<App />);
 
     const allButton = screen.getByRole('button', { name: 'All' });
-
     userEvent.click(allButton);
-
     expect(allButton).toBeInTheDocument();
     expect(allButton).toHaveTextContent('All');
-
     expect(screen.getByText('Pikachu')).toBeInTheDocument();
   });
 });
