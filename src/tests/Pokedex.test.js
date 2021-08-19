@@ -70,8 +70,13 @@ describe('Tem os botões de filtro.', () => {
         <App />
       </BrowserRouter>,
     );
-    const buttonTypeCheck = screen.getAllByRole('button');
+    // const buttonTypeCheck = screen.getAllByRole('button');
+    const buttonTypeCheck = screen.getAllByTestId('pokemon-type-button');
     // console.log(buttonTypeCheck);
+    // dataTestId={`pokemon-type-button`}
+
+    // const checkButton = screen.getAllByTestId('pokemon-type-button')
+    // expect(checkButton).toBe('button');
 
     for (let i = 1; i < buttonTypeCheck.length; i += 1) {
       const checkTypeOne = buttonTypeCheck[i].innerHTML;
@@ -105,6 +110,7 @@ describe('Pokédex contém botão para resetar', () => {
         {/* <Pokedex /> */}
       </BrowserRouter>,
     );
+
     const nameFromTestId = screen.getByTestId(TEST_ID);
 
     const nextPokemon = screen.getByRole('button', { name: /próximo pokémon/i });
