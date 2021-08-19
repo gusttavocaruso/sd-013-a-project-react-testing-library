@@ -20,7 +20,7 @@ describe('Test "Pokedex" component', () => {
     userEvent.click(allPokesFilter);
 
     const pokeName = screen.getByTestId('pokemon-name');
-    const nextPokeBtn = screen.getByTestId('next-pokemon');
+    const nextPokeBtn = screen.getByText(/Próximo pokémon/i);
 
     pokemons.forEach(({ name }) => {
       expect(pokeName).toHaveTextContent(name);
