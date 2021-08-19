@@ -20,4 +20,6 @@ describe('Testando componente FavoritePokemons.js', () => {
 
     expect(notFoundParagraph).toBeInTheDocument();
   });
+
+  it('')
 });
