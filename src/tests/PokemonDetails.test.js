@@ -19,16 +19,17 @@ describe('Requisito 7', () => {
       name: `${name} Details`,
     });
     expect(title).toBeInTheDocument();
-    const detailsLink = screen.queryByRole('link', {
+    const details = screen.queryByRole('link', {
       name: 'More details',
     });
-    expect(detailsLink).toBeFalsy();
+    expect(details).toBeFalsy();
     // https://jestjs.io/pt-BR/docs/expect#tobefalsy
 
-    const summaryH2 = screen.getByRole('heading', {
+    const subTitle = screen.getByRole('heading', {
       name: 'Summary',
+      level: 2,
     });
-    expect(summaryH2).toBeInTheDocument();
+    expect(subTitle).toBeInTheDocument();
     const summaryP = screen.getByText(summary);
     expect(summaryP).toBeInTheDocument();
   });
@@ -39,14 +40,14 @@ describe('Requisito 7', () => {
       name: linkText,
     }));
 
-    const loc = screen.getByRole('heading', {
+    const subTitle2 = screen.getByRole('heading', {
       name: `Game Locations of ${name}`,
     });
-    expect(loc).toBeInTheDocument();
-    const maps = screen.getAllByAltText(`${name} location`);
-    expect(maps).toHaveLength(foundAt.length);
+    expect(subTitle2).toBeInTheDocument();
+    const mapas = screen.getAllByAltText(`${name} location`);
+    expect(mapas).toHaveLength(foundAt.length);
     foundAt.forEach((l, index) => {
-      const srcMatch = maps[index].src === l.map;
+      const srcMatch = mapas[index].src === l.map;
       expect(srcMatch).toBeTruthy();
       const locationText = screen.getByText(l.location);
       expect(locationText).toBeInTheDocument();
