@@ -5,7 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Testando componente FavoritePokemons.js', () => {
-  it('É exibida na tela a mensagem "No favorite pokemon found"'
+  it('Verifica se é exibida na tela a mensagem "No favorite pokemon found"'
   + ', se não tiver pokemons favoritos', () => {
     renderWithRouter(<App />);
 
@@ -21,5 +21,27 @@ describe('Testando componente FavoritePokemons.js', () => {
     expect(notFoundParagraph).toBeInTheDocument();
   });
 
-  it('')
+  it('Verifica se é exibido todos os cards de pokemons favoritados', () => {
+    renderWithRouter(<App />);
+
+    const linkFavPokemon = screen.getByRole('link', {
+      name: /favorite pokémon/i,
+    });
+    const linkMoreDetails = screen.getByRole('link', {
+      name: /more details/i,
+    });
+
+    userEvent.click(linkMoreDetails);
+    const checkBoxFavPokemon = screen.getByLabelText(/pokémon favoritado?/i);
+    userEvent.click(checkBoxFavPokemon);
+    userEvent.click(linkFavPokemon);
+
+    const pokemonName = screen.getByTestId('pokemon-name');
+    const pokemonType = screen.getByTestId('pokemon-type');
+    const pokemonWeight = screen.getByTestId('pokemon-weight');
+
+    expect(pokemonName).toBeInTheDocument();
+    expect(pokemonType).toBeInTheDocument();
+    expect(pokemonWeight).toBeInTheDocument();
+  });
 });
