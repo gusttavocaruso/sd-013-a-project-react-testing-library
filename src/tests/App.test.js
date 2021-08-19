@@ -1,5 +1,3 @@
-test('', () => {});
-
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -8,7 +6,7 @@ import App from '../App';
 
 describe('Testa o componente App.js', () => {
   it('Se o primeiro link possui o texto "Home" e redireciona para a URL certa',
-     () => {
+    () => {
       const { history } = renderWithRouter(<App />);
 
       const home = screen.getByRole('link', { name: /home/i });
@@ -19,7 +17,7 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/');
     });
-  it('Verifica se o segundo link possui o texto "About" e se ao clicar a aplicação é redirecionada para a URL certa',
+  it('Se o link possui o texto "About" e se ao clicar é redirecionada para a URL certa',
     () => {
       const { history } = renderWithRouter(<App />);
 
@@ -31,7 +29,7 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/about');
     });
-  it('Verifica se o terceiro link possui o texto "Favorite Pokémons" e se ao clicar a aplicação é redirecionada para a URL certa',
+  it('Se o link possui "Favorite Pokémons" e ao clicar é redirecionada para a URL certa',
     () => {
       const { history } = renderWithRouter(<App />);
 
@@ -43,7 +41,7 @@ describe('Testa o componente App.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/favorites');
     });
-  it('Verifica se a aplicação é redirecionada para a página "Not Found" ao entrar em uma URL desconhecida',
+  it('Se é redirecionada para a página "Not Found" ao entrar em uma URL desconhecida',
     () => {
       const { history } = renderWithRouter(<App />);
 
