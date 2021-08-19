@@ -7,8 +7,8 @@ function renderWithRouter(component) {
   const historyMock = createMemoryHistory();
 
   const objectRender = render(
-    <Router history= { historyMock }>
-
+    <Router history={ historyMock }>
+      {component}
     </Router>,
   );
 
