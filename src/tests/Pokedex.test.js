@@ -58,4 +58,12 @@ describe('Testando componente Pokedex.js', () => {
 
     expect(pokemonName.textContent).toBe(pokemons[0].name);
   });
+
+  it('Deve ser mostrado apenas um pokémon por vez', () => {
+    renderWithRouter(<App />);
+
+    const numberOfPokemonNames = screen.getAllByTestId('pokemon-name');
+
+    expect(numberOfPokemonNames.length).toBe(1);
+  });
 });
