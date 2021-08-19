@@ -16,8 +16,6 @@ describe('App.test.js', () => {
     const linkAbout = screen.getByText('About')
     const linkFavorite = screen.getByText('Favorite Pokémons')
 
-    // expect(screen.getItem).toBeInTheDocument;
-    // expect(screen.getItem.length).toBe(3);
     expect(linkHome).toBeDefined();
     expect(linkAbout).toBeDefined();
     expect(linkFavorite).toBeDefined();
