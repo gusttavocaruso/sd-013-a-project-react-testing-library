@@ -25,13 +25,16 @@ class App extends Component {
       acc[pokemon.id] = favoritePokemonIds.includes(pokemon.id);
       return acc;
     }, {});
+    console.log(isPokemonFavorite);
 
     return isPokemonFavorite;
   }
 
   constructor(props) {
     super(props);
-    this.state = { isPokemonFavoriteById: App.setIsPokemonFavoriteById() };
+    this.state = { 
+      isPokemonFavoriteById: App.setIsPokemonFavoriteById()
+    };
   }
 
   onUpdateFavoritePokemons(pokemonId, isFavorite) {
