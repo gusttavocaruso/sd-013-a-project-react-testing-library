@@ -66,4 +66,8 @@ describe('Testando componente Pokedex.js', () => {
 
     expect(numberOfPokemonNames.length).toBe(1);
   });
+
+  it('Deve existir um botão de filtro para cada tipo de pokemon, sem repetição', () => {
+    renderWithRouter(<App />);
+  });
 });
