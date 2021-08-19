@@ -72,9 +72,14 @@ describe('Tests the Pokemon component', () => {
     // Fetches the favorite option
     const favoriteOption = screen.getByLabelText(/favoritado/i);
     fireEvent.click(favoriteOption);
+    // Fetches the name of the Pokémon displayed
+    const displayedName = screen.getByTestId(/pokemon-name/i);
+    // Filters the database by the Pokémon name
+    const filteredPoke = pokemons
+      .filter((pokemon) => pokemon.name === displayedName.textContent)[0];
     // Fetches favorite star
-    const favoriteStar = screen.getByAltText(/marked as favorite/i);
-    expect(favoriteStar).toBeInTheDocument();
-    expect(favoriteStar.src).toBe('http://localhost/star-icon.svg');
+    const favoriteStr = screen.getByAltText(`${filteredPoke.name} is marked as favorite`);
+    expect(favoriteStr).toBeInTheDocument();
+    expect(favoriteStr.src).toBe('http://localhost/star-icon.svg');
   });
 });
