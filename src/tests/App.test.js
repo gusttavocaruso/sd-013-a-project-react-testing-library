@@ -1,17 +1,16 @@
 import React from 'react';
-import App from '../App';
-
 import { BrowserRouter } from 'react-router-dom';
 
-const { screen, render, fireEvent, getByText } = require('@testing-library/react');
+import App from '../App';
 
+const { screen, render, fireEvent } = require('@testing-library/react');
 
 describe('App.test.js', () => {
   test('Verifica que o topo da app contém um conjunto fixo de links', () => {
     render(
       <BrowserRouter>
         <App />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     const linkHome = screen.getByText('Home');
@@ -27,19 +26,19 @@ describe('App.test.js', () => {
     render(
       <BrowserRouter>
         <App />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     const linkHome = screen.getByText('Home');
-    
+
     fireEvent.click(linkHome);
     expect(screen.getByText('Encountered pokémons')).toBeInTheDocument();
-    
+
     const linkAbout = screen.getByText('About');
 
     fireEvent.click(linkAbout);
     expect(screen.getByText('About Pokédex')).toBeInTheDocument();
-    
+
     const linkFavorite = screen.getByText('Favorite Pokémons');
 
     fireEvent.click(linkFavorite);
