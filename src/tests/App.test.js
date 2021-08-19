@@ -44,3 +44,9 @@ describe('Testa app.js, se há links e se redirecionam para a página correta', 
       expect(pageNotFound).toBeInTheDocument();
     });
 });
+
+/* Referências: Aula ao vivo 15.3 - RTL - Testando React Router
+e Repositório de aulas ao vivo para estudantes da Turma 13 - Tribo A
+Links consultados:
+https://github.com/tryber/sd-13a-live-lectures/commit/b7ce8ffc4feb3cb1cde878ca75d7f0eee13e3d26
+https://reactrouter.com/web/api/Hooks/usehistory */
