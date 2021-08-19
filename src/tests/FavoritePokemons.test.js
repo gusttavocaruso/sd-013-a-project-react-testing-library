@@ -15,6 +15,6 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
       name: /Favorite pokémons/,
       level: 2,
     });
-    expect(favoriteText).toBeInTheDocument('Favorite pokémons');
+    expect(favoriteText).toBeInTheDocument();
   });
 });
