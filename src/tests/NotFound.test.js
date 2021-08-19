@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { NotFound } from '../components';
 
 describe('', () => {
-  it('Checks if theres a particular header', () => {
+  it('Looks for a particular header', () => {
     render(<NotFound />);
     // this h2 should be in the page
     const messageDisplays = /page requested not found/i;
@@ -13,7 +13,7 @@ describe('', () => {
     });
     expect(headingElement).toBeInTheDocument();
   });
-  it('Checks if the Pikachu image is in the page', () => {
+  it('Looks for the Pikachu image is in the page', () => {
     render(<NotFound />);
     // This img should be in the page
     const pikachuImg = screen.getByAltText(/pikachu crying/i);
