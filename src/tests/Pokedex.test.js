@@ -21,10 +21,10 @@ describe('Teste o componente Pokedex.js', () => {
     renderWithRouter(<App />);
 
     userEvent.click(screen.getByRole('button', { name: 'All' }));
-    const nextBtn = screen.getByTestId('next-pokemon');
+    const nextPokemon = screen.getByTestId('next-pokemon');
     const names = Pokemons.map((p) => p.name);
     names.forEach((p, index) => {
-      userEvent.click(nextBtn);
+      userEvent.click(nextPokemon);
       const name = screen.getByTestId(nameId);
       if (index === names.length - 1) {
         expect(name.innerHTML).toBe(names[0]);
