@@ -9,6 +9,7 @@ function itaratePokemons() {
   // Achar o botão Próximo Pokemon
   const nextPokemon = screen.getByTestId('next-pokemon');
   expect(nextPokemon).toBeInTheDocument();
+  expect(nextPokemon).toHaveTextContent('Próximo pokémon');
 
   // Achar o nome do Pokemon rederizado pelo data-testid
   const pokemonName = screen.getByTestId('pokemon-name');
