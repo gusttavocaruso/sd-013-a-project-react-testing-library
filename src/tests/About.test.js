@@ -1,65 +1,43 @@
 import React from 'react';
-
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
-
 import App from '../App';
 
-describe('Test nav-links on the Aplication', () => {
-  it('should home-link works', () => {
-    renderWithRouter(<App />);
-
-    const homeLink = screen.getByRole('link', { name: /home/i });
-    expect(homeLink).toBeInTheDocument();
-    userEvent.click(homeLink);
-
-    const titlePokedex = screen.getByRole('heading', {
-      level: 2,
-      name: /encountered pokémons/i,
-    });
-    expect(titlePokedex).toBeInTheDocument();
-  });
-
-  it('should about-link works', () => {
+describe('Test About-page content', () => {
+  it('should a H2-heading be there', () => {
     renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });
-    expect(aboutLink).toBeInTheDocument();
     userEvent.click(aboutLink);
 
-    const titleAbout = screen.getByRole('heading', {
+    const aboutTitle = screen.getByRole('heading', {
       level: 2,
       name: /about pokédex/i,
     });
-    expect(titleAbout).toBeInTheDocument();
+    expect(aboutTitle).toBeInTheDocument();
+  });
+
+  it('should two pokedex-text-paragraphs be there', () => {
+    renderWithRouter(<App />);
+
+    const aboutLink = screen.getByRole('link', { name: /about/i });
+    userEvent.click(aboutLink);
+
+    const oneP = screen.getByText(/this application simulates a pokédex/i);
+    expect(oneP).toBeInTheDocument();
+
+    const twoP = screen.getByText(/one can filter pokémons by type/i);
+    expect(twoP).toBeInTheDocument();
+  });
+
+  it('should an specific image be there', () => {
+    renderWithRouter(<App />);
+
+    const aboutLink = screen.getByRole('link', { name: /about/i });
+    userEvent.click(aboutLink);
 
     const aboutImg = screen.getByRole('img', { name: /pokédex/i });
     expect(aboutImg.src).toBe('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
-  });
-
-  it('should favorite-pokemons-link works', () => {
-    renderWithRouter(<App />);
-
-    const favoriteLink = screen.getByRole('link', { name: /favorite pokémons/i });
-    expect(favoriteLink).toBeInTheDocument();
-    userEvent.click(favoriteLink);
-
-    const titleFavorite = screen.getByRole('heading', {
-      level: 2,
-      name: /favorite pokémons/i,
-    });
-    expect(titleFavorite).toBeInTheDocument();
-  });
-
-  it('should "not found page" works', () => {
-    const { history } = renderWithRouter(<App />);
-
-    history.push('/xablau');
-    const notFoundTitle = screen.getByRole('heading', {
-      name: /page requested not found/i,
-      level: 2,
-    });
-    expect(notFoundTitle).toBeInTheDocument();
   });
 });
