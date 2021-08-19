@@ -2,21 +2,21 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import App from '../App';
 import { createMemoryHistory } from 'history';
+import App from '../App';
 import NotFound from '../components/NotFound';
 
 function renderWithRouter(component) {
   const historyMock = createMemoryHistory();
 
-  const objectRender = render(
+  const view = render(
     <Router history={ historyMock }>
       {component}
     </Router>,
   );
 
   return {
-    ...objectRender,
+    ...view,
     history: historyMock,
   };
 }
@@ -74,12 +74,12 @@ describe('App.js tests', () => {
     expect(favoriteText).toBeInTheDocument();
   });
   test('Verifica se carrega pagina Not Found', () => {
-    const { history } = renderWithRouter( <NotFound /> );
+    const { history } = renderWithRouter(<NotFound />);
 
     history.push('/rota-teste');
 
     const notFoundText = screen.getByText('Page requested not found');
 
-    expect (notFoundText).toBeInTheDocument();
+    expect(notFoundText).toBeInTheDocument();
   });
 });

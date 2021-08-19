@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
-describe('About.js tests', ()=> {
+describe('About.js tests', () => {
   test('Verifica se página tem um heading h2', () => {
     render(
       <BrowserRouter>
@@ -19,8 +19,6 @@ describe('About.js tests', ()=> {
 
     const titleH2 = screen.getByText('About Pokédex');
     expect(titleH2).toBeInTheDocument();
-
-
   });
   test('Verifica o primeiro paragrafo', () => {
     render(
