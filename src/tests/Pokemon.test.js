@@ -21,6 +21,8 @@ describe('Teste o componente Pokemon.js', () => {
     expect(weight.innerHTML).toBe(`Average weight: ${value} ${measurementUnit}`);
     const img = screen.getByAltText(`${name} sprite`);
     const src = img.src === image;
+
+    expect(src).toBeTruthy();
   });
 
   it('Teste link de navegação para exibir detalhes deste Pokémon', () => {
