@@ -2,7 +2,6 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import renderWithRouter from '../components/renderWithRouter';
 import NotFound from '../components/NotFound';
-// import pokemonsData from '../data';
 
 describe('Teste o componente <NotFound.js />', () => {
   it('Verifica se página tem um h2 com o texto "Page requested not found 😭"', () => {
