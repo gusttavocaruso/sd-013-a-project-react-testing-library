@@ -42,7 +42,7 @@ describe('Tests Pokedex componente', () => {
   });
   it('Checks for every type filter button', () => {
     renderWithRouter(<App />);
-    // Fetches every Pokémon type the same it's done in Pokedex.js
+    // Fetches every Pokémon type the same way it's done in Pokedex.js
     const everyType = [...new Set(pokemons
       .reduce((types, { type }) => [...types, type], []))];
     // Fetches every filter button

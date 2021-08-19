@@ -4,7 +4,7 @@ import { FavoritePokemons } from '../components';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-describe('Test the FavoritePokemons component', () => {
+describe('Tests the FavoritePokemons component', () => {
   it('Checks if theres a display message about having no favorite Pokemon', () => {
     render(<FavoritePokemons />);
     // This p should be in the page
