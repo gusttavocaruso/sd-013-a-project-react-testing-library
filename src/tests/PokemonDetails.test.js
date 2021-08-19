@@ -5,6 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Render pokemon component', () => {
+  const pokemonNameTestid = 'pokemon-name';
   it('Should not have a "more details" link', () => {
     renderWithRouter(<App />);
     const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
@@ -16,7 +17,7 @@ describe('Render pokemon component', () => {
 
   it('Should render pokemon Title', () => {
     renderWithRouter(<App />);
-    const { innerHTML: pokemonTitle } = screen.getByTestId('pokemon-name');
+    const { innerHTML: pokemonTitle } = screen.getByTestId(pokemonNameTestid);
     const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
 
     userEvent.click(moreDetailsLink);
@@ -34,7 +35,7 @@ describe('Render pokemon component', () => {
 
   it('Should render a map section', () => {
     renderWithRouter(<App />);
-    const { innerHTML: pokemonTitle } = screen.getByTestId('pokemon-name');
+    const { innerHTML: pokemonTitle } = screen.getByTestId(pokemonNameTestid);
     const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
     userEvent.click(moreDetailsLink);
 
@@ -60,7 +61,7 @@ describe('Render pokemon component', () => {
 
   it('Should be possible to add favorite pokemons', () => {
     renderWithRouter(<App />);
-    const { innerHTML: pokemonTitle } = screen.getByTestId('pokemon-name');
+    const { innerHTML: pokemonTitle } = screen.getByTestId(pokemonNameTestid);
     const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
     userEvent.click(moreDetailsLink);
 
