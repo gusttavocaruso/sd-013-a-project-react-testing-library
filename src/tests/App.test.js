@@ -1,18 +1,13 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
 describe('teste links e rotas', () => {
   it('teste dos links', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    renderWithRouter(<App />);
 
     const home = screen.getByRole('link', {
       name: /home/i,
@@ -31,11 +26,7 @@ describe('teste links e rotas', () => {
   });
 
   test('teste das rotas', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    renderWithRouter(<App />);
 
     const home = screen.getByRole('link', {
       name: /home/i,
@@ -44,7 +35,6 @@ describe('teste links e rotas', () => {
 
     const titleHome = screen.getByRole('heading', {
       name: /pokédex/i,
-      level: 1,
     });
     expect(titleHome).toBeInTheDocument();
 
@@ -55,7 +45,6 @@ describe('teste links e rotas', () => {
 
     const titleAbout = screen.getByRole('heading', {
       name: /about pokédex/i,
-      level: 2,
     });
     expect(titleAbout).toBeInTheDocument();
 
@@ -66,17 +55,15 @@ describe('teste links e rotas', () => {
 
     const titleFavorites = screen.getByRole('heading', {
       name: /favorite/i,
-      level: 2,
     });
     expect(titleFavorites).toBeInTheDocument();
   });
 
-  test('Teste de página não encontrada', () => {
+  test('testa página não encontrada', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/rota-qualquer');
     const notFoundText = screen.getByRole('heading', {
       name: /page requested not found /i,
-      level: 2,
     });
     expect(notFoundText).toBeInTheDocument();
   });
