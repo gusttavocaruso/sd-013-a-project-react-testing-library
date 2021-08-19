@@ -1,11 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import About from '../components/About';
+
+afterEach(cleanup);
 
 describe('Verifica componente About', () => {
   test('Verifica se a tag <h2> está sendo renderizado', () => {
     render(<About />);
-    const aboutText = screen.getByRole('heading', { name: /About Pokédex/i });
+    const aboutText = screen.getByRole('heading', { name: 'About Pokédex',
+      level: 2 });
     expect(aboutText).toBeInTheDocument();
   });
 
