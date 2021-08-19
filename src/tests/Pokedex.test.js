@@ -24,7 +24,11 @@ describe('Req 5', () => {
     });
     userEvent.click(buttonAll); // resetar a aplicação
 
-    const btnNext = screen.getByTestId('next-pokemon');
+    const btnNext = screen.getByRole('link', {
+      name: 'Próximo pokémon',
+    });
+
+    expect(btnNext).toContain('Próximo pokémon');
 
     const arrayDePokemons = pokemons.map((pokemon) => pokemon.name);// pego a lista de pokemons fazendo um map e selecionando cada pokemons pelo nome
 
