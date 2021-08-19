@@ -39,4 +39,42 @@ describe('Req 5', () => {
       }
     });
   });
+
+  it('Teste se é mostrado apenas um Pokémon por vez.', () => {
+    renderWithRouter(<App />);
+
+    const pokemon = screen.getAllByTestId('pokemon-name');
+
+    expect(pokemon).toHaveLength(1);
+    // https://jestjs.io/pt-BR/docs/expect#tohavelengthnumber
+  });
+
+  it('Deve existir um botão de filtragem para cada tipo de Pokémon', () => {
+    renderWithRouter(<App />);
+    // O Jean Vitor Pacheco me deu uma luz de como fazer a função.
+    const t = [...new Set(pokemons.reduce((types, { type }) => [...types, type], []))]; // Function que retorna Todos os buttons no arquivo pokedex.js.
+
+    const btnAll = screen.getByRole('button', {
+      name: /all/i,
+    });
+
+    expect(btnAll).toBeInTheDocument();
+
+    t.forEach((button) => {
+      const btnType = screen.getByRole('button', {
+        name: button,
+      }); // Faço um ForEach na lista de buttons e verifico se existe no documento
+      expect(btnType).toBeInTheDocument();
+    });
+  });
+
+  it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+
+    const c = [...new Set(pokemons.reduce((types, { type }) => [...types, type], []))];
+    const name = screen.getAllByTestId(/pokemon-type-button/i);
+    expect(name).toHaveLength(c.length);
+
+    // feito com a ajuda do Thiago Carboneri
+  });
 });
