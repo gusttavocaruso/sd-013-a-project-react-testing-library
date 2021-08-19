@@ -13,7 +13,8 @@ describe('Testes do notFound', () => {
   });
   it('testa se tem imagem', () => {
     render(<NotFound />);
-    const image = screen.getByAltText('Pikachu crying because the page requested was not found');
+    const image = screen
+      .getByAltText('Pikachu crying because the page requested was not found');
     expect(image).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
