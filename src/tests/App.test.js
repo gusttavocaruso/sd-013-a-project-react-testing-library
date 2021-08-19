@@ -6,37 +6,28 @@ import App from '../App';
 
 describe('Teste de Links', () => {
   it('teste Home', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const PageLink = screen.getByRole('link', { name: /home/i });
     expect(PageLink).toBeInTheDocument();
     userEvent.click(PageLink);
-    const homePage = screen.getByRole('heading', {
-      name: /Encountered pokémons/i,
-      level: 2,
-    });
-    expect(homePage).toBeInTheDocument();
+    const { location: { pathname } } = history;
+    expect('/').toBe(pathname);
   });
   it('checagem About', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const PageLink = screen.getByRole('link', { name: /about/i });
     expect(PageLink).toBeInTheDocument();
     userEvent.click(PageLink);
-    const aboutPage = screen.getByRole('heading', {
-      name: /About Pokédex/i,
-      level: 2,
-    });
-    expect(aboutPage).toBeInTheDocument();
+    const { location: { pathname } } = history;
+    expect('/about').toBe(pathname);
   });
   it('checagem Pokémons Favoritados', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const PageLink = screen.getByRole('link', { name: /Favorite pokémons/i });
     expect(PageLink).toBeInTheDocument();
     userEvent.click(PageLink);
-    const favoritePage = screen.getByRole('heading', {
-      name: /Favorite pokémons/i,
-      level: 2,
-    });
-    expect(favoritePage).toBeInTheDocument();
+    const { location: { pathname } } = history;
+    expect('/favorites').toBe(pathname);
   });
   it('Página não encontrada', () => {
     const { history } = renderWithRouter(<App />);
