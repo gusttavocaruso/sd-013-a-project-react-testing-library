@@ -18,10 +18,12 @@ describe('Testes para componente App', () => {
     expect(favorite).toBeInTheDocument();
   });
   it('Testa se com a / é redirecionado para Home', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const home = screen.getByRole('link',
       { name: /Home/ });
     userEvent.click(home);
+    const url = history.location.pathname;
+    expect(url).toBe('/home');
     const textPokedex = screen.getByRole('heading', {
       name: /Encountered pokémons/i,
       level: 2,
@@ -29,10 +31,12 @@ describe('Testes para componente App', () => {
     expect(textPokedex).toBeInTheDocument();
   });
   it('Testa se com a /about é redirecionado para About', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const about = screen.getByRole('link',
       { name: /About/ });
     userEvent.click(about);
+    const url = history.location.pathname;
+    expect(url).toBe('/about');
     const textAbout = screen.getByRole('heading', {
       name: /About Pokédex/i,
       level: 2,
@@ -40,10 +44,12 @@ describe('Testes para componente App', () => {
     expect(textAbout).toBeInTheDocument();
   });
   it('Testa se com a /favorites é redirecionado para Favorites Pokémons', () => {
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
     const favorite = screen.getByRole('link',
       { name: /Favorite Pokémons/ });
     userEvent.click(favorite);
+    const url = history.location.pathname;
+    expect(url).toBe('/favorites');
     const textFavorite = screen.getByRole('heading', {
       name: /Favorite pokémons/i,
       level: 2,
