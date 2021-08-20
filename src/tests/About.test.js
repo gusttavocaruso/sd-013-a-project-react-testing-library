@@ -1,5 +1,5 @@
 import React from 'react';
-import { getByText, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import renderWithRouter from '../helper/renderWithRouter';
 import About from '../components/About';
 
