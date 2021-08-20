@@ -51,11 +51,11 @@ export const pokemons = [
         map: 'https://cdn2.bulbagarden.net/upload/e/e4/Hoenn_Faraway_Island_Map.png',
       },
     ],
-    summary: 'Apparently, it appears only to those people who are pure of heart and have a strong desire to see it.',
+    summary: 'rong desire to see it.',
   },
 ];
 
-export const favoritePokemons = { 23: false, 65: true, 151: false };
+export const favoritePokemons = { 23: false, 65: true, 151: true };
 
 export const pokemonsType = [...new Set(pokemons.map(({ type }) => type))];
 // [...new Set(x)] Remove Duplicadas de x, pois um valor no set pode ocorrer apenas uma vez

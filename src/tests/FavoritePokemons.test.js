@@ -1,9 +1,8 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import FavoritePokemons from '../components/FavoritePokemons';
-import pokemons from './mocks/dataFavorite';
+import { pokemons } from './mocks/dataFavorite';
 import renderWithRouter from './util/renderWithRouter';
-
 // console.log(pokemons);
 // let mockPokemons = pokemons.map((pokemon) => (<Pokemon key={ pokemon.id } pokemon={ pokemon } isFavorite />));
 describe('1 - Teste o componente <FavoritePokemons.js />', () => {
@@ -17,10 +16,11 @@ describe('1 - Teste o componente <FavoritePokemons.js />', () => {
   it('1.2 - Teste se é exibido todos os cards de pokémons favoritados.', () => {
     renderWithRouter(<FavoritePokemons pokemons={ pokemons } />);
     const favoritePokemons = screen.queryAllByTestId(/pokemon-name/i);
-    favoritePokemons.forEach((pokemon) => {
+    favoritePokemons.forEach((pokemon, index) => {
       expect(pokemon).toBeInTheDocument();
-      expect(pokemon).toHaveTextContent(/Ekans|Alakazam/i);
+      const { name } = pokemons[index];
+      expect(pokemon).toHaveTextContent(name);
     });
-    expect(favoritePokemons.length).toBe(2);
+    expect(favoritePokemons.length).toEqual(pokemons.length);
   });
 });
