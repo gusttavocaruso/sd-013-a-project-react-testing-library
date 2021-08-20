@@ -1,13 +1,12 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import userEvent from '@testing-library/user-event';
-
 
 describe('Testa se a mensagem "No favorite pokemon found" é exibida', () => {
   test('Testa a mensagem', () => {
-    const { history } = renderWithRouter(<App/>);
+    const { history } = renderWithRouter(<App />);
     const favorites = screen.getByRole('link', { name: /favorite pokémons/i });
     userEvent.click(favorites);
     expect(history.location.pathname).toEqual('/favorites');
