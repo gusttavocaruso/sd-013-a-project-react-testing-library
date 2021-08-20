@@ -5,7 +5,7 @@ import { favoritePokemons, pokemons, pokemonsType } from './mocks/dataFavorite';
 import renderWithRouter from './util/renderWithRouter';
 
 const pokemonName = 'pokemon-name';
-const verifyPokemonList = ( pokeList = pokemons) => {
+const verifyPokemonList = (pokeList = pokemons) => {
   pokeList.forEach(({ name }) => {
     const pokemon = screen.queryByTestId(pokemonName);
     expect(pokemon).toHaveTextContent(name);
