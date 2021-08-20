@@ -1,13 +1,14 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Pokedex from '../components/Pokedex';
+// import Pokedex from '../components/Pokedex';
 import renderWithRouter from './renderWithRouter';
 import pokemons from '../data';
+import App from '../App';
 
 describe('Testa o componente Pokedex', () => {
   test('Testa se Pokedex tem um heading h2 com o texto "Encountered pokémons"', () => {
-    renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
+    renderWithRouter(<App />);
 
     const getHeading = screen.getByRole('heading', {
       name: /Encountered pokémons/i,
@@ -16,62 +17,65 @@ describe('Testa o componente Pokedex', () => {
     expect(getHeading).toBeInTheDocument();
   });
 
-  // Teste feito com a ajuda de Pedro Delicolli e Débora Teodorico
+  // Teste feito com a ajuda de João Lima
   test('Testa se existe um botão Next e se ao clicar mostra o próximo pokemon ', () => {
-    renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
+    renderWithRouter(<App />);
 
     const getButton = screen.getByRole('button', {
       name: /Próximo pokémon/i,
     });
     expect(getButton).toBeInTheDocument();
 
-    pokemons.map((pokemon, index) => {
-      const getPokemon = pokemon;
-      //       ternário -> [condição que pega o último pokemon] ? false : true (next pokemon)
-      // Usando esse ternário pra que não dê erro na troca do último para o primeiro pokemon
-      const nextPokemonIndex = index === (pokemons.length - 1) ? 0 : index + 1;
-      const nextPokemon = pokemons[nextPokemonIndex];
-
-      // Pegando o nome do pokemon
-      const getPokemonName = screen.getByText(getPokemon.name);
-
-      // Verificando se tem um pokemon na página
-      expect(getPokemonName).toBeInTheDocument();
-
-      // Clicando no botão Next
+    pokemons.forEach((pokemon) => {
+      const getPokemonName = screen.getByTestId('pokemon-name');
+      expect(getPokemonName).toHaveTextContent(pokemon.name);
       userEvent.click(getButton);
-
-      // Pegando o nome do próximo pokemon
-      const getNextPokemonName = screen.getByText(nextPokemon.name);
-
-      // Verificando se ao clicar no botão Next aparece realmente o próximo pokemon
-      return expect(getNextPokemonName).toBeInTheDocument();
     });
   });
 
   test('Testa se é mostrado um pokemon por vez', () => {
-    renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
+    renderWithRouter(<App />);
 
     const getPokemonByTestId = screen.getAllByTestId('pokemon-name');
+    // clicar no botão
     expect(getPokemonByTestId.length).toBe(1);
   });
 
   test('Testa se a Pokédex tem os botões de filtro', () => {
     // const pokemonsData = pokemons;
-    renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
+    renderWithRouter(<App />);
 
     const LENGTH_ALL_TYPES = 7;
     // Pegando todos os botões e fazendo um map para ver se cada um deles está na página
     const getButtonType = screen.getAllByTestId('pokemon-type-button');
-    getButtonType.map((item) => expect(item).toBeInTheDocument());
+    getButtonType.forEach((item) => expect(item).toBeInTheDocument());
     expect(getButtonType).toHaveLength(LENGTH_ALL_TYPES);
   });
 
-  test('Testa se a Pokédex tem o botão All', () => {
-    renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
+  test('Testa se clicando no tipo apenas aquele tipo de pokemon aparece', () => {
+    renderWithRouter(<App />);
+    const getButtonFilter = screen.getAllByTestId('pokemon-type-button');
+    const getFireButton = getButtonFilter.find((button) => button.innerHTML === 'Fire');
+    userEvent.click(getFireButton);
+    expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Fire');
+    const getButtonNext = screen.getByTestId('next-pokemon');
+    userEvent.click(getButtonNext);
+    expect(screen.getByTestId('pokemon-type').innerHTML).toBe('Fire');
+  });
 
-    const getButtonAll = screen.getByText('All');
+  test('Testa se a Pokédex tem o botão All', () => {
+    renderWithRouter(<App />);
+
+    const getButtonAll = screen.getByRole('button', { name: 'All' });
     userEvent.click(getButtonAll);
-    expect(getButtonAll).toBeInTheDocument();
+    expect(screen.getByText('Pikachu')).toBeInTheDocument();
+  });
+
+  test('Testa se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+    const getButtonAll = screen.getByRole('button', { name: 'All' });
+    const withNoFilter = screen.getByText('Pikachu');
+    userEvent.click(getButtonAll);
+    expect(withNoFilter).toBeInTheDocument();
   });
 });
