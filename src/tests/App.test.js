@@ -5,7 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('testar o App.js', () => {
-  it('Teste os links de navegação', () => {
+  it('Teste se contém os links de navegação', () => {
     renderWithRouter(<App />);
     const home = screen.getByRole('link', { name: 'Home' });
     expect(home).toBeInTheDocument();
