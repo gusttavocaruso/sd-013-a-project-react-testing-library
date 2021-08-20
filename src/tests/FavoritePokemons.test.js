@@ -30,4 +30,4 @@ describe('Verifica o componente FavoritePokemons', () => {
   });
 });
 
-// Apos finalizar os testes percebi que poderia ter encapsulado tudo dentro do userEvent, porem apos concluir pelo menos os 80%, tentarei refatorar. (Claro se passar no avaliador).
+// Apos finalizar os testes percebi que poderia ter encapsulado tudo dentro do userEvent, porem apos concluir pelo menos os 80%, tentarei refatorar. (Claro se passar no avaliador)
