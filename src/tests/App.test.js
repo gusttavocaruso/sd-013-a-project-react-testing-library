@@ -12,22 +12,24 @@ describe('teste links e rotas', () => {
     const home = screen.getByRole('link', {
       name: /home/i,
     });
-    expect(home).toBeInTheDocument();
 
     const about = screen.getByRole('link', {
       name: /about/i,
     });
-    expect(about).toBeInTheDocument();
 
     const favoritePokemons = screen.getByRole('link', {
       name: /favorite/i,
     });
+
+    expect(home).toBeInTheDocument();
+    expect(about).toBeInTheDocument();
     expect(favoritePokemons).toBeInTheDocument();
   });
 
   test('teste das rotas', () => {
     renderWithRouter(<App />);
 
+    // Rota Home
     const home = screen.getByRole('link', {
       name: /home/i,
     });
@@ -38,6 +40,7 @@ describe('teste links e rotas', () => {
     });
     expect(titleHome).toBeInTheDocument();
 
+    // Rota About
     const about = screen.getByRole('link', {
       name: /about/i,
     });
@@ -48,6 +51,7 @@ describe('teste links e rotas', () => {
     });
     expect(titleAbout).toBeInTheDocument();
 
+    // Rota Favorites
     const favorite = screen.getByRole('link', {
       name: /favorite/i,
     });
