@@ -64,20 +64,44 @@ describe('testa PokemonDetails.js', () => {
 
     // expect(locationName).toHaveAttribute('alt','Pikachu location')
     //     - A imagem da localização deve ter um atributo `src` com a URL da localização;
-    // const locationImage = screen.getByRole('img', {src:'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png'})
+    const locationImage = screen.getAllByRole('img', { src: 'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png' });
     // console.log(locationImage);
     // expect(locationImage).toBeInTheDocument()
-    // expect(locationImage).toHaveAttribute('src','https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png')
+    expect(locationImage[1]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
   });
 
-  test('', () => {});
-  //   - Teste se o usuário pode favoritar um pokémon através da página de detalhes.
+  test('', () => {
+    const { history } = renderWithRouter(<App />);
 
-  //     - A página deve exibir um `checkbox` que permite favoritar o Pokémon;
+    const moreDetails = screen.getByRole('link', { name: /more details/i });
 
-  //     - Cliques alternados no `checkbox` devem adicionar e remover respectivamente o Pokémon da lista de favoritos;
+    userEvent.click(moreDetails);
 
-  //     - O `label` do `checkbox` deve conter o texto `Pokémon favoritado?`;
+    expect(history.location.pathname).toEqual('/pokemons/25');
+    const favoriteDetails = screen.getByRole('checkbox');
+
+    //     - A página deve exibir um `checkbox` que permite favoritar o Pokémon;
+    const beforeClick = favoriteDetails.checked;
+
+    userEvent.click(favoriteDetails);
+
+    const afterClick = favoriteDetails.checked;
+
+    expect(beforeClick).not.toEqual(afterClick);
+    //   - Teste se o usuário pode favoritar um pokémon através da página de detalhes.
+
+    const bookedFavorite = screen.getByAltText(/Pikachu is marked as favorite/i);
+    // console.log(bookedFavorite);
+    expect(bookedFavorite).toBeInTheDocument();
+
+    //     - Cliques alternados no `checkbox` devem adicionar e remover respectivamente o Pokémon da lista de favoritos;
+    userEvent.click(favoriteDetails);
+    expect(bookedFavorite).not.toBeInTheDocument();
+
+    //     - O `label` do `checkbox` deve conter o texto `Pokémon favoritado?`;
+    const labelTest = screen.getByText(/Pokémon favoritado?/);
+    expect(labelTest).toBeInTheDocument();
+  });
 });
 
 // test('', () => {});
