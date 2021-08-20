@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { Router } from 'react-router-dom';
-import About from '../components/About';
+import { About } from '../components';
 
 describe('Teste o componente "<About.js />".', () => {
   it('Teste se a página contém um heading "h2" com o texto "About Pokédex"', () => {

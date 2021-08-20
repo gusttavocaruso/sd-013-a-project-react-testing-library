@@ -7,28 +7,28 @@ import App from '../App';
 
 describe(' Teste o componente "<App.js />"', () => {
   describe('Teste se o topo da aplicação contém um conjunto fixo de links.', () => {
-    const expected = 3;
     const history = createMemoryHistory();
     render(
       <Router history={ history }>
         <App />
       </Router>,
     );
+
     // Pega o tag nav
     const navBarElement = screen.getByRole('navigation');
+    // Retorna uma lista com os nomes que estao na tag nav
     const listTextContent = within(navBarElement).getAllByRole('link')
       .map((link) => link.textContent);
-
-    it('Testa se o navBar tem 3 link', () => {
-      expect(listTextContent.length).toBe(expected);
+    it('Testa se existe uma tag nav', () => {
+      expect(navBarElement).toBeInTheDocument();
     });
     it('O primeiro link deve possuir o texto Home.', () => {
       expect(listTextContent[0]).toBe('Home');
     });
-    it('O primeiro link deve possuir o texto About.', () => {
+    it('O segundo link deve possuir o texto About.', () => {
       expect(listTextContent[1]).toBe('About');
     });
-    it('O primeiro link deve possuir o texto Favorite Pokémons.', () => {
+    it('O terceiro link deve possuir o texto Favorite Pokémons.', () => {
       expect(listTextContent[2]).toBe('Favorite Pokémons');
     });
   });
@@ -92,12 +92,13 @@ describe('Teste os links de navegação.', () => {
 
     it('Ao digita um URL invalida redirecionada para página "Not Found"', () => {
       const history = createMemoryHistory();
-      const expected = '/pagina/que-nao-existe/';
+      const expected = '/pagina-que/nao-existe';
       render(
         <Router history={ history }>
           <App />
         </Router>,
       );
+
       history.push(expected);
       const homeAll = screen.getByRole('heading', { level: 2 });
 
