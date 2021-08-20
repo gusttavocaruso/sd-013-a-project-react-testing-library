@@ -5,15 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import About from '../components/About';
 
 describe('testing about component', () => {
-  test('check if component About renders pokedex information', () => {
-    render(
-      <BrowserRouter>
-        <About />
-      </BrowserRouter>,
-    );
-    const pokeDexInfo = screen.getAllByTestId('paragraph');
-    expect(pokeDexInfo[0]).toBeInTheDocument();
-  });
   test('check if component About has an h2  with text  About Pokédex', () => {
     render(
       <BrowserRouter>
@@ -37,8 +28,6 @@ describe('testing about component', () => {
 
     expect(element1).toBeInTheDocument();
     expect(element2).toBeInTheDocument();
-
-    expect(elements.length).toBe(2);
   });
   test('check if component About has one pokdéx img', () => {
     render(
