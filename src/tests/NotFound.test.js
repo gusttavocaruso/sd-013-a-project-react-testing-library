@@ -9,7 +9,7 @@ describe('Teste o componente <NotFound.js />.', () => {
     expect(h2).toBeInTheDocument();
     expect(h2).toContainHTML('</h2>');
   });
-  it('A página contém a seguinte imagem de uma Pokédex.', () => {
+  it('A página contém a seguinte imagem .../giphy.gif.', () => {
     render(<NotFound />);
     const notFoundImage = screen.queryAllByRole('img');
     expect(notFoundImage[1]).toBeInTheDocument();
