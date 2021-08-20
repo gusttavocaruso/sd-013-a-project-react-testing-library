@@ -6,10 +6,10 @@ import NotFound from '../components/NotFound';
 describe('Testa o component "NotFound"', () => {
   test('Testa se há um heading com o texto "Page requested not found"', () => {
     renderWithRouter(<NotFound />);
-    const readingNotFound = screen.getByRole('heading', {
+    const headingNotFound = screen.getByRole('heading', {
       name: /Page requested not found/i });
 
-    expect(readingNotFound).toBeInTheDocument();
+    expect(headingNotFound).toBeInTheDocument();
   });
 
   test('Testa se a página mostra uma imagem do tipo "gif"', () => {
