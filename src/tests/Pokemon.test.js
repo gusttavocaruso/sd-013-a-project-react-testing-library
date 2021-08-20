@@ -27,7 +27,7 @@ describe('testing pokemon component', () => {
 
     expect(pokemonName).toHaveTextContent(pokemonInfo.name); // testa se o pokemon possui o nome correto
     expect(pokemonType).toHaveTextContent(pokemonInfo.type); // testa se o pokemon possui o tipo correto
-    expect(pokemonWeigth).toHaveTextContent(`${weight} ${unit}`); // testa se o pokemon possui o peso médio correto
+    expect(pokemonWeigth).toHaveTextContent(`Average weight: ${weight} ${unit}`); // testa se o pokemon possui o peso médio correto
     expect(pokemonImg).toHaveAttribute('src', pokemonInfo.img); // testa se o pokemon possui a img  correta
     expect(pokemonImg).toHaveAttribute('alt', `${pokemonInfo.name} sprite`); // testa se o pokemon possui o atributo alt  correto
     expect(pokemonImg).not.toHaveAttribute('src', ''); // testa se o pokemon possui a img  correta
