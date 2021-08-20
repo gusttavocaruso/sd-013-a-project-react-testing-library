@@ -5,7 +5,7 @@ import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
-describe('teste links e rotas', () => {
+describe('testa o componente App', () => {
   it('teste dos links', () => {
     renderWithRouter(<App />);
 
