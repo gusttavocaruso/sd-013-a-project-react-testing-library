@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-describe('Testa app.js, se há links e se redirecionam para a página correta', () => {
+describe('Testa App.js, se há links e se redirecionam para a página correta', () => {
   test('O link deve possuir o texto Home e redirecionar para URL /', () => {
     const { history } = renderWithRouter(<App />);
     const linkHome = screen.getByRole('link', {
