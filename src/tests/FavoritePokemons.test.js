@@ -14,6 +14,14 @@ describe('Testa FavoritePokemons.js.', () => {
 
   test('Deve exibir os cards de pokémons favoritados.', () => {
     renderWithRouter(<App />);
+    const psychicButton = screen.getByRole('button', {
+      name: /Psychic/i,
+    });
+    userEvent.click(psychicButton);
+    const nextButton = screen.getByRole('button', {
+      name: /Próximo pokémon/i,
+    });
+    userEvent.click(nextButton);
     const moreDetails = screen.getByRole('link', { name: /More details/i });
     userEvent.click(moreDetails);
     const checked = screen.getByRole('checkbox', { name: /Pokémon favoritado?/i });
@@ -21,13 +29,13 @@ describe('Testa FavoritePokemons.js.', () => {
     const favorite = screen.getByRole('link', { name: /Favorite Pokémons/i });
     userEvent.click(favorite);
 
-    const favoriteName = screen.getByText('Pikachu');
+    const favoriteName = screen.getByText('Mew');
     expect(favoriteName).toBeDefined();
 
-    const favoriteType = screen.getByText('Electric');
+    const favoriteType = screen.getByText('Psychic');
     expect(favoriteType).toBeDefined();
 
-    const weight = screen.getByText('Average weight: 6.0 kg');
+    const weight = screen.getByText('Average weight: 4.0 kg');
     expect(weight).toBeDefined();
   });
 });
