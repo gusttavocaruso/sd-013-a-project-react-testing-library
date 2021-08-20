@@ -9,7 +9,7 @@ describe('Teste o componente NotFound', () => {
     const msg = screen.getByRole('heading', { name: /Page requested not found/i });
     expect(msg).toBeInTheDocument();
   });
-  
+
   test('Verifica se há um gif na página', () => {
     renderWithRouter(<NotFound />);
     const msg = 'Pikachu crying because the page requested was not found';
