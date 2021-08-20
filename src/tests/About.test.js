@@ -23,7 +23,7 @@ describe(' Teste o componente About', () => {
   it('Teste se a página contém uma imagem da Pokédex', () => {
     render(<About />);
     const img = screen.getByRole('img');
-    const src = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
-    expect(img.src).toBe(src);
+    const url = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
+    expect(img.src).toBe(url);
   });
 });
