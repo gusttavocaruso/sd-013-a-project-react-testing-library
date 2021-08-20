@@ -6,8 +6,8 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 
-describe('Teste de do component App.js', () => {
-  test('Teste do conjunto fixo de links de navegação.', () => {
+describe('<App /> Tests Section', () => {
+  it('should have nav links.', () => {
     render(
       <BrowserRouter>
         <App />
@@ -32,7 +32,7 @@ describe('Teste de do component App.js', () => {
     expect(favoritePokemons).toBeInTheDocument();
   });
 
-  test('Teste de redirecionamentos', () => {
+  it('should redirect correctly', () => {
     render(
       <BrowserRouter>
         <App />
@@ -74,7 +74,7 @@ describe('Teste de do component App.js', () => {
     expect(titleFavorites).toBeInTheDocument();
   });
 
-  test('Teste de página não encontrada', () => {
+  it('should return not found', () => {
     //   - Teste se a aplicação é redirecionada para a página `Not Found` ao entrar em uma URL desconhecida.
     const { history } = renderWithRouter(<App />);
     history.push('/rota-inexistente');
