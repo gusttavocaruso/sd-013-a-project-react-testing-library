@@ -33,5 +33,5 @@ describe('Testa FavoritePokemons.js.', () => {
 });
 
 /* Referências: A ideia de renderizar o App e ir navegando até a tela dos favoritos
-foi fundamental para resolver a segunda parte do requisito e foi dica do Summer de 
+foi fundamental para resolver a segunda parte do requisito e foi dica do Summer de
 instrução João Lima Turma 11. */
