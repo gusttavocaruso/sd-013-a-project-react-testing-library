@@ -1,7 +1,23 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { BrowserRouter, Router } from 'react-router-dom';
 import React from 'react';
 import App from '../App';
+
+function renderWithRouter(component) {
+  const historyMock = createMemoryHistory();
+
+  const view = render(
+    <Router history={ historyMock }>
+      {component}
+    </Router>,
+  );
+
+  return {
+    ...view,
+    history: historyMock,
+  };
+}
 
 render(
   <BrowserRouter>
@@ -36,5 +52,17 @@ describe('Testa o link Favorite Pokémons', () => {
   });
   it('Testa se o link "favorites" direciona para "/favorites"', () => {
     expect(favorite.getAttribute('href')).toBe('/favorites');
+  });
+});
+
+describe('Teste se URL desconhecida envia para NotFound', () => {
+  it('>', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/anything');
+    expect(history.location.pathname).toBe('/anything');
+    const texto = screen.getByRole('heading', {
+      level: 2,
+    });
+    expect(texto.textContent).toBe('Page requested not found 😭');
   });
 });
