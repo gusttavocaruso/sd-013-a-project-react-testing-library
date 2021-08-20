@@ -142,6 +142,10 @@ test('Ao carregar a página, o filtro selecionado deverá ser All', () => {
       {/* <Pokedex /> */}
     </BrowserRouter>,
   );
+
+  const encounteredPokemons = screen.getByText(/Encountered pokémons/);
+  expect(encounteredPokemons).toBeInTheDocument();
+
   const nameFromTestId = screen.getByTestId(TEST_ID);
 
   const nextPokemon = screen.getByRole('button', { name: /próximo pokémon/i });

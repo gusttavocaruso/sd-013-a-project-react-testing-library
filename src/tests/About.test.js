@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 // import userEvent from '@testing-library/user-event';
 // import { from } from 'array-flatten';
 import React from 'react';
@@ -43,11 +44,22 @@ test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', 
     </BrowserRouter>,
   );
 
-  const paragraphPokemon = screen.getByRole('heading', {
-    name: / /i,
-  });
+  const aboutPokemons = screen.getByText(/About/i);
+  userEvent.click(aboutPokemons);
 
-  expect(paragraphPokemon).toBeInTheDocument();
+  const p1 = screen.getByText(/This application simulates/i);
+  const p2 = screen.getByText(/One can filter/i);
+
+  expect(p1).toBeInTheDocument();
+  expect(p2).toBeInTheDocument();
+
+  // const paragraphPokemon = screen.getByRole('heading', {
+  //   name: / /i,
+  // });
+
+  // expect(paragraphPokemon).toBeInTheDocument();
+  // expect(paragraphPokemon).toHaveTextContent(/Pikachu/)
+  // expect(paragraphPokemon).toHaveTextContent(/Electric/)
 });
 
 test('Teste se a página contém a seguinte imagem de uma Pokédex: https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png.', () => {
