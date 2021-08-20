@@ -28,4 +28,4 @@ describe('Testando o componente about ', () => {
   });
 });
 
-// Fonte: https://dev.to/raphaelchaula/a-simple-image-test-in-react-3p6f
+// toHaveAtributte => Fonte: https://dev.to/raphaelchaula/a-simple-image-test-in-react-3p6f
