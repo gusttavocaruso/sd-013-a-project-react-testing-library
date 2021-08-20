@@ -23,7 +23,7 @@ describe('Testes para componente App', () => {
       { name: /Home/ });
     userEvent.click(home);
     const url = history.location.pathname;
-    expect(url).toBe('/home');
+    expect(url).toBe('/');
     const textPokedex = screen.getByRole('heading', {
       name: /Encountered pokémons/i,
       level: 2,
