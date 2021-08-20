@@ -21,16 +21,17 @@ describe('Testa FavoritePokemons.js.', () => {
     const favorite = screen.getByRole('link', { name: /Favorite Pokémons/i });
     userEvent.click(favorite);
 
-    const favoriteName = screen.getAllByText('Pikachu');
+    const favoriteName = screen.getByText('Pikachu');
     expect(favoriteName).toBeDefined();
 
-    const favoriteType = screen.getAllByText('Electric');
+    const favoriteType = screen.getByText('Electric');
     expect(favoriteType).toBeDefined();
 
-    const weight = screen.getAllByText('Average weight: 6.0 kg');
+    const weight = screen.getByText('Average weight: 6.0 kg');
     expect(weight).toBeDefined();
   });
 });
 
-/* Referências: A ideia obtida para testar os cards de Pokémons favoritados foi elaborada com
-a dica do Summer de instrução João Lima Turma 11. */
+/* Referências: A ideia de renderizar o App e ir navegando até a tela dos favoritos
+foi fundamental para resolver a segunda parte do requisito e foi dica do Summer de 
+instrução João Lima Turma 11. */
