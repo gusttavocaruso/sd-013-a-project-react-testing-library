@@ -25,7 +25,6 @@ describe('Teste da aplicação de links', () => {
   test(`apos clicar no favoritar pokemon do pikachu ele vai para
   aba de favoritos`, () => {
     renderWithRouter(<App />);
-
     const moreDetails = screen.getByRole('link', { name: /More details/i });
     userEvent.click(moreDetails);
     const favoritePokemon = screen.getByLabelText('Pokémon favoritado?');
