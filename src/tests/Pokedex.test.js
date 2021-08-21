@@ -111,8 +111,8 @@ describe('Testing Component Pokedex:', () => {
     });
     pokemons.forEach((pokemon, index) => {
       expect(theNextPoke).toHaveTextContent(pokemons[index].name);
+      userEvent.click(pokeButtonNext);
+      expect(pokeButtonAll).toBeInTheDocument();
     });
-    userEvent.click(pokeButtonNext);
-    expect(pokeButtonAll).toBeInTheDocument();
   });
 });
