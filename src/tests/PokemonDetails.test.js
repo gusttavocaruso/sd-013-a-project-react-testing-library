@@ -29,7 +29,7 @@ describe('1 - Teste se as informações detalhadas do Pokémon selecionado'
     fireEvent.click(screen.getByText(/More Details/i));
     const pokemonSummary = screen.getByText(/Summary/i);
     expect(pokemonSummary).toBeInTheDocument();
-    expect(pokemonSummary).toContainHTML('<h2>');
+    expect(pokemonSummary).toContainHTML('</h2>');
   });
   it('1.4 - A seção de detalhes deve conter um parágrafo com o resumo'
   + 'do Pokémon específico sendo visualizado.', () => {
@@ -52,7 +52,7 @@ describe('2 - Teste se existe na página uma seção com os'
     const { name } = pokemon;
     const pokemonLocation = screen.getByText(`Game Locations of ${name}`);
     expect(pokemonLocation).toBeInTheDocument();
-    expect(pokemonLocation).toContainHTML('<h2>');
+    expect(pokemonLocation).toContainHTML('</h2>');
   });
 
   it('2.2 - Todas as localizações do Pokémon devem ser mostradas na seção de detalhes',
