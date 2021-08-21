@@ -57,7 +57,16 @@ describe('2 - Teste se existe na página uma seção com os'
 
   it('2.2 - Todas as localizações do Pokémon devem ser mostradas na seção de detalhes',
     () => {
-
+      renderWithRouter(<App />);
+      fireEvent.click(screen.getByText(/More Details/i));
+      const pokemon = dataPokemons[0];
+      const { name, foundAt } = pokemon;
+      const mapLocations = screen.getAllByAltText(`${name} location`);
+      foundAt.forEach(({ map, location }, index) => {
+        expect(mapLocations[index]).toHaveAttribute('src', map);
+        const locationTitle = screen.getByText(location);
+        expect(locationTitle).toBeInTheDocument();
+      });
     });
 
   it('2.3 - Devem ser exibidos, o nome da localização e uma imagem do mapa'
