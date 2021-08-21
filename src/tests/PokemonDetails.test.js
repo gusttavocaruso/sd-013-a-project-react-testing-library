@@ -93,7 +93,15 @@ describe('2 - Teste se existe na página uma seção com os'
   });
   it('2.5 - A imagem da localização deve ter um atributo alt com o texto,'
   + ' <name> location, onde <name> é o nome do Pokémon', () => {
-
+    renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/More Details/i));
+    const pokemon = dataPokemons[0];
+    const { name } = pokemon;
+    const mapLocations = screen.getAllByAltText(`${name} location`);
+    mapLocations.forEach((location) => {
+      expect(location).toHaveAttribute('alt', `${name} location`);
+      expect(location).toBeInTheDocument();
+    });
   });
 });
 
