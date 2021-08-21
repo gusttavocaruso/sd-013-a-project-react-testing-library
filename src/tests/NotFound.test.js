@@ -17,6 +17,7 @@ describe('NotFound.js tests', () => {
       .getByAltText(/Pikachu crying because/i);
 
     expect(image2).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+    // confere se dentro da const image2 existe o atributo src, com o link descrito.
     expect(image2).toBeInTheDocument();
   });
 });
