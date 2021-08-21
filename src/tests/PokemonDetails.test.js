@@ -4,9 +4,9 @@ import App from '../App';
 import renderWithRouter from './util/renderWithRouter';
 import dataPokemons from '../data';
 
-describe('Teste se as informações detalhadas do Pokémon selecionado'
+describe('1 - Teste se as informações detalhadas do Pokémon selecionado'
 + 'são mostradas na tela.', () => {
-  it('A página deve conter um texto <name> Details, onde <name> é o nome do Pokémon',
+  it('1.1 - A página deve conter um texto <name> Details, onde <name> é o nome do Pokémon',
     () => {
       renderWithRouter(<App />);
       fireEvent.click(screen.getByText(/More Details/i));
@@ -15,7 +15,7 @@ describe('Teste se as informações detalhadas do Pokémon selecionado'
       const detailsTXT = screen.getByText(`${name} Details`);
       expect(detailsTXT).toHaveTextContent(`${name} Details`);
     });
-  it('Não deve existir o link de navegação para os detalhes do Pokémon selecionado.',
+  it('1.2 - Não deve existir o link de navegação para os detalhes do Pokémon selecionado.',
     () => {
       renderWithRouter(<App />);
       let detailsLink = screen.getByText(/More Details/i);
@@ -24,14 +24,14 @@ describe('Teste se as informações detalhadas do Pokémon selecionado'
       detailsLink = screen.queryByText(/More Details/i);
       expect(detailsLink).toBeNull();
     });
-  it('A seção de detalhes deve conter um heading h2 com o texto Summary', () => {
+  it('1.3 - A seção de detalhes deve conter um heading h2 com o texto Summary', () => {
     renderWithRouter(<App />);
     fireEvent.click(screen.getByText(/More Details/i));
     const pokemonSummary = screen.getByText(/Summary/i);
     expect(pokemonSummary).toBeInTheDocument();
     expect(pokemonSummary).toContainHTML('<h2>');
   });
-  it('A seção de detalhes deve conter um parágrafo com o resumo'
+  it('1.4 - A seção de detalhes deve conter um parágrafo com o resumo'
   + 'do Pokémon específico sendo visualizado.', () => {
     renderWithRouter(<App />);
     fireEvent.click(screen.getByText(/More Details/i));
@@ -42,3 +42,41 @@ describe('Teste se as informações detalhadas do Pokémon selecionado'
   });
 });
 
+describe('2 - Teste se existe na página uma seção com os'
++ 'mapas contendo as localizações do pokémon', () => {
+  it('2.1 - Deverá existir um heading h2 com o texto Game Locations'
+  + 'of <name>; onde <name> é o nome do Pokémon exibido.', () => {
+
+  });
+
+  it('2.2 - Todas as localizações do Pokémon devem ser mostradas na seção de detalhes',
+    () => {
+
+    });
+
+  it('2.3 - Devem ser exibidos, o nome da localização e uma imagem do mapa'
+  + 'em cada localização', () => {
+
+  });
+  it('2.4 - A imagem da localização deve ter um atributo src com a URL da localização', () => {
+
+  });
+  it('2.5 - A imagem da localização deve ter um atributo alt com o texto,'
+  + ' <name> location, onde <name> é o nome do Pokémon', () => {
+
+  });
+});
+
+describe('Teste se o usuário pode favoritar um pokémon através da página de detalhes.',
+  () => {
+    it('A página deve exibir um checkbox que permite favoritar o Pokémon', () => {
+
+    });
+    it('Cliques alternados no checkbox devem adicionar e remover'
+    + 'respectivamente o Pokémon da lista de favoritos', () => {
+
+    });
+    it('O label do checkbox deve conter o texto Pokémon favoritado?', () => {
+
+    });
+  });
