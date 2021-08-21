@@ -13,7 +13,6 @@ describe('Teste se NotFound renderiza h2 com texto', () => {
   it('Testa se a página contém uma imagem específica', () => {
     render(<NotFound />);
     const elementosImg = screen.getAllByRole('img');
-    console.log(elementosImg);
     expect(elementosImg[1]).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
