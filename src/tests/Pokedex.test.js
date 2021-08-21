@@ -1,9 +1,8 @@
 import React from 'react';
-import { screen, cleanup, fireEvent, getByTestId, getAllByTestId } from '@testing-library/react';
+import { screen, cleanup, fireEvent } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
-import { render } from 'react-dom';
 
 afterEach(cleanup);
 
