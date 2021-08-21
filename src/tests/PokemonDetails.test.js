@@ -78,7 +78,12 @@ describe('3 - Teste se o usuário pode favoritar um pokémon através da página
     });
     it('3.2 - Cliques alternados no checkbox devem adicionar e remover'
     + 'respectivamente o Pokémon da lista de favoritos', () => {
-
+      renderWithRouter(<App />);
+      fireEvent.click(screen.getByText(/More Details/i));
+      const checkbox = screen.getByRole('checkbox');
+      expect(checkbox).not.toBeChecked();
+      fireEvent.click(screen.getByRole('checkbox'));
+      expect(checkbox).toBeChecked();
     });
     it('3.3 - O label do checkbox deve conter o texto Pokémon favoritado?', () => {
       renderWithRouter(<App />);
