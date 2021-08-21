@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import About from '../components/About';
 
-describe('Testa About.js.', () => {
+describe('Testa componente About.js.', () => {
   test('A página deve conter um heading h2 com o texto About Pokédex.', () => {
     render(<About />);
     const aboutPokedex = screen.getByRole('heading', {
