@@ -62,16 +62,23 @@ describe('2 - Teste se existe na página uma seção com os'
       const pokemon = dataPokemons[0];
       const { name, foundAt } = pokemon;
       const mapLocations = screen.getAllByAltText(`${name} location`);
-      foundAt.forEach(({ map, location }, index) => {
-        expect(mapLocations[index]).toHaveAttribute('src', map);
-        const locationTitle = screen.getByText(location);
-        expect(locationTitle).toBeInTheDocument();
-      });
+      mapLocations.forEach((location) => expect(location).toBeInTheDocument());
+      expect(mapLocations.length).toEqual(foundAt.length);
     });
 
   it('2.3 - Devem ser exibidos, o nome da localização e uma imagem do mapa'
   + 'em cada localização', () => {
-
+    renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/More Details/i));
+    const pokemon = dataPokemons[0];
+    const { name, foundAt } = pokemon;
+    const mapLocations = screen.getAllByAltText(`${name} location`);
+    foundAt.forEach(({ map, location }, index) => {
+      expect(mapLocations[index]).toHaveAttribute('src', map);
+      expect(mapLocations[index]).toBeInTheDocument();
+      const locationTitle = screen.getByText(location);
+      expect(locationTitle).toBeInTheDocument();
+    });
   });
   it('2.4 - A imagem da localização deve ter um atributo src com a URL da localização', () => {
 
