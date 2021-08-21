@@ -68,3 +68,5 @@ describe('Testa o elemento Pokedex e suas funcionalidades', () => {
     expect(nameOneType).toBe('Electric');
   });
 });
+
+// Exercicio feito com ajuda de Lanai Conceição
