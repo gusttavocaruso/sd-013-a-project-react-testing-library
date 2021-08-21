@@ -46,7 +46,13 @@ describe('2 - Teste se existe na página uma seção com os'
 + 'mapas contendo as localizações do pokémon', () => {
   it('2.1 - Deverá existir um heading h2 com o texto Game Locations'
   + 'of <name>; onde <name> é o nome do Pokémon exibido.', () => {
-
+    renderWithRouter(<App />);
+    fireEvent.click(screen.getByText(/More Details/i));
+    const pokemon = dataPokemons[0];
+    const { name } = pokemon;
+    const pokemonLocation = screen.getByText(`Game Locations of ${name}`);
+    expect(pokemonLocation).toBeInTheDocument();
+    expect(pokemonLocation).toContainHTML('<h2>');
   });
 
   it('2.2 - Todas as localizações do Pokémon devem ser mostradas na seção de detalhes',
