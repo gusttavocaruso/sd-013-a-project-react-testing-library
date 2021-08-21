@@ -1,12 +1,10 @@
 import React from 'react';
-import { screen, fireEvent, cleanup } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import App from '../App';
-// import { favoritePokemons, pokemons, pokemonsType } from './mocks/dataFavorite';
 import renderWithRouter from './util/renderWithRouter';
 import dataPokemons from '../data';
 
 const iconSVG = '/star-icon.svg';
-afterEach(cleanup);
 
 describe('1-Teste se é renderizado um card com as informações de determinado pokémon',
   () => {
