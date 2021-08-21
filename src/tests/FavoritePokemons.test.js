@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from '../helper/RenderWithRouter';
-import { FavoritePokemons } from '../components';
 import App from '../App';
+import FavoritePokemons from '../components/FavoritePokemons';
 
 describe('Testando o componente FavoritePokemons.js', () => {
   test('se é exibido "No favorite pokemon found", se não houver favoritos', () => {
