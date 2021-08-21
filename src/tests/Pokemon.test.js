@@ -48,7 +48,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     const checkBoxFavorite = screen.getByRole('checkbox');
     userEvent.click(checkBoxFavorite);
 
-    const correctImgFavoritePokemon = screen.getByAltText('Pikachu is marked as favorite');
-    expect(correctImgFavoritePokemon.src).toContain('/star-icon.svg');
+    const imgFavoritePokemon = screen.getByAltText('Pikachu is marked as favorite');
+    expect(imgFavoritePokemon.src).toContain('/star-icon.svg');
   });
 });
