@@ -6,7 +6,7 @@ import dataPokemons from '../data';
 
 describe('1 - Teste se as informações detalhadas do Pokémon selecionado'
 + 'são mostradas na tela.', () => {
-  it('1.1 - A página deve conter um texto <name> Details, onde <name> é o nome do Pokémon',
+  it('1.1 - A página deve ter um texto <name> Details, onde <name> é o nome do Pokémon',
     () => {
       renderWithRouter(<App />);
       fireEvent.click(screen.getByText(/More Details/i));
@@ -15,7 +15,7 @@ describe('1 - Teste se as informações detalhadas do Pokémon selecionado'
       const detailsTXT = screen.getByText(`${name} Details`);
       expect(detailsTXT).toHaveTextContent(`${name} Details`);
     });
-  it('1.2 - Não deve existir o link de navegação para os detalhes do Pokémon selecionado.',
+  it('1.2 - Não deve existir o link de navegação para os detalhes do Pokémon selecionado',
     () => {
       renderWithRouter(<App />);
       let detailsLink = screen.getByText(/More Details/i);
@@ -80,17 +80,18 @@ describe('2 - Teste se existe na página uma seção com os'
       expect(locationTitle).toBeInTheDocument();
     });
   });
-  it('2.4 - A imagem da localização deve ter um atributo src com a URL da localização', () => {
-    renderWithRouter(<App />);
-    fireEvent.click(screen.getByText(/More Details/i));
-    const pokemon = dataPokemons[0];
-    const { name, foundAt } = pokemon;
-    const mapLocations = screen.getAllByAltText(`${name} location`);
-    foundAt.forEach(({ map }, index) => {
-      expect(mapLocations[index]).toHaveAttribute('src', map);
-      expect(mapLocations[index]).toBeInTheDocument();
+  it('2.4 - A imagem da localização deve ter um atributo src com a URL da localização',
+    () => {
+      renderWithRouter(<App />);
+      fireEvent.click(screen.getByText(/More Details/i));
+      const pokemon = dataPokemons[0];
+      const { name, foundAt } = pokemon;
+      const mapLocations = screen.getAllByAltText(`${name} location`);
+      foundAt.forEach(({ map }, index) => {
+        expect(mapLocations[index]).toHaveAttribute('src', map);
+        expect(mapLocations[index]).toBeInTheDocument();
+      });
     });
-  });
   it('2.5 - A imagem da localização deve ter um atributo alt com o texto,'
   + ' <name> location, onde <name> é o nome do Pokémon', () => {
     renderWithRouter(<App />);
@@ -105,7 +106,7 @@ describe('2 - Teste se existe na página uma seção com os'
   });
 });
 
-describe('3 - Teste se o usuário pode favoritar um pokémon através da página de detalhes.',
+describe('3 - Teste se o usuário pode favoritar um pokémon através da página de detalhes',
   () => {
     it('3.1 - A página deve exibir um checkbox que permite favoritar o Pokémon', () => {
       renderWithRouter(<App />);
