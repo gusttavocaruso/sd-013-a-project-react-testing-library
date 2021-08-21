@@ -67,16 +67,25 @@ describe('2 - Teste se existe na página uma seção com os'
   });
 });
 
-describe('Teste se o usuário pode favoritar um pokémon através da página de detalhes.',
+describe('3 - Teste se o usuário pode favoritar um pokémon através da página de detalhes.',
   () => {
-    it('A página deve exibir um checkbox que permite favoritar o Pokémon', () => {
-
+    it('3.1 - A página deve exibir um checkbox que permite favoritar o Pokémon', () => {
+      renderWithRouter(<App />);
+      fireEvent.click(screen.getByText(/More Details/i));
+      const checkbox = screen.getByRole('checkbox');
+      expect(checkbox).toBeInTheDocument();
+      expect(checkbox).toHaveAttribute('id', 'favorite');
     });
-    it('Cliques alternados no checkbox devem adicionar e remover'
+    it('3.2 - Cliques alternados no checkbox devem adicionar e remover'
     + 'respectivamente o Pokémon da lista de favoritos', () => {
 
     });
-    it('O label do checkbox deve conter o texto Pokémon favoritado?', () => {
-
+    it('3.3 - O label do checkbox deve conter o texto Pokémon favoritado?', () => {
+      renderWithRouter(<App />);
+      fireEvent.click(screen.getByText(/More Details/i));
+      const checkboxLabel = screen.getByText(/Pokémon favoritado?/i);
+      expect(checkboxLabel).toBeInTheDocument();
+      expect(checkboxLabel).toHaveTextContent('Pokémon favoritado?');
+      expect(checkboxLabel).toContainElement(screen.getByRole('checkbox'));
     });
   });
