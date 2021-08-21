@@ -108,6 +108,6 @@ describe('Teste o componente Pokemon', () => {
     const estrela = screen.getByRole('img', { name: /caterpie is marked as favorite/i });
     expect(estrela).toBeInTheDocument();
     expect(estrela.getAttribute('src')).toBe('/star-icon.svg');
-    expect(estrela.getAttribute('alt')).toBe(`${pokemonMock.name} is marked as favorite`)
+    expect(estrela.getAttribute('alt')).toBe(`${pokemonMock.name} is marked as favorite`);
   });
 });
