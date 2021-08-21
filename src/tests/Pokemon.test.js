@@ -71,8 +71,7 @@ describe('Teste o componente Pokemon', () => {
     const type = screen.queryByText(/Bug/i);
     expect(type.textContent).toBe(pokemonMock.type);
     const value = screen.queryByText(/2.9/i);
-    console.log(value.textContent)
-    const teste = 'Average weight: 2.9 kg'
+    const teste = 'Average weight: 2.9 kg';
     expect(value.textContent).toBe(teste);
     const image = screen.getByRole('img', { name: /caterpie sprite/i });
     expect(image.getAttribute('src')).toBe(pokemonMock.image);
