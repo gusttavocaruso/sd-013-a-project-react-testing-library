@@ -1,16 +1,12 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
 describe('Teste o componente <App.js />', () => {
   test('Teste se o topo contém um conjunto fixo de links de navegação.', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    renderWithRouter(<App />);
 
     const linkHome = screen.getByRole('link', {
       name: /home/i,
@@ -28,11 +24,7 @@ describe('Teste o componente <App.js />', () => {
   });
 
   test('Teste ao clicar, redireciona para página inicial ao clicar no link Home', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    const { history } = renderWithRouter(<App />);
 
     const linkHome = screen.getByRole('link', {
       name: /home/i,
@@ -46,15 +38,13 @@ describe('Teste o componente <App.js />', () => {
       level: 2,
     });
 
+    const { pathname } = history.location;
+    expect(pathname).toBe('/');
     expect(homeHeading).toBeInTheDocument();
   });
 
   test('Test se redirecionada para page About, clicando no link About', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    const { history } = renderWithRouter(<App />);
 
     const linkAbout = screen.getByRole('link', {
       name: /about/i,
@@ -63,20 +53,18 @@ describe('Teste o componente <App.js />', () => {
 
     userEvent.click(linkAbout);
 
+    const { pathname } = history.location;
     const aboutHeading = screen.getByRole('heading', {
       name: /about pokédex/i,
       level: 2,
     });
 
+    expect(pathname).toBe('/about');
     expect(aboutHeading).toBeInTheDocument();
   });
 
   test('Test se redirecionada para page Favoritados, clicando no link favorites', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
+    const { history } = renderWithRouter(<App />);
 
     const linkFav = screen.getByRole('link', {
       name: /favorite pokémons/i,
@@ -85,11 +73,28 @@ describe('Teste o componente <App.js />', () => {
 
     userEvent.click(linkFav);
 
+    const { pathname } = history.location;
     const favHeading = screen.getByRole('heading', {
       name: /favorite pokémons/i,
       level: 2,
     });
 
+    expect(pathname).toBe('/favorites');
     expect(favHeading).toBeInTheDocument();
+  });
+
+  test('Teste se é redirecionada para a page Not Found.', () => {
+    const { history } = renderWithRouter(<App />);
+
+    history.push('/digimon');
+
+    const { pathname } = history.location;
+    const notFound = screen.getByRole('heading', {
+      name: /page requested not found/i,
+      level: 2,
+    });
+
+    expect(pathname).toBe('/digimon');
+    expect(notFound).toBeInTheDocument();
   });
 });
