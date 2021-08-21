@@ -47,7 +47,7 @@ describe('1-Teste se é renderizado um card com as informações de determinado 
     });
   });
 describe('2 - Teste se possui um link para página de detalhes', () => {
-  it('2.1 - O link deve possuir a URL /pokemons/<id>, onde <id> é o id do Pokémon exibido', () => {
+  it('2.1 - O link tem a URL /pokemons/<id>, onde <id> é o id do Pokémon exibido', () => {
     renderWithRouter(<App />);
     const moreDetailsLink = screen.getByRole('link', { name: 'More details' });
     const pokemon = dataPokemons[0];
@@ -57,12 +57,16 @@ describe('2 - Teste se possui um link para página de detalhes', () => {
     expect(moreDetailsLink).toHaveAttribute('href', `/pokemons/${id}`);
   });
 
-  it('2.2 - Teste se ao clicar no link de navegação do Pokémon, é feito o redirecionamento'
+  it('2.2 - Ao clicar no link de navegação do Pokémon, é feito o redirecionamento'
   + 'da aplicação para a página de detalhes de Pokémon.', () => {
     renderWithRouter(<App />);
     fireEvent.click(screen.getByText(/More Details/i));
     const pokemon = dataPokemons[0];
-    const { name, type, averageWeight: { value, measurementUnit }, summary, foundAt } = pokemon;
+    const { name,
+      type,
+      averageWeight: { value, measurementUnit },
+      summary,
+      foundAt } = pokemon;
     const pokemonTitle = screen.getByText(/Details/i);
     expect(pokemonTitle).toHaveTextContent(`${name} Details`);
     const pokemonName = screen.getByTestId('pokemon-name');
@@ -95,7 +99,7 @@ describe('2 - Teste se possui um link para página de detalhes', () => {
 });
 
 describe('3 - Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
-  it('3.1 - O ícone deve ser uma imagem com o atributo src contendo o caminho /star-icon.svg', () => {
+  it('3.1 - O ícone tem img com o atributo src contendo o caminho /star-icon.svg', () => {
     renderWithRouter(<App />);
     fireEvent.click(screen.getByText(/More Details/i));
     fireEvent.click(screen.getByRole('checkbox'));
