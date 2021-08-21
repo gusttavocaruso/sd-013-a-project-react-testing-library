@@ -6,6 +6,8 @@ import App from '../App';
 import pokemons from '../data';
 
 describe('Testing Component Pokedex:', () => {
+  const pokename = 'pokemon-name';
+
   test('Teste se página contém um heading h2 com o texto Encountered pokémons', () => {
     renderWithRouter(<App />);
 
@@ -25,7 +27,7 @@ describe('Testing Component Pokedex:', () => {
 
     expect(pokeButtonNext).toBeInTheDocument();
 
-    const pokeId = screen.getByTestId('pokemon-name');
+    const pokeId = screen.getByTestId(pokename);
 
     expect(pokeId).toBeInTheDocument();
 
@@ -52,7 +54,7 @@ describe('Testing Component Pokedex:', () => {
   test('Teste se é mostrado apenas um Pokémon por vez.', () => {
     renderWithRouter(<App />);
 
-    const pokeNext = screen.getAllByTestId('pokemon-name');
+    const pokeNext = screen.getAllByTestId(pokename);
 
     expect(pokeNext.length).toBe(1);
   });
@@ -94,7 +96,7 @@ describe('Testing Component Pokedex:', () => {
 
   test('Teste se a Pokédex contém um botão para resetar o filtro.', () => {
     renderWithRouter(<App />);
-    const theNextPoke = screen.getByTestId('pokemon-name');
+    const theNextPoke = screen.getByTestId(pokename);
 
     // O texto do botão deve ser All;
 
