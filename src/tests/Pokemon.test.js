@@ -60,9 +60,8 @@ describe('Teste a rota do MoreDetails', () => {
     userEvent.click(link);
     const checkbox = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     userEvent.click(checkbox);
-    const url = 'http://localhost/star-icon.svg';
     const imgFavorite = screen.getByRole('img', {
       name: `${name} is marked as favorite` });
-    expect(imgFavorite.src).toBe(url);
+    expect(imgFavorite).toHaveAttribute('src', '/star-icon.svg');
   });
 });
