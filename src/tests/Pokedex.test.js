@@ -15,7 +15,7 @@ describe('Testa componente Pokedex.js.', () => {
     expect(textPokedex).toBeInTheDocument();
   });
 
-  /* test('Deve exibir o próximo Pokémon quando o botão Próximo pokémon é clicado.', () => {
+  test('Deve exibir o próximo Pokémon quando o botão Próximo pokémon é clicado.', () => {
     renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
     const button = screen.getByRole('button', {
       name: /Próximo pokémon/i,
@@ -29,7 +29,7 @@ describe('Testa componente Pokedex.js.', () => {
 
     const averageWeight = screen.getByText('Average weight: 8.5 kg');
     expect(averageWeight).toBeDefined();
-  }); */
+  });
 
   test('Deve ser mostrado apenas um Pokémon por vez.', () => {
     renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
@@ -42,6 +42,7 @@ describe('Testa componente Pokedex.js.', () => {
     renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
     const filterButton = screen.getAllByTestId('pokemon-type-button');
     expect(filterButton.length).toBe(NUM_FILTER);
+
     expect(filterButton[0]).toHaveTextContent('Electric');
     expect(filterButton[1]).toHaveTextContent('Fire');
     expect(filterButton[2]).toHaveTextContent('Bug');
@@ -49,6 +50,17 @@ describe('Testa componente Pokedex.js.', () => {
     expect(filterButton[4]).toHaveTextContent('Psychic');
     expect(filterButton[5]).toHaveTextContent('Normal');
     expect(filterButton[6]).toHaveTextContent('Dragon');
+
+    userEvent.click(filterButton[1]);
+    const nextButton = screen.getByRole('button', { name: /Próximo pokémon/i });
+    userEvent.click(nextButton);
+    const nextName = screen.getByText('Rapidash');
+    expect(nextName).toBeDefined();
+    const nextType = screen.getAllByText('Fire');
+    expect(nextType).toBeDefined();
+    const nextAverageWeight = screen.getByText('Average weight: 95.0 kg');
+    expect(nextAverageWeight).toBeDefined();
+
     const all = screen.getByRole('button', {
       name: /All/i,
     });
@@ -64,3 +76,7 @@ describe('Testa componente Pokedex.js.', () => {
     expect(allButton).toBeInTheDocument();
   });
 });
+
+/* links consultados:
+https://github.com/testing-library/jest-dom#tohavetextcontent
+https://testing-library.com/docs/queries/about/ */
