@@ -7,7 +7,17 @@ import pokemon from '../data';
 import App from '../App';
 
 describe('Teste o componente <Pokemon.js />', () => {
-  const { id } = pokemon[0];
+  const {
+    id,
+    name,
+    type,
+    averageWeight: {
+      value,
+      measurementUnit,
+    },
+    image,
+  } = pokemons[0];
+
   test('Teste se é renderizado um card com as informações de determinado pokémon', () => {
     const history = createMemoryHistory();
     render(
@@ -16,23 +26,19 @@ describe('Teste o componente <Pokemon.js />', () => {
       </Router>,
     );
 
-    const pokemonPikachu = screen.getByText('Pikachu');
-    expect(pokemonPikachu).toBeInTheDocument();
+    const namePokemon = screen.getByTestId('pokemon-name');
+    expect(namePokemon).toHaveTextContent(`${name}`);
 
-    const pokemonType = screen.getByTestId('pokemon-type');
-    expect(pokemonType).toHaveTextContent('Electric');
+    const typePokemon = screen.getByTestId('pokemon-type');
+    expect(typePokemon).toHaveTextContent(`${type}`);
 
-    const pokemonPeso = screen.getByTestId('pokemon-weight');
-    expect(pokemonPeso).toHaveTextContent(/6.0 kg/i);
+    const avePokemon = screen.getByTestId('pokemon-weight');
+    expect(avePokemon)
+      .toHaveTextContent(`Average weight: ${value} ${measurementUnit}`);
 
-    const pokemonImagem = screen.getByRole('img', {
-      name: /pikachu sprite/i,
-    });
-
-    const url = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
-
-    expect(pokemonImagem.src).toBe(url);
-    expect(pokemonImagem).toBeInTheDocument();
+    const imgPokemon = screen.getByRole('img', { name: `${name} sprite` });
+    expect(imgPokemon).toBeInTheDocument();
+    expect(imgPokemon).toHaveAttribute('src', `${image}`);
   });
 
   test('Se o id do pokemon indicado esta no link de navagação', () => {
