@@ -35,7 +35,7 @@ describe('Verifica componente Pokedéx', () => {
     renderWithRouter(<App />);
 
     const pokedexText = screen.getByRole('heading', {
-      name: 'Encountered pokémons',
+      name: /Encountered pokémons/i,
     });
     expect(pokedexText).toBeInTheDocument();
   });
