@@ -9,7 +9,7 @@ import App from '../App';
 // 5.3 feito com a ajuda do código da Julia Batista
 function listPokemons() {
   const button = screen.getByText(/Próximo poké/i);
-  const pokemonName = screen.getByTestId('pokemon-name');
+  const pokemonName = screen.getByTestId(/pokemon-name/i);
 
   pokemons.forEach((pokemon, i) => {
     const max = pokemons.length - 1;
@@ -51,7 +51,7 @@ describe('Teste o componente <Pokedex.js />', () => {
         </Router>,
       );
 
-      const buttonName = screen.getByText('Próximo pokémon');
+      const buttonName = screen.getByText(/Próximo pokémon/i);
       expect(buttonName.textContent).toBe('Próximo pokémon');
     });
 
@@ -164,7 +164,7 @@ describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     );
 
     const pokemonName = screen.getByTestId('pokemon-name');
-    const allButon = screen.getByRole('button', { name: 'All' });
+    const allButon = screen.getByRole('button', { name: /all/i });
     const proximoButton = screen.getByText('Próximo pokémon');
 
     userEvent.click(allButon);
