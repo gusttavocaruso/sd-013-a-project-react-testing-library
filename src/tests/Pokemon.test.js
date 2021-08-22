@@ -18,6 +18,10 @@ describe('Testando o componente Pokemon', () => {
     const pokemonType = pokemons[0].type;
     expect(typeFound).toBe(pokemonType);
 
+    const pokemonWeight = screen.getByTestId('pokemon-weight').innerHTML;
+    const { value, measurementUnit } = pokemons[0].averageWeight;
+    expect(pokemonWeight).toBe(`Average weight: ${value} ${measurementUnit}`);
+
     const pathFound = screen.getByRole('img');
     const pokemonImage = pokemons[0].image;
     expect(pathFound.src).toBe(pokemonImage);
@@ -46,7 +50,7 @@ describe('Testando o componente Pokemon', () => {
     fireEvent.click(linkHome);
 
     const getImg = screen.getByRole('img', { name: /is marked/i });
-    console.log(getImg.src);
+    expect(getImg).toBeInTheDocument();
     expect(getImg.src).toBe('http://localhost/star-icon.svg');
   });
 });
