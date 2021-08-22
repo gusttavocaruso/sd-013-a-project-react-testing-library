@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import About from '../components/About';
 
-// Grupo de testes do requisito 1"
+// Grupo de testes do requisito 2"
 describe('Teste o componente <About.js />. (req2)', () => {
   it('contém um heading h2 com o texto "About Pokédex"', () => {
     // Acessa os elementos da tela
