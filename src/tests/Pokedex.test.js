@@ -133,7 +133,11 @@ describe('Teste se a Pokédex tem os botões de filtro', () => {
   });
 
   it('O botão "All" precisa estar sempre visível.', () => {
-    
+    const bntAll = screen.getByRole('button', {
+      name: /all/i,
+    });
+
+    expect(bntAll).not.toBeDisabled();
   });
 });
 
