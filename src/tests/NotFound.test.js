@@ -7,7 +7,7 @@ describe('Testa o componente <NotFound.js />', () => {
   it('Teste se página contém um heading h2 com o texto Page requested not found', () => {
     const { history } = renderWithRouter(<NotFound />);
     history.push('rota/não-encontrada/');
-    const notMatcher = screen.getByText('Page requested not found');
+    const notMatcher = screen.getByText(/Page requested not found/i);
     expect(notMatcher).toBeInTheDocument();
   });
 
