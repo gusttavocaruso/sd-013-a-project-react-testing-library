@@ -1,9 +1,9 @@
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
-import App from '../App';
 import renderWithRouter from './renderWithRouter';
+import App from '../App';
 
-describe('Requisito 1 - Verificando Existência de Links em <App.js />', () => {
+describe('Requisito 1.1 - Verificando Existência de Links em <App />', () => {
   beforeEach(() => {
     renderWithRouter(<App />);
   });
@@ -24,7 +24,7 @@ describe('Requisito 1 - Verificando Existência de Links em <App.js />', () => {
   });
 });
 
-describe('Verificando o comportamento dos links ', () => {
+describe('Requisito 1.2 - Verificando o comportamento dos links em <App />', () => {
   let navHistory;
   beforeEach(() => {
     navHistory = renderWithRouter(<App />).history;
@@ -57,7 +57,7 @@ describe('Verificando o comportamento dos links ', () => {
     expect(urlAtual).toStrictEqual('/favorites');
   });
 
-  it('Redireciona para a página Not Found ao entrar em uma URL desconhecida.', () => {
+  it('Redireciona para a Not Found ao entrar com uma URL desconhecida.', () => {
     navHistory.push('/uma-url-qualquer');
     const notFound = screen.getByText('Page requested not found');
     expect(notFound).toBeInTheDocument();
