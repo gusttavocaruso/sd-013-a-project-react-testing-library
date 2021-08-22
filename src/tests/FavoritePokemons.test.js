@@ -37,9 +37,9 @@ describe('Teste o componente <FavoritePokemons.js />. (req3)', () => {
     fireEvent.click(favPokemon);
 
     // Encontra a "estrela" que marca o pokemon como favorito
-    const starImage = screen.getByAltText(/is marked as favorite/i);
-
+    const starImage = screen.getAllByAltText(/is marked as favorite/i);
+    const pokeCard = screen.getAllByText(/More Details/i);
     // Testa se tem a "estrela" de favorito na página de FAVORITE POKEMON
-    expect(starImage).toBeInTheDocument();
+    expect(starImage.length).toBe(pokeCard.length)
   });
 });
