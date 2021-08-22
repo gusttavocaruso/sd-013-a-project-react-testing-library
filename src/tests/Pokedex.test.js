@@ -28,8 +28,7 @@ describe('Teste o componente <Pokedex.js />', () => {
     const pokeTestID = screen.getByTestId('pokemon-name');
 
     for (let index = 0; index <= pokeNames.length; index += 1) {
-      const nove = 9;
-      if (index === nove) {
+      if (index === pokeNames.length) {
         expect(pokeTestID).toHaveTextContent(pokeNames[0]);
       } else {
         expect(pokeTestID).toHaveTextContent(pokeNames[index]);
