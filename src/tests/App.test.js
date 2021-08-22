@@ -3,7 +3,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from '../helper/RenderWithRouter';
 import App from '../App';
 
-describe('Testando o componente App.js', () => {
+describe('Testa o componente App.js', () => {
   test('se existe um conjunto fixo de links no topo do app', () => {
     renderWithRouter(<App />);
     const home = screen.getByText('Home');
