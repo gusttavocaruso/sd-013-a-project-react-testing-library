@@ -74,20 +74,10 @@ describe('Testa o pokemon.js', () => {
 
     const Encountered = screen.getByText('Encountered pokémons');
     expect(Encountered).toBeInTheDocument();
-
-    const imgOfFavorite = screen.getByRole('img', { name: /is marked as favorite/i });
+    const imgOfFavorite = screen.getByRole('img', {
+      name: 'Pikachu is marked as favorite' });
     const src = 'http://localhost/star-icon.svg';
     expect(imgOfFavorite).toBeInTheDocument();
     expect(imgOfFavorite.src).toBe(src);
   });
 });
-
-// Teste se é renderizado um card com as informações de determinado pokémon.
-
-// O nome correto do Pokémon deve ser mostrado na tela;
-
-// O tipo correto do pokémon deve ser mostrado na tela.
-
-// O peso médio do pokémon deve ser exibido com um texto no formato Average weight: <value> <measurementUnit>; onde <value> e <measurementUnit> são, respectivamente, o peso médio do pokémon e sua unidade de medida.
-
-// A imagem do Pokémon deve ser exibida. Ela deve conter um atributo src com a URL da imagem e um atributo alt com o texto <name> sprite, onde <name> é o nome do pokémon;
