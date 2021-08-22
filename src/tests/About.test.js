@@ -16,11 +16,9 @@ describe('testa o componente About', () => {
   });
 
   it('testa os dois paragrafos', () => {
-    const paragrafo1 = screen.getByTestId('paragraph-1');
-    const paragrafo2 = screen.getByTestId('paragraph-2');
+    const paragrafos = screen.getAllByText(/Pokémons/i);
 
-    expect(paragrafo1).toBeInTheDocument();
-    expect(paragrafo2).toBeInTheDocument();
+    expect(paragrafos.length).toBe(2);
   });
 
   it('testa a imagem', () => {
