@@ -13,9 +13,15 @@ describe('App.test.js', () => {
       </BrowserRouter>,
     );
 
-    const linkHome = screen.getByText('Home');
-    const linkAbout = screen.getByText('About');
-    const linkFavorite = screen.getByText('Favorite Pokémons');
+    const linkHome = screen.getByRole('link', {
+      name: /home/i,
+    });
+    const linkAbout = screen.getByRole('link', {
+      name: /about/i,
+    });
+    const linkFavorite = screen.getByRole('link', {
+      name: /favorite/i,
+    });
 
     expect(linkHome).toBeDefined();
     expect(linkAbout).toBeDefined();
