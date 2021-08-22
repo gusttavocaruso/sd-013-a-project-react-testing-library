@@ -1,8 +1,10 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { cleanup, screen, fireEvent } from '@testing-library/react';
 import renderWithRouter from '../helper/RenderWithRouter';
 import App from '../App';
 import pokemons from '../data';
+
+afterEach(cleanup);
 
 describe('Testa o componente Pokemon.js', () => {
   test('se é renderizado um card com as informações de determinado pokémon', () => {
