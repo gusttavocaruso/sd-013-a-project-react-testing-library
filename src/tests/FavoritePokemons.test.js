@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { FavoritePokemons } from '../components';
 
-const mockFavoritePoke = [{
+const mockFavoritePokemon = [{
   id: 25,
   name: 'Pikachu',
   type: 'Electric',
@@ -45,7 +45,7 @@ describe('Teste o componente "<FavoritePokemons.js />"', () => {
     const history = createMemoryHistory();
     render(
       <Router history={ history }>
-        <FavoritePokemons pokemons={ mockFavoritePoke } />
+        <FavoritePokemons pokemons={ mockFavoritePokemon } />
       </Router>,
     );
     const favoritePokemon = screen.getByText(/Pikachu/i);
