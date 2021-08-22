@@ -118,9 +118,22 @@ describe('Teste se a Pokédex tem os botões de filtro', () => {
   });
 
   it('O texto do botão deve corresponder ao" nome do tipo", ex. "Psychic";', () => {
+    const bntPsychic = screen.getByRole('button', {
+      name: /psychic/i,
+    });
+    const bntBug = screen.getByRole('button', {
+      name: /bug/i,
+    });
+
+    userEvent.click(bntPsychic);
+    expect(screen.getByTestId('pokemon-type')).toHaveTextContent('Psychic');
+
+    userEvent.click(bntBug);
+    expect(screen.getByTestId('pokemon-type')).toHaveTextContent('Bug');
   });
 
   it('O botão "All" precisa estar sempre visível.', () => {
+    
   });
 });
 
