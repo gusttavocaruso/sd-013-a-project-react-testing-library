@@ -24,18 +24,22 @@ describe('Teste o componente <FavoritePokemons.js />. (req3)', () => {
 
   it('Teste se é exibido todos os cards de pokémons favoritados', async () => {
     renderWithRouter(<App />);
-    // Interagiu clicando no Link "Favorite Pokemons"
-    fireEvent.click(screen.getByText(/Favorite PoKémons/i));
+    // Encontra o elemento "mais detalhes e clica nele"
+    const moreDetails = screen.getByText(/More Details/i);
+    fireEvent.click(moreDetails);
 
-    // Pega todas as imagens que tem o "alt = is marked as favorite"
-    const favorite = await waitFor(async () => {
-      screen.getAllByAltText(/is marked as favorite/i);
-    });
+    // Encontra a checkbox para "favoritar" p Pokemon e clica nela
+    const favorite = screen.getByLabelText(/Pokémon favoritado?/i);
+    fireEvent.click(favorite);
 
-    const moreDetails = await waitFor(() => {
-      screen.getAllByRole('link', { name: /More Details/i });
-    });
+    // Encontra o link para a página de pokemons favoritos e clica nele.
+    const favPokemon = screen.getByText(/Favorite Pokémons/i);
+    fireEvent.click(favPokemon);
 
-    expect(favorite.length).toBe(moreDetails.length);
+    // Encontra a "estrela" que marca o pokemon como favorito
+    const starImage = screen.getByAltText(/is marked as favorite/i);
+
+    // Testa se tem a "estrela" de favorito na página de FAVORITE POKEMON
+    expect(starImage).toBeInTheDocument()
   });
 });
