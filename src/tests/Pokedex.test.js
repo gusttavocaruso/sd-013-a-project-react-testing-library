@@ -1,9 +1,11 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import apiPokemons from '../data';
+
+afterEach(cleanup);
 
 describe('Teste o componente <Pokedex.js />', () => {
   test('Teste se página contém um heading h2 com o texto Encountered pokémons.', () => {
@@ -59,5 +61,14 @@ describe('Teste o componente <Pokedex.js />', () => {
       });
       expect(allButton).toBeInTheDocument();
     });
+  });
+
+  test('Se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+    const allButton = screen.getByRole('button', {
+      name: 'All',
+    });
+    userEvent.click(allButton);
+    expect(allButton).toBeInTheDocument();
   });
 });
