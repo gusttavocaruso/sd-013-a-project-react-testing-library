@@ -3,7 +3,6 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Pokedex from '../components/Pokedex';
-// import App from '../App';
 import pokemons from '../data';
 
 describe('Testa componente Pokedex.js.', () => {
@@ -39,10 +38,21 @@ describe('Testa componente Pokedex.js.', () => {
   });
 
   test('A Pokédex deve ter os botões de filtro.', () => {
-    const numMagic = 7;
+    const NUM_FILTER = 7;
     renderWithRouter(<Pokedex pokemons={ pokemons } isPokemonFavoriteById={ {} } />);
     const filterButton = screen.getAllByTestId('pokemon-type-button');
-    expect(filterButton.length).toBe(numMagic);
+    expect(filterButton.length).toBe(NUM_FILTER);
+    expect(filterButton[0]).toHaveTextContent('Electric');
+    expect(filterButton[1]).toHaveTextContent('Fire');
+    expect(filterButton[2]).toHaveTextContent('Bug');
+    expect(filterButton[3]).toHaveTextContent('Poison');
+    expect(filterButton[4]).toHaveTextContent('Psychic');
+    expect(filterButton[5]).toHaveTextContent('Normal');
+    expect(filterButton[6]).toHaveTextContent('Dragon');
+    const all = screen.getByRole('button', {
+      name: /All/i,
+    });
+    expect(all).toBeInTheDocument();
   });
 
   test('A Pokédex deve conter um botão para resetar o filtro.', () => {
