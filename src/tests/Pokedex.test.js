@@ -110,11 +110,11 @@ describe('Teste se a Pokédex tem os botões de filtro', () => {
     const bntFire = screen.getByRole('button', {
       name: /fire/i,
     });
+
     userEvent.click(bntFire);
     expect(currentPokemon()).toHaveTextContent('Charmander');
-    userEvent.click(bntFire);
-    const name = await screen.findByTestId('pokemon-name');
-    console.log(name);
+    userEvent.click(bntNextPokemon());
+    expect(currentPokemon()).toHaveTextContent('Rapidash');
   });
 
   it('O texto do botão deve corresponder ao" nome do tipo", ex. "Psychic";', () => {
