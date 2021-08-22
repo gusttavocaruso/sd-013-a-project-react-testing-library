@@ -52,5 +52,8 @@ describe('Testando o componente Pokemon', () => {
     const getImg = screen.getByRole('img', { name: /is marked/i });
     expect(getImg).toBeInTheDocument();
     expect(getImg.src).toBe('http://localhost/star-icon.svg');
+
+    const pokemonName = pokemons[0].name;
+    expect(getImg.alt).toBe(`${pokemonName} is marked as favorite`);
   });
 });

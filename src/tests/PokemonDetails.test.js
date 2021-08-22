@@ -5,7 +5,7 @@ import App from '../App';
 import pokemons from '../data';
 
 afterEach(cleanup);
-const details = 'More Details';
+const details = 'More details';
 
 describe('Testando o componente Pokemon Details', () => {
   it('As informações detalhadas dos pokemons aparecem na tela', () => {
@@ -15,7 +15,8 @@ describe('Testando o componente Pokemon Details', () => {
     const pokemonName = pokemons[0].name;
     const pokemonTitle = screen.getByText(`${pokemonName} Details`);
     expect(pokemonTitle).toBeInTheDocument();
-    expect(moreDetails).not.toBeInTheDocument();
+    const detailsComponent = screen.queryByRole('link', { name: 'More details' });
+    expect(detailsComponent).not.toBeInTheDocument();
 
     const summaryHeading = screen.getByRole('heading', { name: 'Summary', level: 2 });
     expect(summaryHeading).toBeInTheDocument();
