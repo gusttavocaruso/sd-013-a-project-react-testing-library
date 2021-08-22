@@ -86,7 +86,7 @@ describe('Teste o componente Pokemon', () => {
       </Router>,
     );
     const details = screen.getByText(/more details/i);
-    expect(details.getAttribute('href')).toBe(/pokemons/ + pokemonMock.id);
+    expect(details.getAttribute('href')).toBe(`/pokemons/${pokemonMock.id}`);
   });
   it('Testa se o link redireciona para details', () => {
     const { history } = renderWithRouter(<App />);
