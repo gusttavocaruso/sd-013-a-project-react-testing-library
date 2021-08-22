@@ -81,7 +81,7 @@ describe('Verifica componente Pokedéx', () => {
       expect(buttonType).toBeInTheDocument();
       userEvent.click(buttonType);
 
-      const allButton = screen.getByRole('button', { name: /all/i });
+      const allButton = screen.getByRole('button', { name: /All/i });
       expect(allButton).toBeInTheDocument();
 
       const pokemonSameType = pokemons.filter((pokemon) => pokemon.type === typeData);
@@ -105,7 +105,7 @@ describe('Verifica componente Pokedéx', () => {
   it('Verifica se a Pokédex contém um botão para resetar o filtro', () => {
     renderWithRouter(<App />);
 
-    const allButton = screen.getByRole('button', { name: /all/i });
+    const allButton = screen.getByRole('button', { name: /All/i });
     expect(allButton).toBeInTheDocument();
 
     userEvent.click(allButton);
