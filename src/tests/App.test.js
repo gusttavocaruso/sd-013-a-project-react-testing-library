@@ -29,17 +29,23 @@ describe('App.test.js', () => {
       </BrowserRouter>,
     );
 
-    const linkHome = screen.getByText('Home');
+    const linkHome = screen.getByRole('link', {
+      name: /home/i,
+    });
 
     fireEvent.click(linkHome);
     expect(screen.getByText('Encountered pokémons')).toBeInTheDocument();
 
-    const linkAbout = screen.getByText('About');
+    const linkAbout = screen.getByRole('link', {
+      name: /about/i,
+    });
 
     fireEvent.click(linkAbout);
     expect(screen.getByText('About Pokédex')).toBeInTheDocument();
 
-    const linkFavorite = screen.getByText('Favorite Pokémons');
+    const linkFavorite = screen.getByRole('link', {
+      name: /favorite/i,
+    });
 
     fireEvent.click(linkFavorite);
     expect(screen.getByText('Favorite pokémons')).toBeInTheDocument();
