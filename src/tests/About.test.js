@@ -1,6 +1,5 @@
-import { screen, fireEvent, render } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import React from 'react';
-import renderWithRouter from '../renderWithRouter';
 import About from '../components/About';
 
 describe('testa o componente About', () => {
