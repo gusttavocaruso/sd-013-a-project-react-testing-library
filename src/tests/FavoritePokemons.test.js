@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
@@ -40,6 +40,6 @@ describe('Teste o componente <FavoritePokemons.js />. (req3)', () => {
     const starImage = screen.getByAltText(/is marked as favorite/i);
 
     // Testa se tem a "estrela" de favorito na página de FAVORITE POKEMON
-    expect(starImage).toBeInTheDocument()
+    expect(starImage).toBeInTheDocument();
   });
 });
