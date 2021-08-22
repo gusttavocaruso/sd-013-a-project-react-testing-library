@@ -30,25 +30,25 @@ const isPokemonFavoriteById = {
   151: false,
 };
 
+// Inicia o component antes de cada teste.
+beforeEach(() => {
+  withRenderJosueAproves(
+    <Pokedex pokemons={ pokemons } isPokemonFavoriteById={ isPokemonFavoriteById } />,
+  );
+});
+
+// Elementos que sempre seram usados nos testes.
+const bntNextPokemon = () => screen.getByTestId('next-pokemon');
+const currentPokemon = () => screen.getByTestId('pokemon-name');
+
 describe('Teste o componente "<Pokedex.js />"', () => {
   it('Teste se página contém um heading "h2" com o texto "Encountered pokémons".', () => {
-    withRenderJosueAproves(
-      <Pokedex pokemons={ pokemons } isPokemonFavoriteById={ isPokemonFavoriteById } />,
-    );
     expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
   });
 });
 
 describe('Teste se é exibido o próximo Pokémon da lista quando o botão Próximo pokémon'
 + ' é clicado.', () => {
-  beforeEach(() => {
-    withRenderJosueAproves(
-      <Pokedex pokemons={ pokemons } isPokemonFavoriteById={ isPokemonFavoriteById } />,
-    );
-  });
-
-  const bntNextPokemon = () => screen.getByTestId('next-pokemon');
-
   it('O botão deve conter o texto "Próximo pokémon".', () => {
     expect(bntNextPokemon()).toHaveTextContent('Próximo pokémon');
   });
@@ -57,10 +57,9 @@ describe('Teste se é exibido o próximo Pokémon da lista quando o botão Próx
   + 'sucessivamente no botão.', () => {
     let inicial = 1;
     const stop = 3;
-    const currentPokemon = screen.getByTestId('pokemon-name');
 
     pokemons.forEach((pokemon) => {
-      expect(currentPokemon).toHaveTextContent(pokemon.name);
+      expect(currentPokemon()).toHaveTextContent(pokemon.name);
       userEvent.click(bntNextPokemon());
       if (inicial !== stop) { inicial += 1; }
     });
@@ -68,20 +67,23 @@ describe('Teste se é exibido o próximo Pokémon da lista quando o botão Próx
 
   it('O primeiro Pokémon da lista deve ser mostrado ao clicar no botão, se estiver no'
   + ' último Pokémon da Lista', () => {
-    const currentPokemon = screen.getByTestId('pokemon-name');
-
-    expect(currentPokemon).toHaveTextContent('Pikachu');
+    expect(currentPokemon()).toHaveTextContent('Pikachu');
 
     pokemons.forEach(() => {
       userEvent.click(bntNextPokemon());
     });
 
-    expect(currentPokemon).toHaveTextContent('Pikachu');
+    expect(currentPokemon()).toHaveTextContent('Pikachu');
   });
 });
 
 describe('Teste se é mostrado apenas um Pokémon por vez.', () => {
   it('Testa se mostra um pokémon.', () => {
+    const pokemonName = currentPokemon();
+    const pokemonWeights = screen.getByTestId('pokemon-weight');
+
+    expect(pokemonName).toBeInTheDocument();
+    expect(pokemonWeights).toBeInTheDocument();
   });
 });
 
