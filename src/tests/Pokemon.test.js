@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import pokemon from '../data';
+import pokemons from '../data';
 import App from '../App';
 
 describe('Teste o componente <Pokemon.js />', () => {
@@ -60,7 +60,7 @@ describe('Teste o componente <Pokemon.js />', () => {
 });
 
 describe('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
-  const { name } = pokemon[0];
+  const { name } = pokemons[0];
   test('O ícone deve ser uma imagem "/sta-icon.svg"', () => {
     const history = createMemoryHistory();
     render(
