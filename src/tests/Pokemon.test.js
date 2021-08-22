@@ -8,19 +8,19 @@ describe('Testa componente Pokemon.js.', () => {
   test('O nome correto do Pokémon deve ser mostrado na tela.', () => {
     renderWithRouter(<App />);
     const namePokemon = screen.getByTestId('pokemon-name');
-    expect(namePokemon.innerHTML).toBe('Pikachu');
+    expect(namePokemon.textContent).toBe('Pikachu');
   });
 
   test('O tipo correto do Pokémon deve ser mostrado na tela.', () => {
     renderWithRouter(<App />);
     const typePokemon = screen.getByTestId('pokemon-type');
-    expect(typePokemon.innerHTML).toBe('Electric');
+    expect(typePokemon.textContent).toBe('Electric');
   });
 
   test('O peso médio do Pokémon deve ser mostrado na tela.', () => {
     renderWithRouter(<App />);
     const typePokemon = screen.getByTestId('pokemon-weight');
-    expect(typePokemon.innerHTML).toBe('Average weight: 6.0 kg');
+    expect(typePokemon.textContent).toBe('Average weight: 6.0 kg');
   });
 
   test('A imagem do Pokémon deve ser exibida.', () => {
@@ -53,3 +53,8 @@ describe('Testa componente Pokemon.js.', () => {
     expect(imgStar.src).toBe('http://localhost/star-icon.svg');
   });
 });
+
+/* Links consultados:
+https://www.mundojs.com.br/2019/07/18/diferencas-entre-innerhtml-innertext-e-textcontent/
+https://testing-library.com/docs/queries/bytestid
+ */
