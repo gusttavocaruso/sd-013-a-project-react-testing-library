@@ -7,6 +7,16 @@ import App from '../App';
 import pokemons from '../data';
 
 describe('Teste o componente <Pokemon.js />', () => {
+  const {
+    name,
+    type,
+    averageWeight: {
+      value,
+      measurementUnit,
+    },
+    image,
+  } = pokemons[0];
+
   it('Teste se é renderizado um card com as informações de determinado pokémon.', () => {
     const history = createMemoryHistory();
     render(
@@ -14,19 +24,19 @@ describe('Teste o componente <Pokemon.js />', () => {
         <App />
       </Router>,
     );
-    const name = screen.getByTestId('pokemon-name');
-    expect(name).toHaveTextContent('Pikachu');
+    const pokemonName = screen.getByTestId('pokemon-name');
+    expect(pokemonName).toHaveTextContent(`${name}`);
 
-    const type = screen.getByTestId('pokemon-type');
-    expect(type).toHaveTextContent('Electric');
+    const pokemontype = screen.getByTestId('pokemon-type');
+    expect(pokemontype).toHaveTextContent(`${type}`);
 
-    const average = screen.getByTestId('pokemon-weight');
-    expect(average).toHaveTextContent(/6.0 kg/i);
+    const pokemonaverage = screen.getByTestId('pokemon-weight');
+    expect(pokemonaverage)
+      .toHaveTextContent(`Average weight: ${value} ${measurementUnit}`);
 
-    const img = screen.getByRole('img', { name: 'Pikachu sprite' });
-    const url = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
-    expect(img).toBeInTheDocument();
-    expect(img.src).toBe(url);
+    const pokemonimg = screen.getByRole('img', { name: `${name} sprite` });
+    expect(pokemonimg).toBeInTheDocument();
+    expect(pokemonimg).toHaveAttribute('src', `${image}`);
   });
 });
 
