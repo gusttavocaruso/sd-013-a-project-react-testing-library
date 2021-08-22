@@ -15,9 +15,6 @@ describe('Testa o componente About.js', () => {
   });
   test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     renderWithRouter(<About />);
-    userEvent.click(screen.getByRole('link', { name: 'About' }));
-    const { pathname } = history.location;
-    expect(pathname).toBe('/about');
     const text1 = /This application simulates a Pokédex, a digital encyclopedia/i;
     const text2 = /One can filter Pokémons by type, and see more details for each one/i;
     const aboutText1 = screen.getByTestId('first-p-text');
