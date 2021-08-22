@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Test notFound page', () => {
-  it('should have a H2-heading text there', () => {
+  it('Should have a H2-heading text there', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/non-valid-url');
@@ -15,7 +16,7 @@ describe('Test notFound page', () => {
     expect(notFoundTitle).toBeInTheDocument();
   });
 
-  it('should have a specific image there', () => {
+  it('Should have a specific image there', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/non-valid-url');

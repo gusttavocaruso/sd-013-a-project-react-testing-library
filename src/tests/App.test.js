@@ -7,7 +7,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Test nav-links on the Aplication', () => {
-  it('should home-link works', () => {
+  it('Should home-link works', () => {
     renderWithRouter(<App />);
 
     const homeLink = screen.getByRole('link', { name: /home/i });
@@ -21,7 +21,7 @@ describe('Test nav-links on the Aplication', () => {
     expect(titlePokedex).toBeInTheDocument();
   });
 
-  it('should about-link works', () => {
+  it('Should about-link works', () => {
     renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });
@@ -35,7 +35,7 @@ describe('Test nav-links on the Aplication', () => {
     expect(aboutTitle).toBeInTheDocument();
   });
 
-  it('should favorite-pokemons-link works', () => {
+  it('Should favorite-pokemons-link works', () => {
     renderWithRouter(<App />);
 
     const favoriteLink = screen.getByRole('link', { name: /favorite pokémons/i });
@@ -49,7 +49,7 @@ describe('Test nav-links on the Aplication', () => {
     expect(titleFavorite).toBeInTheDocument();
   });
 
-  it('should "not found page" works', () => {
+  it('Should "not found page" works', () => {
     const { history } = renderWithRouter(<App />);
 
     history.push('/xablau');

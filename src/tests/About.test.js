@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
+
 import App from '../App';
 
 describe('Test About-page content', () => {
-  it('should a H2-heading be there', () => {
+  it('Should a H2-heading be there', () => {
     renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });
@@ -18,7 +20,7 @@ describe('Test About-page content', () => {
     expect(aboutTitle).toBeInTheDocument();
   });
 
-  it('should two pokedex-text-paragraphs be there', () => {
+  it('Should two pokedex-text-paragraphs be there', () => {
     renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });
@@ -31,7 +33,7 @@ describe('Test About-page content', () => {
     expect(twoP).toBeInTheDocument();
   });
 
-  it('should an specific image be there', () => {
+  it('Should an specific image be there', () => {
     renderWithRouter(<App />);
 
     const aboutLink = screen.getByRole('link', { name: /about/i });

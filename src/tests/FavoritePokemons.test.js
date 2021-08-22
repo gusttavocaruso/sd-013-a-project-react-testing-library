@@ -6,8 +6,8 @@ import renderWithRouter from './renderWithRouter';
 
 import App from '../App';
 
-describe('test favorite pokemons page', () => {
-  it('should not have any pokemon there', () => {
+describe('Test favorite pokemons page', () => {
+  it('Should not have any pokemon there', () => {
     renderWithRouter(<App />);
 
     const favoriteLink = screen.getByRole('link', { name: /favorite pokémons/i });
@@ -17,7 +17,7 @@ describe('test favorite pokemons page', () => {
     expect(emptyFavoriteText).toBeInTheDocument();
   });
 
-  it('should have a favorite pokemon there', () => {
+  it('Should have a favorite pokemon there', () => {
     renderWithRouter(<App />);
 
     const detailsLink = screen.getByRole('link', { name: /more details/i });
