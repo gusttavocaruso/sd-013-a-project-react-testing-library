@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, screen, fireEvent } from '@testing-library/react';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from '../helper/RenderWithRouter';
 import App from '../App';
 // import pokemons from '../data';
