@@ -14,12 +14,11 @@ describe('testando componente About', () => {
   });
   test('teste se a página contém dois parágrafos', () => {
     renderWithRouter(<About />);
+    // aqui fiz o teste procurando pelo texto. não descobri como buscar expecificamente um paragráfo.
     const tagOne = screen.getByText(/This application simulates a Pokédex,/i);
     expect(tagOne).toBeInTheDocument();
     const tagTwo = screen.getByText(/One can filter Pokémons by type/i);
     expect(tagTwo).toBeInTheDocument();
-    // const parag1 = screen.getByText(tagOne);
-    // const parag2 = screen.getByText(tagTwo);
   });
   test('teste se a página contém a imagem', () => {
     renderWithRouter(<About />);

@@ -4,6 +4,8 @@ import fireEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
+// Desafio realizado (em dupla com Reinaldo) com muita ajuda de Reinaldo Takashima
+
 describe('testar o App.js', () => {
   it('Teste se contém os links de navegação', () => {
     renderWithRouter(<App />);
