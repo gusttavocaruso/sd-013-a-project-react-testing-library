@@ -33,7 +33,6 @@ describe('Teste da aplicação de links', () => {
 
     userEvent.click(screen.getByRole('link', { name: /Favorite Pokémons/i }));
     const pikachu = screen.getByText('Pikachu');
-    console.log(pikachu);
     expect(pikachu).toBeInTheDocument();
   });
 });

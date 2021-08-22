@@ -36,6 +36,7 @@ function itaratePokemons() {
     }
     expect(pokemonName).toHaveTextContent(pokemon.name);
     expect(pokemonWeight).toHaveTextContent(pokemon.averageWeight.value);
+    expect(pokemonWeight).toHaveTextContent(pokemon.averageWeight.measurementUnit);
     expect(pokemonType).toHaveTextContent(pokemon.type);
     expect(pokemonSrc.src).toBe(pokemon.image);
     userEvent.click(nextBtn);
