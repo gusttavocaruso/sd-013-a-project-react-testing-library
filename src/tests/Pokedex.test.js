@@ -90,6 +90,18 @@ describe('Teste se é mostrado apenas um Pokémon por vez.', () => {
 describe('Teste se a Pokédex tem os botões de filtro', () => {
   it('Deve existir um botão de filtragem para cada tipo de Pokémon, sem'
   + 'repetição.', () => {
+    const expected = [
+      'Electric',
+      'Fire',
+      'Bug',
+      'Poison',
+      'Psychic',
+      'Normal',
+      'Dragon',
+    ];
+    const pokemonTypeButton = screen.getAllByTestId('pokemon-type-button');
+    const pokemonTypeList = pokemonTypeButton.map((type) => type.textContent);
+    expect(pokemonTypeList).toEqual(expected);
   });
 
   it('A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos'
