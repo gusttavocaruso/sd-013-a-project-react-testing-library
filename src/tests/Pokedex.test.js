@@ -1,8 +1,9 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { Router as Route } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createMemoryHistory } from 'history';
+import React from 'react';
+import { Router as Route } from 'react-router-dom';
 import Pokedex from '../components/Pokedex';
 import pokemons from '../data';
 
@@ -105,7 +106,15 @@ describe('Teste se a Pokédex tem os botões de filtro', () => {
   });
 
   it('A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos'
-  + 'pokémons daquele tipo;', () => {
+  + 'pokémons daquele tipo;', async () => {
+    const bntFire = screen.getByRole('button', {
+      name: /fire/i,
+    });
+    userEvent.click(bntFire);
+    expect(currentPokemon()).toHaveTextContent('Charmander');
+    userEvent.click(bntFire);
+    const name = await screen.findByTestId('pokemon-name');
+    console.log(name);
   });
 
   it('O texto do botão deve corresponder ao" nome do tipo", ex. "Psychic";', () => {
