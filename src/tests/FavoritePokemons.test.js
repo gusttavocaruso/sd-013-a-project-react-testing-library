@@ -36,10 +36,10 @@ describe('Teste o componente <FavoritePokemons.js />. (req3)', () => {
     const favPokemon = screen.getByText(/Favorite Pokémons/i);
     fireEvent.click(favPokemon);
 
-    // Encontra a "estrela" que marca o pokemon como favorito
+    // Encontra a "estrela" que marca o pokemon como favorito e também os links de mais informação na página
     const starImage = screen.getAllByAltText(/is marked as favorite/i);
     const pokeCard = screen.getAllByText(/More Details/i);
-    // Testa se tem a "estrela" de favorito na página de FAVORITE POKEMON
+    // Testa se numero de "estrelas" é igual ao número de links "mais detalhes" na página de FAVORITE POKEMON
     expect(starImage.length).toBe(pokeCard.length);
   });
 });
