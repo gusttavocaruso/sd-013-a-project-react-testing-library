@@ -27,6 +27,7 @@ describe('Testa o componente <Pokemon.js />', () => {
     // testando a propreidade da "imagem" no erro aparece "Pikachu sprite"
     expect(imagePokemon.alt).toBe('Pikachu sprite');
   });
+
   test('Testa se o card contém um link de navegação para exibir detalhes', () => {
     // renderiza a pagina onde o componente e renderizado "app"
     // renderWithRouter(<App />);

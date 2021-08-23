@@ -13,6 +13,7 @@ describe('', () => {
     // testando o elemento
     expect(headingTwo).toBeInTheDocument();
   });
+
   test('Testa se é exibido o próximo Pokémon da lista quando o botão é clicado', () => {
     // renderiza a pagina
     renderWithRouter(<App />);
@@ -23,6 +24,7 @@ describe('', () => {
     // testando o click do botão
     userEvent.click(buttonNextPokemon);
   });
+
   test('Testa se é mostrado apenas um Pokémon por vez', () => {
     // renderizar a pagina onde sera renderizado o pokedex "app"
     renderWithRouter(<App />);
@@ -33,6 +35,7 @@ describe('', () => {
     // testando o clique do botao
     userEvent.click(buttonOneAtTime);
   });
+
   test('Testa se a Pokédex tem os botões de filtro', () => {
     // renderizar a pagina onde o pokedex sera renderizado "app"
     // consulta ao https://testing-library.com/docs/queries/bytestid/

@@ -16,6 +16,7 @@ describe('Testa o componente <PokemonDetails.js />', () => {
       // testando o elemento acima
       expect(detailsPokemon).toBeInTheDocument();
     });
+
   test(
     'Teste se existe na página uma seção com os mapas das localizações do pokémon',
     () => {
@@ -33,6 +34,7 @@ describe('Testa o componente <PokemonDetails.js />', () => {
       expect(pokemonMap.alt).toBe('Pikachu location');
     },
   );
+
   test('Teste se existe um h2 com o Texto Game Locations e Summary', () => {
     renderWithRouter(<App />);
     userEvent.click(screen.getByRole('link', { name: /More Details/i }));
@@ -43,6 +45,7 @@ describe('Testa o componente <PokemonDetails.js />', () => {
     const headingLocation = screen.getByRole('heading', { name: /Game Locations/i });
     expect(headingLocation).toHaveTextContent('Game Locations of Pikachu');
   });
+
   test('Teste se existe label checkbox contendo o texto Pokémon favoritado?', () => {
     renderWithRouter(<App />);
     userEvent.click(screen.getByRole('link', { name: /More Details/i }));

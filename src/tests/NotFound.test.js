@@ -12,6 +12,7 @@ describe('Testa o componente <NotFound.js />', () => {
     // testando o "H2"
     expect(headingTwo).toBeInTheDocument();
   });
+
   test('Testa se página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
     // renderiza a pagina
     renderWithRouter(<NotFound />);
