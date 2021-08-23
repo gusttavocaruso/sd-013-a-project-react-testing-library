@@ -27,7 +27,7 @@ describe('FavoritePokemons.js tests', () => {
     renderWithRouter(<App />);
 
     const eletric = screen.getByRole('button', {
-      name: /electric/i
+      name: /electric/i,
     });
     userEvent.click(eletric);
     const details = screen.getByText(/more details/i);
@@ -44,5 +44,5 @@ describe('FavoritePokemons.js tests', () => {
     const favoritePokemon = screen.getByText(/pikachu/i);
 
     expect(favoritePokemon).toBeInTheDocument();
-  })
-})
+  });
+});
