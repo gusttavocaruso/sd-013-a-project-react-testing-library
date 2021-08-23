@@ -1,26 +1,56 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import Pokemon from './Pokemon.test';
+import { Router } from 'react-router-dom';
+import Pokemon from '../components/Pokemon';
+import pokemons from '../data';
+
+const withRenderJosueAproves = (component) => {
+  const history = createMemoryHistory();
+  return { ...render(
+    <Router history={ history }>
+      {component}
+    </Router>,
+  ),
+  history };
+};
+
+const isFavorite = false;
+const pokemon = pokemons[0];
+
+beforeEach(() => {
+  withRenderJosueAproves(
+    <Pokemon isFavorite={ isFavorite } pokemon={ pokemon } />,
+  );
+});
 
 describe('Teste o componente "<Pokemon.js />"', () => {
   describe('Teste se é renderizado um card com as informações de determinado'
   + ' pokémon.', () => {
     it('O nome correto do Pokémon deve ser mostrado na tela.', () => {
-
+      const pokemonName = screen.getByTestId('pokemon-name');
+      expect(pokemonName).toHaveTextContent(pokemon.name);
     });
+
     it('O tipo correto do pokémon deve ser mostrado na tela.', () => {
-
+      const pokemonType = screen.getByTestId('pokemon-type');
+      expect(pokemonType).toHaveTextContent(pokemon.type);
     });
+
     it('O peso médio do pokémon deve ser exibido com um texto no formato Average weight:'
     + ' <value> <measurementUnit>; onde <value> e <measurementUnit> são, respectivamente,'
     + ' o peso médio do pokémon e sua unidade de medida.', () => {
-
+      const averageWeight = screen.getByTestId('pokemon-weight');
+      expect(averageWeight).toHaveTextContent(pokemon.averageWeight.value);
+      expect(averageWeight).toHaveTextContent(pokemon.averageWeight.measurementUnit);
     });
+
     it('A imagem do Pokémon deve ser exibida. Ela deve conter um atributo src com a URL'
     + ' da imagem e um atributo alt com o texto <name> sprite, onde <name> é o nome do'
     + ' pokémon.', () => {
-
+      const expected = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
+      const imagePokemon = screen.getByRole('img');
+      expect(imagePokemon.getAttribute('src')).toBe(expected);
     });
   });
 

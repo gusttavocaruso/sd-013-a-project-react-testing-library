@@ -15,7 +15,7 @@ const withRenderJosueAproves = (component) => {
       {component}
     </Route>,
   ),
-  ...history };
+  history };
 };
 
 // Props para o component de funcionar corretamente.
