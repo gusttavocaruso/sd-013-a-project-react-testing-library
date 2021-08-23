@@ -66,4 +66,4 @@ describe('Pokemon.js Tests', () => {
   });
 });
 
-// Alteração para novo commit 
+// Alteração para novo commit
