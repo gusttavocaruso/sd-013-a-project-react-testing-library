@@ -6,7 +6,7 @@ import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
 
 describe('Testa a página FavoritesPokemons', () => {
-  it('Testa se renderiza "No favorite pokemon found" se não existir pokemons', () => {
+  test('Testa se renderiza "No favorite pokemon found" se não existir pokemons', () => {
     renderWithRouter(<FavoritePokemons />);
 
     const msg = screen.getByText('No favorite pokemon found');
@@ -15,7 +15,7 @@ describe('Testa a página FavoritesPokemons', () => {
     cleanup();
   });
 
-  it('Testa se existem pokémons favoritos', () => {
+  test('Testa se existem pokémons favoritos', () => {
     renderWithRouter(<App />);
 
     userEvent.click(screen.getByText('More details'));
