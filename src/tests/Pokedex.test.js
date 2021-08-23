@@ -15,7 +15,7 @@ const withRenderJosueAproves = (component) => {
       {component}
     </Route>,
   ),
-  history };
+  ...history };
 };
 
 // Props para o component de funcionar corretamente.
@@ -143,12 +143,31 @@ describe('Teste se a Pokédex tem os botões de filtro', () => {
 
 describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
   it('O texto do botão deve ser All.', () => {
+    expect(screen.getByRole('button', {
+      name: /all/i,
+    })).toHaveTextContent('All');
   });
 
   it('A Pokedéx deverá mostrar os Pokémons normalmente (sem filtros) quando o botão All'
   + 'for clicado.', () => {
+    const bntAll = screen.getByRole('button', {
+      name: /all/i,
+    });
+    const bntPsychic = screen.getByRole('button', {
+      name: /psychic/i,
+    });
+
+    userEvent.click(bntPsychic);
+    expect(currentPokemon()).toHaveTextContent('Alakazam');
+    userEvent.click(bntAll);
+    expect(currentPokemon()).toHaveTextContent('Pikachu');
   });
 
   it('Ao carregar a página, o filtro selecionado deverá ser All.', () => {
+    const bntBug = screen.getByRole('button', { name: /bug/i });
+    userEvent.click(bntBug);
+    expect(currentPokemon()).toHaveTextContent('Caterpie');
+    userEvent.click(screen.getByText(/all/i));
+    expect(currentPokemon()).toHaveTextContent('Pikachu');
   });
 });
