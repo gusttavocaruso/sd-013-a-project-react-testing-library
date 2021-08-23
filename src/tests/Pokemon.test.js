@@ -3,10 +3,13 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import pokemons from '../data';
 
 describe('Pokemon.js Tests', () => {
   test('É renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
+
+    const { averageWeight: { value, measurementUnit } } = pokemons[1];
 
     const pokemonName = screen.getByText(/Pikachu/i);
     expect(pokemonName).toBeInTheDocument();
@@ -15,7 +18,7 @@ describe('Pokemon.js Tests', () => {
     expect(pokemonType).toHaveTextContent(/electric/i);
 
     const pokemonWeight = screen.getByTestId('pokemon-weight');
-    expect(pokemonWeight).toBeInTheDocument(/average weight:/i);
+    expect(pokemonWeight).toBeInTheDocument(`Average weight: ${value} ${measurementUnit}`);
 
     const pokemonImg = screen.getByRole('img', {
       name: 'Pikachu sprite',
