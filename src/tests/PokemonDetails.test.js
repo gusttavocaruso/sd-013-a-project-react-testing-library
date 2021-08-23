@@ -10,7 +10,7 @@ describe('Requisito 7 - Verificando funcionamento do '
     + ' selecionado são mostradas na tela.', () => {
     renderWithRouter(<App />);
 
-    const linkDetails = screen.getByRole('link', { name: 'More details' });
+    const linkDetails = screen.getByRole('link', { name: /More details/i });
     fireEvent.click(linkDetails);
 
     const titleH2 = screen.getByRole('heading', { level: 2, name: 'Pikachu Details' });
@@ -44,6 +44,29 @@ describe('Requisito 7 - Verificando funcionamento do '
 
     maps.forEach((image, index) => {
       expect(image).toHaveAttribute('src', pokemons[0].foundAt[index].map);
-    })
+    });
+  });
+
+  it('Verirfica se o usuário pode favoritar um pokémon'
+    + ' através da página de detalhes.', () => {
+    renderWithRouter(<App />);
+
+    const linkDetails = screen.getByRole('link', { name: 'More details' });
+    fireEvent.click(linkDetails);
+
+    const checkbox = screen.getByRole('checkbox', { name: /pokémon favoritado\?/i });
+    expect(checkbox).toBeInTheDocument();
+
+    const checkboxlabel = screen.getByLabelText('Pokémon favoritado?');
+    expect(checkboxlabel).toBeInTheDocument();
+
+    fireEvent.click(checkbox);
+
+    const favoritado = screen.getByAltText(/is marked as favorite/i);
+    expect(favoritado).toBeInTheDocument();
+
+    fireEvent.click(checkbox);
+
+    expect(favoritado).not.toBeInTheDocument();
   });
 });
