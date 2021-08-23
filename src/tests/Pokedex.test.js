@@ -7,6 +7,7 @@ import pokemons from '../data';
 
 describe('Teste o componente <App.js />', () => {
   const namepoke = 'pokemon-name';
+  const nextpoke = 'next-pokemon';
 
   it('will test the title of page pokedex', () => {
     renderWithRouter(<App />);
@@ -20,7 +21,7 @@ describe('Teste o componente <App.js />', () => {
       renderWithRouter(<App />);
 
       const firstPokemon = screen.getByTestId(namepoke).innerHTML;
-      const buttonNextPokemon = screen.getByTestId('next-pokemon');
+      const buttonNextPokemon = screen.getByTestId(nextpoke);
       expect(buttonNextPokemon).toHaveTextContent('Próximo pokémon');
 
       pokemons.forEach(() => userEvent.click(buttonNextPokemon));
@@ -46,7 +47,7 @@ describe('Teste o componente <App.js />', () => {
 
     const pokemonsType = pokemons.filter((pokemon) => pokemon.type === 'Fire')
       .map((pokemon) => pokemon.type);
-    const buttonNextPokemon = screen.getByTestId('next-pokemon');
+    const buttonNextPokemon = screen.getByTestId(nextpoke);
     userEvent.click(screen.getByText('Fire'));
     const response = pokemonsType.every((pokemon) => {
       userEvent.click(buttonNextPokemon);
@@ -65,7 +66,7 @@ describe('Teste o componente <App.js />', () => {
     const firstPokemon = screen.getByTestId(namepoke).innerHTML;
     userEvent.click(screen.getByText('Fire'));
     userEvent.click(allButton);
-    const buttonNextPokemon = screen.getByTestId('next-pokemon');
+    const buttonNextPokemon = screen.getByTestId(nextpoke);
     pokemons.forEach(() => userEvent.click(buttonNextPokemon));
     const pokemonAfterTurnAllPokemons = screen.getByTestId(namepoke).innerHTML;
 
