@@ -162,12 +162,4 @@ describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
     userEvent.click(bntAll);
     expect(currentPokemon()).toHaveTextContent('Pikachu');
   });
-
-  it('Ao carregar a página, o filtro selecionado deverá ser All.', () => {
-    const bntBug = screen.getByRole('button', { name: /bug/i });
-    userEvent.click(bntBug);
-    expect(currentPokemon()).toHaveTextContent('Caterpie');
-    userEvent.click(screen.getByText(/all/i));
-    expect(currentPokemon()).toHaveTextContent('Pikachu');
-  });
 });
