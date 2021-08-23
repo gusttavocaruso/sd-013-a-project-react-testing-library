@@ -82,7 +82,10 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     });
     it('Todas as localizações do Pokémon devem ser mostradas na seção de'
     + ' detalhes.', () => {
-
+      const pokemonLocation = screen.getAllByRole('img', {
+        name: `${pokemons[0].name} location`,
+      });
+      expect(pokemonLocation).toHaveLength(2);
     });
     it('Devem ser exibidos, o nome da localização e uma imagem do mapa em cada'
     + ' localização;', () => {
