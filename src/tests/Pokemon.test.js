@@ -15,7 +15,7 @@ describe('Pokemon.js Tests', () => {
     expect(pokemonType).toHaveTextContent(/electric/i);
 
     const pokemonWeight = screen.getByTestId('pokemon-weight');
-    expect(pokemonWeight).toHaveTextContent(/average weight:/i);
+    expect(pokemonWeight).toBeInTheDocument(/average weight:/i);
 
     const pokemonImg = screen.getByRole('img', {
       name: 'Pikachu sprite',
