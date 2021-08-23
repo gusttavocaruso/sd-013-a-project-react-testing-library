@@ -1,8 +1,7 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import React from 'react';
 import { Router } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
 
