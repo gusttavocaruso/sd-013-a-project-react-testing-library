@@ -44,7 +44,9 @@ const currentPokemon = () => screen.getByTestId('pokemon-name');
 
 describe('Teste o componente "<Pokedex.js />"', () => {
   it('Teste se página contém um heading "h2" com o texto "Encountered pokémons".', () => {
-    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
+    const title = screen.getByRole('heading', { level: 2 });
+    expect(title).toBeInTheDocument();
+    expect(title).toHaveTextContent('Encountered pokémons');
   });
 });
 
