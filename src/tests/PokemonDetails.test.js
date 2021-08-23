@@ -53,10 +53,17 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     });
     it('Não deve existir o link de navegação para os detalhes do Pokémon selecionado.',
       () => {
-
+        const moreDetails = screen.queryByRole('link', {
+          name: /more details/i,
+        });
+        expect(moreDetails).toBeNull();
       });
     it('A seção de detalhes deve conter um heading "h2" com o texto "Summary".', () => {
-
+      const summary = screen.getByRole('heading', {
+        level: 2,
+        name: /summary/i,
+      });
+      expect(summary).toHaveTextContent('Summary');
     });
     it('A seção de detalhes deve conter um parágrafo com o resumo do Pokémon específico'
     + ' sendo visualizado.', () => {
