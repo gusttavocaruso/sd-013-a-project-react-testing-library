@@ -68,7 +68,7 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     it('A seção de detalhes deve conter um parágrafo com o resumo do Pokémon específico'
     + ' sendo visualizado.', () => {
       const specificPokemon = screen.getByText(
-        /this intelligent pokémon .* to make them tender enough to eat\./i,
+        pokemons[0].summary,
       );
       expect(specificPokemon).toHaveTextContent(pokemons[0].summary);
     });
@@ -77,7 +77,8 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
   + 'do pokémon', () => {
     it('Na seção de detalhes deverá existir um heading "h2" com o texto "Game Locations '
     + 'of <name>"; onde "<name>" é o nome do Pokémon exibido.', () => {
-
+      const gameLocationsOf = screen.getByText(`Game Locations of ${pokemons[0].name}`);
+      expect(gameLocationsOf).toHaveTextContent(`Game Locations of ${pokemons[0].name}`);
     });
     it('Todas as localizações do Pokémon devem ser mostradas na seção de'
     + ' detalhes.', () => {
