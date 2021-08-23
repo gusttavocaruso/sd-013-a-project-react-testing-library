@@ -67,7 +67,10 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     });
     it('A seção de detalhes deve conter um parágrafo com o resumo do Pokémon específico'
     + ' sendo visualizado.', () => {
-
+      const specificPokemon = screen.getByText(
+        /this intelligent pokémon .* to make them tender enough to eat\./i,
+      );
+      expect(specificPokemon).toHaveTextContent(pokemons[0].summary);
     });
   });
   describe('Teste se existe na página uma seção com os mapas contendo as localizações'
