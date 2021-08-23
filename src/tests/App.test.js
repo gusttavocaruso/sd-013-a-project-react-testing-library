@@ -5,7 +5,7 @@ import App from '../App';
 import historyRender from '../components/History';
 
 describe('Testes do App.js', () => {
-  it('Texta link de navegação "Home"', () => {
+  it('Testando link de navegação "Home"', () => {
     const { history } = historyRender(<App />);
     const home = screen.getByRole('link', { name: /Home/i });
     expect(home).toBeDefined();
@@ -15,7 +15,7 @@ describe('Testes do App.js', () => {
     expect(pathname).toBe('/');
   });
 
-  it('Texta link de navegação "About"', () => {
+  it('Testando link de navegação "About"', () => {
     const { history } = historyRender(<App />);
     const about = screen.getByRole('link', { name: /About/i });
     expect(about).toBeDefined();
@@ -25,7 +25,7 @@ describe('Testes do App.js', () => {
     expect(pathname).toBe('/about');
   });
 
-  it('Texta link de navegação "Favorite Pokemons"', () => {
+  it('Testando link de navegação "Favorite Pokemons"', () => {
     const { history } = historyRender(<App />);
     const favorite = screen.getByRole('link', { name: /Favorite Pokémons/i });
     expect(favorite).toBeDefined();
@@ -35,7 +35,7 @@ describe('Testes do App.js', () => {
     expect(pathname).toBe('/favorites');
   });
 
-  it('Testa página "Not Found"', () => {
+  it('Testando página "Not Found"', () => {
     const { history } = historyRender(<App />);
     history.push('/notFound');
     const notfound = screen.queryByText(/not found/i);
