@@ -6,19 +6,25 @@ import App from '../App';
 describe('Testa componente app', () => {
   test('Testa link Home', () => {
     renderWithRouter(<App />);
-    const elementText = screen.getByText(/Home/);
+    const elementText = screen.getByRole('link', {
+      name: /home/i,
+    });
     expect(elementText).toBeInTheDocument();
   });
 
   test('Testa link About', () => {
     renderWithRouter(<App />);
-    const elementText = screen.getByText(/About/);
+    const elementText = screen.getByRole('link', {
+      name: /about/i,
+    });
     expect(elementText).toBeInTheDocument();
   });
 
   test('Testa link favoritePokemon', () => {
     renderWithRouter(<App />);
-    const elementText = screen.getByText(/Favorite Pokémon/);
+    const elementText = screen.getByRole('link', {
+      name: /favorite pokémon/i,
+    });
     expect(elementText).toBeInTheDocument();
   });
 });
