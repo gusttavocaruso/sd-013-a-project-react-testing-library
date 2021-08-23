@@ -26,7 +26,8 @@ describe('Requisito 5.2 - Verificando o fluxo do botão "Próximo pokémon"', ()
     renderWithRouter(<App />);
   });
 
-  it('Checa se o próximo pokémon aparece, e se aparece apenas pokémon um por vez', () => {
+  it('Verifica se o próximo pokémon aparece ao clicar, '
+     + 'e se aparece apenas pokémon um por vez', () => {
     fireEvent.click(screen.getByText('Home'));
     fireEvent.click(screen.getByText(nextPokemon));
 
@@ -37,8 +38,11 @@ describe('Requisito 5.2 - Verificando o fluxo do botão "Próximo pokémon"', ()
 
     const next2 = screen.getByText('Caterpie');
     expect(next2).toBeInTheDocument();
+  });
 
-    const TOTALCLICKS = 6;
+  it('Verifica se o primeiro Pokémon da lista aarece ao clicar no botão, '
+     + 'se estiver no último Pokémon da lista', () => {
+    const TOTALCLICKS = 8;
 
     for (let cliques = 0; cliques <= TOTALCLICKS; cliques += 1) {
       fireEvent.click(screen.getByText(nextPokemon));
@@ -55,15 +59,21 @@ describe('Requisito 5.3 - Verificando os botões de filtro', () => {
     renderWithRouter(<App />);
   });
 
+  // Agradeço ao Rogério P. da Silva 1990 cv por não me deixar com preguiça de fazer o map
   it('Verifica se existe um botao de filtro para cada tipo de Pokemon', () => {
-    const pokeType = screen.getAllByTestId('pokemon-type-button');
-    expect(pokeType[0]).toHaveTextContent('Electric');
-    expect(pokeType[1]).toHaveTextContent('Fire');
-    expect(pokeType[2]).toHaveTextContent('Bug');
-    expect(pokeType[3]).toHaveTextContent('Poison');
-    expect(pokeType[4]).toHaveTextContent('Psychic');
-    expect(pokeType[5]).toHaveTextContent('Normal');
-    expect(pokeType[6]).toHaveTextContent('Dragon');
+    const types = [
+      'Electric',
+      'Fire',
+      'Bug',
+      'Poison',
+      'Psychic',
+      'Normal',
+      'Dragon',
+    ];
+
+    const pokeTypes = screen.getAllByTestId('pokemon-type-button');
+    const typesList = pokeTypes.map((type) => type.innerHTML);
+    expect(typesList).toEqual(types);
   });
 
   it('Verifica para cada filtro, que o botão "Próximo" roda apenas internamente', () => {
@@ -76,17 +86,38 @@ describe('Requisito 5.3 - Verificando os botões de filtro', () => {
     expect(next2).toBeInTheDocument();
   });
 
-  it('Verifica se a Pokédex contém um botão "All", para resetar o filtro', () => {
+  it('Verifica se a Pokédex contém um botão "All", para resetar o filtro, '
+   + 'e se este botão está sempre visivel', () => {
     const buttonAll = screen.getByText('All');
     expect(buttonAll).toBeInTheDocument();
+
+    const TOTALCLICKS = 8;
+
+    for (let cliques = 0; cliques <= TOTALCLICKS; cliques += 1) {
+      fireEvent.click(screen.getByText(nextPokemon));
+      expect(buttonAll).toBeInTheDocument();
+    }
   });
 
   it('Verifica ao clicar em "All", a Pokedéx reseta a lista', () => {
     const buttonAll = screen.getByText('All');
+
     fireEvent.click(screen.getByText('Fire'));
     const first = screen.getByText('Charmander');
     expect(first).toBeInTheDocument();
     fireEvent.click(buttonAll);
+    const reseted = screen.getByText('Pikachu');
+    expect(reseted).toBeInTheDocument();
+  });
+
+  it('Verifica que ao carregar a página, o filtro selecionado deverá ser "All"', () => {
+    fireEvent.click(screen.getByText('Fire'));
+    const fireOne = screen.getByText('Charmander');
+    expect(fireOne).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('About'));
+    fireEvent.click(screen.getByText('Home'));
+
     const reseted = screen.getByText('Pikachu');
     expect(reseted).toBeInTheDocument();
   });

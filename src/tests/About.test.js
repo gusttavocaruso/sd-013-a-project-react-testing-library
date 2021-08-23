@@ -13,7 +13,8 @@ describe('Requisito 2 - Verificando funcionamento do componente <About />', () =
     expect(h2.innerHTML).toStrictEqual('About Pokédex');
   });
 
-  it('Verifica a existência de 2 parágrafos no documento', () => {
+  it('Verifica a existência de 2 parágrafos no documento, '
+     + 'com texto sobre a Pokédex', () => {
     const pokemonWord = screen.getAllByText(/Pokémons/);
     expect(pokemonWord).toHaveLength(2);
   });

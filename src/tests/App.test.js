@@ -30,7 +30,8 @@ describe('Requisito 1.2 - Verificando o comportamento dos links em <App />', () 
     navHistory = renderWithRouter(<App />).history;
   });
 
-  it('Ao clicar em "Home" redireciona para a Home', () => {
+  it('Verifica se ao clicar em "Home" redireciona a aplicação '
+     + 'para a Home do sistema', () => {
     const linkToHome = screen.getByRole('link', { name: 'Home' });
     expect(linkToHome).toBeInTheDocument();
 
@@ -39,7 +40,7 @@ describe('Requisito 1.2 - Verificando o comportamento dos links em <App />', () 
     expect(urlAtual).toStrictEqual('/');
   });
 
-  it('Ao clicar em "About" redireciona para About', () => {
+  it('Verifica se ao clicar em "About" redireciona a aplicação para página About', () => {
     const linkToAbout = screen.getByRole('link', { name: 'About' });
     expect(linkToAbout).toBeInTheDocument();
 
@@ -48,7 +49,8 @@ describe('Requisito 1.2 - Verificando o comportamento dos links em <App />', () 
     expect(urlAtual).toStrictEqual('/about');
   });
 
-  it('Ao clicar em "Favorite Pokémons" redireciona para Favorite Pokémons', () => {
+  it('Verifica se ao clicar em "Favorite Pokémons"'
+     + ' redireciona a aplicação para página Favorite Pokémons', () => {
     const linkToFavoritPokemons = screen.getByRole('link', { name: 'Favorite Pokémons' });
     expect(linkToFavoritPokemons).toBeInTheDocument();
 
@@ -57,7 +59,8 @@ describe('Requisito 1.2 - Verificando o comportamento dos links em <App />', () 
     expect(urlAtual).toStrictEqual('/favorites');
   });
 
-  it('Redireciona para a Not Found ao entrar com uma URL desconhecida.', () => {
+  it('Verifica se ao entrar com uma URL desconhecida '
+     + 'Redireciona a aplicação para a página Not Found', () => {
     navHistory.push('/uma-url-qualquer');
     const notFound = screen.getByText('Page requested not found');
     expect(notFound).toBeInTheDocument();
