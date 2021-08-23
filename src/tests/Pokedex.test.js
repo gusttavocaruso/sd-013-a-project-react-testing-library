@@ -1,6 +1,7 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
+import pokemons from '../data';
 import App from '../App';
 
 const nextPokemon = 'Próximo pokémon';
@@ -42,9 +43,9 @@ describe('Requisito 5.2 - Verificando o fluxo do botão "Próximo pokémon"', ()
 
   it('Verifica se o primeiro Pokémon da lista aarece ao clicar no botão, '
      + 'se estiver no último Pokémon da lista', () => {
-    const TOTALCLICKS = 8;
+    const TOTALCLICKS = pokemons.length;
 
-    for (let cliques = 0; cliques <= TOTALCLICKS; cliques += 1) {
+    for (let cliques = 0; cliques < TOTALCLICKS; cliques += 1) {
       fireEvent.click(screen.getByText(nextPokemon));
       const onlyOne = screen.getAllByTestId('pokemon-name');
       expect(onlyOne.length).toBe(1);
@@ -91,7 +92,7 @@ describe('Requisito 5.3 - Verificando os botões de filtro', () => {
     const buttonAll = screen.getByText('All');
     expect(buttonAll).toBeInTheDocument();
 
-    const TOTALCLICKS = 8;
+    const TOTALCLICKS = pokemons.length;
 
     for (let cliques = 0; cliques <= TOTALCLICKS; cliques += 1) {
       fireEvent.click(screen.getByText(nextPokemon));
