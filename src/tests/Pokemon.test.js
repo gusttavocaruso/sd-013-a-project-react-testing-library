@@ -33,16 +33,6 @@ describe('Pokemon.js Tests', () => {
     expect(history.location.pathname).toBe('/pokemons/25');
   });
 
-  test('Clicando no link do Pokémon, é feito o redirecionamento do app', () => {
-    const { history } = renderWithRouter(<App />);
-
-    const pokemonDetails1 = screen.getByRole('link', {
-      name: /More details/i,
-    });
-    userEvent.click(pokemonDetails1);
-    expect(history.location.pathname).toBe('/pokemons/25');
-  });
-
   test('Existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
 
@@ -65,5 +55,4 @@ describe('Pokemon.js Tests', () => {
     expect(favoritePokemon[0]).toHaveAttribute('src', '/star-icon.svg');
   });
 });
-
 // Alteração para novo commit
