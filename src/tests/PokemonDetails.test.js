@@ -96,25 +96,36 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     });
     it('A imagem da localização deve ter um atributo "src" com a URL da'
     + ' localização;', () => {
+      const imageLocations = screen.getAllByRole('img', {
+        name: `${pokemons[0].name} location`,
+      });
 
+      expect(imageLocations[0].getAttribute('src')).toBe(pokemons[0].foundAt[0].map);
+      expect(imageLocations[1].getAttribute('src')).toBe(pokemons[0].foundAt[1].map);
     });
     it('A imagem da localização deve ter um atributo "alt" com o texto "<name>'
     + ' location", onde "<name>" é o nome do Pokémon;', () => {
+      const imageLocations = screen.getAllByRole('img', {
+        name: `${pokemons[0].name} location`,
+      });
 
+      expect(imageLocations[0].getAttribute('alt')).toBe(`${pokemons[0].name} location`);
+      expect(imageLocations[1].getAttribute('alt')).toBe(`${pokemons[0].name} location`);
     });
   });
 
   describe('Teste se o usuário pode favoritar um pokémon através da página de'
   + ' detalhes.', () => {
     it('A página deve exibir um "checkbox" que permite favoritar o Pokémon.', () => {
-
+      const pokemonFavorite = screen.getByText(/pokémon favoritado\?/i);
+      expect(pokemonFavorite).toHaveTextContent('Pokémon favoritado?');
     });
-    it('Cliques alternados no "checkbox" devem adicionar e remover respectivamente o'
-    + ' Pokémon da lista de favoritos.', () => {
+    // it('Cliques alternados no "checkbox" devem adicionar e remover respectivamente o'
+    // + ' Pokémon da lista de favoritos.', () => {
 
-    });
-    it('O "label" do "checkbox" deve conter o texto "Pokémon favoritado?".', () => {
+    // });
+    // it('O "label" do "checkbox" deve conter o texto "Pokémon favoritado?".', () => {
 
-    });
+    // });
   });
 });
