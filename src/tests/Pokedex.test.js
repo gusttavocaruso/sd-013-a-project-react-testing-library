@@ -9,7 +9,7 @@ import pokemons from '../data';
 const checkNextButton = () => {
   // Passo a passo:
   // testar o botão de próximo
-  const nextButton = screen.getByTestId('next-pokemon');
+  const nextButton = screen.getByRole('button', { name: /próximo pokémon/i });
   expect(nextButton).toBeInTheDocument();
 
   // pegar o nome do pokemon renderizado na tela pelo data-testid
@@ -35,6 +35,7 @@ describe('Verifica componente Pokedéx', () => {
     renderWithRouter(<App />);
 
     const pokedexText = screen.getByRole('heading', {
+      level: 2,
       name: /Encountered pokémons/i,
     });
     expect(pokedexText).toBeInTheDocument();
