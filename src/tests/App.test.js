@@ -20,4 +20,27 @@ describe('Testa os componentes do App', () => {
     const favorite = screen.getByRole('link', { name: /Favorite Pokémons/i });
     expect(favorite).toBeInTheDocument();
   });
+  it('Teste se é redirecionada para a pág inicial, na URL / ao clicar no Home', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/');
+    userEvent.click(screen.getByRole('link', { name: /Home/i }));
+    expect(history.location.pathname).toBe('/');
+  });
+  it('Teste se é redirecionada para a pág About, na URL /about', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/about');
+    userEvent.click(screen.getByRole('link', { name: /About/i }));
+    expect(history.location.pathname).toBe('/about');
+  });
+  it('Teste se é redirecionada para a pág FavPoke, na URL /favorites', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/favorites');
+    userEvent.click(screen.getByRole('link', { name: /Favorite Pokémons/i }));
+    expect(history.location.pathname).toBe('/favorites');
+  });
+  it('Teste se é redirect para a pág NotFound ao entrar em uma URL desconhecida', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/not-found');
+    expect(history.location.pathname).toBe('/not-found');
+  });
 });
