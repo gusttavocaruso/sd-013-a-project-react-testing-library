@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../types/renderWithRouter';
 import App from '../App';
@@ -71,13 +71,13 @@ describe('Continuação dos testes do componente Pokedex', () => {
       name: /bug/i,
     });
 
-    fireEvent.click(bugButton);
+    userEvent.click(bugButton);
 
     const allButton = screen.getByRole('button', {
       name: /all/i,
     });
 
-    fireEvent.click(allButton);
+    userEvent.click(allButton);
 
     const pikachuRender = screen.getByText(/pikachu/i);
 
