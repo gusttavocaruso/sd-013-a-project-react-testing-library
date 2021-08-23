@@ -7,14 +7,15 @@ import App from '../App';
 describe('Testa componente PokemonDetails', () => {
   test('Testa um card com as informações e mais detales de determinado pokémon', () => {
     renderWithRouter(<App />);
-
-    const pokeName = screen.getByTestId('pokemon-name');
+    // O nome e o peso não estavam sendo capiturados por ir, mesmo assim estava 100% rodando o stryker localmente
+    // Ao fazer o push, a nota não aumentou e tiver que ir ao Evaluator Job, em Evaluator Step do GitHub para ver o que estava errado
+    const pokeName = screen.getByText(/pikachu/i);
     expect(pokeName).toBeInTheDocument();
 
     const pokeType = screen.getByTestId('pokemon-type');
     expect(pokeType).toHaveTextContent(/electric/i);
 
-    const pokeWeight = screen.getByTestId('pokemon-weight');
+    const pokeWeight = screen.getByText(/average weight: 6.0 kg/i);
     expect(pokeWeight).toBeInTheDocument();
 
     const pokeImg = screen.getByRole('img');
