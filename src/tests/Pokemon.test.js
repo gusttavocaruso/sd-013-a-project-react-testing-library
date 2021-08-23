@@ -56,3 +56,4 @@ describe('Pokemon.js Tests', () => {
   });
 });
 // Alteração para novo commit, tentando arrumar deletando o node-modules
+// Alterando a versão do node
