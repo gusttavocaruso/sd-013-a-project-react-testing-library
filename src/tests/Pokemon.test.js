@@ -14,8 +14,8 @@ describe('Pokemon.js Tests', () => {
     const pokemonType = screen.getByTestId('pokemon-type');
     expect(pokemonType).toHaveTextContent(/electric/i);
 
-    const pokemonWeight = screen.getByText(/6.0 kg/i);
-    expect(pokemonWeight).toBeInTheDocument();
+    const pokemonWeight = screen.getByTestId('pokemon-weight');
+    expect(pokemonWeight).toHaveTextContent(/average weight:/i);
 
     const pokemonImg = screen.getByRole('img', {
       name: 'Pikachu sprite',
@@ -57,3 +57,4 @@ describe('Pokemon.js Tests', () => {
 });
 // Alteração para novo commit, tentando arrumar deletando o node-modules
 // Alterando a versão do node
+// Alterando primeiro teste deste arquivo
