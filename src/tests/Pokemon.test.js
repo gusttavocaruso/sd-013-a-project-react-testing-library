@@ -65,3 +65,5 @@ describe('Pokemon.js Tests', () => {
     expect(favoritePokemon[0]).toHaveAttribute('src', '/star-icon.svg');
   });
 });
+
+// Alteração para novo commit 
