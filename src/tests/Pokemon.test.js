@@ -2,6 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
 
@@ -49,7 +50,7 @@ describe('Teste o componente "<Pokemon.js />"', () => {
     + ' da imagem e um atributo alt com o texto <name> sprite, onde <name> é o nome do'
     + ' pokémon.', () => {
       const expected = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
-      const imagePokemon = screen.getByRole('img');
+      const imagePokemon = screen.getByAltText(`${pokemon.name} sprite`);
       expect(imagePokemon.getAttribute('src')).toBe(expected);
     });
   });
@@ -57,26 +58,22 @@ describe('Teste o componente "<Pokemon.js />"', () => {
   describe('Teste o card do Pokémon.', () => {
     it('Contém um link de navegação para exibir detalhes deste Pokémon.O link deve'
     + ' possuir a URL /pokemons/<id>, onde <id> é o id do Pokémon exibido.', () => {
-    });
-  });
-
-  describe('Teste quando clicar no link de navegação do Pokémon.', () => {
-    it('Redirecionamento da aplicação para a página de detalhes de'
-    + ' Pokémon.', () => {
-
-    });
-  });
-
-  describe('Teste se a URL exibida no navegador muda.', () => {
-    it('Para /pokemon/<id>, onde <id> é o id do Pokémon.', () => {
-
+      const expected = `/pokemons/${pokemon.id}`;
+      const mareDetails = screen.getByRole('link', {
+        name: /more details/i,
+      });
+      expect(mareDetails.getAttribute('href')).toBe(expected);
     });
   });
 
   describe('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
     it('O ícone deve ser uma imagem com o atributo src contendo o caminho'
   + ' /star-icon.svg;', () => {
-
+      withRenderJosueAproves(
+        <Pokemon isFavorite pokemon={ pokemon } />,
+      );
+      const startFavorite = screen.getByAltText(`${pokemon.name} is marked as favorite`);
+      expect(startFavorite.getAttribute('src')).toBe('/star-icon.svg');
     });
     it('A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite,'
     + ' onde <pokemon> é o nome do Pokémon exibido.', () => {
