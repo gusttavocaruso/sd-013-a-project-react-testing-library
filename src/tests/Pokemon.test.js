@@ -8,17 +8,17 @@ describe('Pokemon.js Tests', () => {
   test('É renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
 
-    const pokemonName = screen.getByTestId('pokemon-name');
+    const pokemonName = screen.getByText(/Pikachu/i);
     expect(pokemonName).toBeInTheDocument();
 
     const pokemonType = screen.getByTestId('pokemon-type');
     expect(pokemonType).toHaveTextContent(/electric/i);
 
-    const pokemonWeight = screen.getByTestId('pokemon-weight');
+    const pokemonWeight = screen.getByText(/6.0 kg/i);
     expect(pokemonWeight).toBeInTheDocument();
 
     const pokemonImg = screen.getByRole('img', {
-      name: /sprite/i,
+      name: 'Pikachu sprite',
     });
     expect(pokemonImg).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   });
