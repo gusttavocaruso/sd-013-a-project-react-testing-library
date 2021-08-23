@@ -2,24 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { createMemoryHistory } from 'history';
 import App from '../App';
 import NotFound from '../components/NotFound';
-
-function renderWithRouter(component) {
-  const historyMock = createMemoryHistory();
-
-  const view = render(
-    <Router history={ historyMock }>
-      {component}
-    </Router>,
-  );
-
-  return {
-    ...view,
-    history: historyMock,
-  };
-}
+import renderWithRouter from './renderWithRouter';
 
 describe('App.js tests', () => {
   test('Verifica se ao clicar no Home renderiza a página inicial', () => {
@@ -76,7 +61,7 @@ describe('App.js tests', () => {
   test('Verifica se carrega pagina Not Found', () => {
     const { history } = renderWithRouter(<NotFound />);
 
-    history.push('/rota-teste');
+    history.push('/');
 
     const notFoundText = screen.getByText('Page requested not found');
 

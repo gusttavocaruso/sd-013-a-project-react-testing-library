@@ -32,7 +32,7 @@ describe('About.js tests', () => {
 
     userEvent.click(about);
 
-    const paragraph1 = screen.getByText(/this application/i);
+    const paragraph1 = screen.getByText((content) => content.startsWith('One can'));
 
     expect(paragraph1).toBeInTheDocument();
   });
@@ -48,7 +48,7 @@ describe('About.js tests', () => {
 
     userEvent.click(about);
 
-    const paragraph2 = screen.getByText(/one can/i);
+    const paragraph2 = screen.getByText((content) => content.startsWith('This app'));
 
     expect(paragraph2).toBeInTheDocument();
   });
