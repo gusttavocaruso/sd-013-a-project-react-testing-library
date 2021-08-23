@@ -89,7 +89,10 @@ describe('Teste o componente "<PokemonDetails.js />"', () => {
     });
     it('Devem ser exibidos, o nome da localização e uma imagem do mapa em cada'
     + ' localização;', () => {
-
+      const pokemonLocation1 = screen.getByText(pokemons[0].foundAt[0].location);
+      const pokemonLocation2 = screen.getByText(pokemons[0].foundAt[1].location);
+      expect(pokemonLocation1).toHaveTextContent(pokemons[0].foundAt[0].location);
+      expect(pokemonLocation2).toHaveTextContent(pokemons[0].foundAt[1].location);
     });
     it('A imagem da localização deve ter um atributo "src" com a URL da'
     + ' localização;', () => {
