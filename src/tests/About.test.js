@@ -5,23 +5,23 @@ import RenderWithRouter from './RenderWithRouter';
 
 describe('Testa o componente About', () => {
   test('Testa se a página contém as informações sobre a Pokédex', () => {
-    RenderWithRouter(<About />); 
+    RenderWithRouter(<About />);
 
     const getTextPokedex = screen.getByText(/This application simulates a Pokédex/i);
-    expect(getTextPokedex).toBeInTheDocument(); 
+    expect(getTextPokedex).toBeInTheDocument();
   });
 
   test('Testa se About tem um heading h2 com o texto About Pokédex ', () => {
-    RenderWithRouter(<About />); 
+    RenderWithRouter(<About />);
 
     const getHeading = screen.getByRole('heading', {
       name: /About Pokédex/i,
-       level: 2,
+      level: 2,
     });
     expect(getHeading).toBeInTheDocument();
   });
 
-   test('Testa se a página contém 2 parágrafos', () => {
+  test('Testa se a página contém 2 parágrafos', () => {
     RenderWithRouter(<About />);
 
     const getParagraph = screen.getByText(/a digital encyclopedia containing/i);
@@ -31,7 +31,7 @@ describe('Testa o componente About', () => {
     expect(getParagraph2).toBeInTheDocument();
   });
 
-   test('Testa se a página contém uma imagem', () => {
+  test('Testa se a página contém uma imagem', () => {
     RenderWithRouter(<About />);
 
     const getImage = screen.getByRole('img');
