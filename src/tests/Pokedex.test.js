@@ -82,4 +82,9 @@ describe('Test Pokedex.js', () => {
     const buttonAll = screen.getByRole('button', { name: 'All' });
     expect(buttonAll).toBeVisible();
   });
+
+  it('should a button to go to the next Pokémon', () => {
+    const nextButton = screen.getByRole('button', { name: 'Próximo pokémon' });
+    expect(nextButton).toBeInTheDocument();
+  });
 });
