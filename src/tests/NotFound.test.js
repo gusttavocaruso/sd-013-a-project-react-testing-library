@@ -8,7 +8,6 @@ describe('Tests component NotFound', () => {
     renderWithRouter(<NotFound />);
     const heading = screen.getByRole('heading', {
       level: 2,
-      exact: true,
       name: 'Page requested not found Crying emoji',
     });
     expect(heading).toBeInTheDocument();
