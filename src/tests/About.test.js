@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import About from '../components/About';
 import renderWithRouter from '../renderWithRouter';
 
-describe('tests if component "about" has heading, paragraph and image elements.', () => {
+describe('Tests if component "about" has heading, paragraph and image elements.', () => {
   test('if heading is in the document', () => {
     renderWithRouter(<About />);
     const heading = screen.getByRole('heading', {

@@ -24,4 +24,11 @@ describe('Test component app.js to verify if it has valid links', () => {
     const { pathname } = history.location;
     expect(pathname).toBe('/favorites');
   });
+
+  test('if "not found" page is loaded when non-existing URL is entered', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/page/non-existent');
+    const notFound = screen.getByText(/not found/i);
+    expect(notFound).toBeInTheDocument();
+  });
 });
