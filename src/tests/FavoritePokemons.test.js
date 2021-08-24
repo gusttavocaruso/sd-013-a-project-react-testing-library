@@ -3,8 +3,6 @@ import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
-import { PokemonDetails } from '../components';
-// import userEvent from '@testing-library/user-event';
 
 describe('Test FavoritePokemons.js to verify if there are favorites pokemons', () => {
   test('if a message is displayed when no favorite pokemon is chosen', () => {
