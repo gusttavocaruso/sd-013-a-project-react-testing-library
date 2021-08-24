@@ -7,7 +7,8 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
   it('Teste se é renderizado um card com as informações de determinado pokémon.', () => {
     // Acessa os elementos da tela
     renderWithRouter(<App />);
-    // Pegando os elemntos pelo "data-id"
+
+    // Pegando os elementos pelo "data-id"
     const pokemonName = (screen.getByTestId('pokemon-name')).innerHTML;
     const pokemonType = (screen.getByTestId('pokemon-type')).innerHTML;
     const pokemonWeight = (screen.getByTestId('pokemon-weight')).innerHTML;
@@ -79,7 +80,7 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
     fireEvent.click(home);
 
     // Encontra a "estrela" que marca o pokemon como favorito
-    const starImage = screen.getByAltText(/is marked as favorite/i);
+    const starImage = screen.getByAltText(/Pikachu is marked as favorite/i);
 
     // Testa se a imagem está no documento e se o src contém o caminho "/star-icon.svg"
     expect(starImage).toBeInTheDocument();
