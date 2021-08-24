@@ -5,6 +5,7 @@ import App from '../App';
 import { LINK_TO_DETAILS_TEXT_CONTENT } from './Pokemon.test';
 import pokemons from '../data';
 
+const PATH = '/pokemons/25';
 const NUMBER_OF_IMGS_ON_SCREEN = 4;
 const getH2 = (text) => screen.getByRole('heading', {
   name: text,
@@ -14,7 +15,7 @@ const getH2 = (text) => screen.getByRole('heading', {
 describe('Test <PokemonDetails />', () => {
   it('should have all info about a Pokemon', () => {
     const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/25');
+    history.push(PATH);
 
     const pokemonName = screen.getByTestId('pokemon-name').textContent;
     const pokemonType = screen.getByTestId('pokemon-type').textContent;
@@ -40,8 +41,24 @@ describe('Test <PokemonDetails />', () => {
 
   it('should have a map section containing the Pokémon location', () => {
     const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/25');
+    history.push(PATH);
+
+    const location1 = screen.getByText('Kanto Viridian Forest');
+    const location2 = screen.getByText('Kanto Power Plant');
+    const allImgs = screen.getAllByRole('img');
 
     expect(getH2('Game Locations of Pikachu')).toBeInTheDocument();
+    expect(location1).toBeInTheDocument();
+    expect(location2).toBeInTheDocument();
+    expect(allImgs[2].src).toBe('https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
+    expect(allImgs[2].alt).toBe('Pikachu location');
+    expect(allImgs[3].src).toBe('https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
+    expect(allImgs[3].alt).toBe('Pikachu location');
+  });
+
+  it('should allow to favorite a Pokémon', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push(PATH);
+    expect(screen.getByLabelText('Pokémon favoritado?')).toBeInTheDocument();
   });
 });
