@@ -17,7 +17,7 @@ describe('App.js tests', () => {
     expect(link).toBeInTheDocument();
 
     const about = screen.getByRole('link', {
-      name: /Abou/i,
+      name: /About/i,
     });
     expect(about).toBeInTheDocument();
 
