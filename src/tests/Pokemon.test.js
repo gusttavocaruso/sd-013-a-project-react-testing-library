@@ -48,9 +48,8 @@ describe('Testa se o card é renderizado com as informações corretas do Pokém
 
     history.push('/');
     const pokeStar = screen.getByAltText('Pikachu is marked as favorite');
-    
+
     expect(pokeStar).toHaveAttribute('src', '/star-icon.svg');
     expect(pokeStar).toBeInTheDocument();
   });
-
 });
