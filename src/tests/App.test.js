@@ -3,7 +3,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-describe('Requisito 1.1, verifica existência de links no topo da página', () => {
+describe('Primeiro requisito: Links de navegação', () => {
   beforeEach(() => { // antes de cada teste, a renderização é resetada.
     renderWithRouter(<App />);
   });
