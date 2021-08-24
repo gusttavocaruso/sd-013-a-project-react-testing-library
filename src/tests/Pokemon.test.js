@@ -52,7 +52,8 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
 
   it('Teste se é feito o redirecionamento para a página de "MoreDetails"', () => {
     // Acessa os elementos da tela
-    renderWithRouter(<App />);
+    const { history } = renderWithRouter(<App />);
+    const { pathname } = history.location;
 
     // Pegando o link de "MoreDetails" e testando se está no documento
     const linkDetails = screen.getByRole('link', { name: /More details/i });
@@ -64,7 +65,9 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
     const h2Heading = screen.getByRole('heading',
       { name: /Details/i,
         level: 2 });
+
     expect(h2Heading).toBeInTheDocument();
+    expect(pathname).toBe('/pokemons/25');
   });
 
   it('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
