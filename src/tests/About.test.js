@@ -17,10 +17,10 @@ describe('Tests for the About.js component', () => {
 
   it('Checks if the page contains 2 (two) "P" elements with info about pokédex"', () => {
     renderWithRouter(<About />);
-    // Catches the "P" element by using the RegExp (/string/i) method and fetching the information to a new const through a screen.getByText method.
+    // Finds the "P" element with the desired text, by using the RegExp method (/string/i), and provides this information to a new const through a screen.getByText method to better organize the structure of the code.
     const firstText = /this application simulates a Pokédex/i;
     const firstPokedéxInfo = screen.getByText(firstText);
-    // It expects the "P" element, with the corresponding text captured by the RegEx method, to be in the document.
+    // It expects the "P" element, with the corresponding text fetched by the RegEx method, to be in the document.
     expect(firstPokedéxInfo).toBeInTheDocument();
     const secondText = /one can filter Pokémons by type/i;
     const secondPokedéxInfo = screen.getByText(secondText);

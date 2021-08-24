@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/dom';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
@@ -34,7 +34,7 @@ describe('Checks if the App.js is working properly.', () => {
     const homeLink = screen.getByRole('link', {
       name: 'Home',
     });
-    // We simulate a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
+    // Simulates a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
     fireEvent.click(homeLink);
     // Compares the navbar with the path desired by the user.
     expect(history.location.pathname).toBe('/');
@@ -48,12 +48,12 @@ describe('Checks if the App.js is working properly.', () => {
     const aboutLink = screen.getByRole('link', {
       name: 'About',
     });
-    // We simulate a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
+    // Simulates a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
     fireEvent.click(aboutLink);
     // Compares the navbar with the path desired by the user.
     expect(history.location.pathname).toBe('/about');
   });
-  it('Check if user is redirected to URL path by clicking on Favorite Pokémons', () => {
+  it('Check if the user is redirected to "/favorites" path by clicking on Favorite Pokémons', () => {
     // Catches the renderWithRouter history property so we can use it later.
     const { history } = renderWithRouter(<App />);
     // By using the history.push method, we insert the "/about" URL path into history memory.
@@ -62,7 +62,7 @@ describe('Checks if the App.js is working properly.', () => {
     const FavoriteLink = screen.getByRole('link', {
       name: 'Favorite Pokémons',
     });
-    // We simulate a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
+    // Simulates a click event on the Home link by using the "fireEvent.click" method and informing it the const that we just declared above.
     fireEvent.click(FavoriteLink);
     // Compares the navbar with the path desired by the user.
     expect(history.location.pathname).toBe('/favorites');
