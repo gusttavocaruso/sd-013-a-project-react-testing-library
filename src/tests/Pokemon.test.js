@@ -10,20 +10,12 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
     // Pegando os elemntos pelo "data-id"
     const pokemonName = (screen.getByTestId('pokemon-name')).innerHTML;
     const pokemonType = (screen.getByTestId('pokemon-type')).innerHTML;
-    const pokemonWeight = screen.getByTestId('pokemon-weight');
+    const pokemonWeight = (screen.getByTestId('pokemon-weight')).innerHTML;
 
-    // Verifico se o valor é o esperado
+    // Verifico se o valor é o esperado em cada variável
     expect(pokemonName).toBe('Pikachu');
     expect(pokemonType).toBe('Electric');
-
-    // Testa se está no documento
-    expect(pokemonWeight).toBeInTheDocument();
-
-    // Verifico se no texto de "pokemonWeight" contém o valor de 6.0 kg
-    expect(pokemonWeight.innerHTML).toContain('6.0 kg');
-
-    // teste se no texto de "pokemonWeight" contém o valor de 6.0 kg
-    expect(pokemonWeight.innerHTML).toContain('6.0 kg');
+    expect(pokemonWeight).toBe('Average weight: 6.0 kg');
 
     // Pegando a imagem do pokemon
     const pokemonImage = screen.getByAltText('Pikachu sprite');
@@ -53,13 +45,14 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
   it('Teste se é feito o redirecionamento para a página de "MoreDetails"', () => {
     // Acessa os elementos da tela
     const { history } = renderWithRouter(<App />);
-    const { pathname } = history.location;
-
+    
     // Pegando o link de "MoreDetails" e testando se está no documento
     const linkDetails = screen.getByRole('link', { name: /More details/i });
 
     // Clicando no link "MoreDetails"
     fireEvent.click(linkDetails);
+
+    const { pathname } = history.location;
 
     // Conferindo se o título h2 é da página de "MoreDetails" e testando se está no documento
     const h2Heading = screen.getByRole('heading',
