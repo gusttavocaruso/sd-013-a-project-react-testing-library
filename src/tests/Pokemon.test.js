@@ -45,7 +45,7 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
   it('Teste se é feito o redirecionamento para a página de "MoreDetails"', () => {
     // Acessa os elementos da tela
     const { history } = renderWithRouter(<App />);
-    
+
     // Pegando o link de "MoreDetails" e testando se está no documento
     const linkDetails = screen.getByRole('link', { name: /More details/i });
 
