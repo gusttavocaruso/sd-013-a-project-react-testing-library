@@ -79,8 +79,8 @@ describe(' Teste o componente <Pokemon.js /> (req6)', () => {
     fireEvent.click(favorite);
 
     // Encontra o link para a Home e clica nele.
-    const favPokemon = screen.getByText(/Home/i);
-    fireEvent.click(favPokemon);
+    const home = screen.getByText(/Home/i);
+    fireEvent.click(home);
 
     // Encontra a "estrela" que marca o pokemon como favorito
     const starImage = screen.getByAltText(/is marked as favorite/i);

@@ -22,7 +22,7 @@ describe('Teste o componente <FavoritePokemons.js />. (req3)', () => {
     expect(notFavorite).toBeInTheDocument();
   });
 
-  it('Teste se é exibido todos os cards de pokémons favoritados', async () => {
+  it('Teste se é exibido todos os cards de pokémons favoritados', () => {
     renderWithRouter(<App />);
     // Encontra o elemento "mais detalhes e clica nele"
     const moreDetails = screen.getByText(/More Details/i);
