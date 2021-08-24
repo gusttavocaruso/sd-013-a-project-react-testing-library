@@ -20,8 +20,8 @@ describe('App.js tests.', () => {
   test('Verifica se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     render(<About />);
 
-    expect(screen.getByTestId('paragraph1')).toBeDefined();
-    expect(screen.getByTestId('paragraph2')).toBeDefined();
+    expect(screen.getByText(/This application simulates /i)).toBeInTheDocument();
+    expect(screen.getByText(/One can filter Pokémons/i)).toBeInTheDocument();
   });
 
   test('Verifica se a página contém a seguinte imagem de uma Pokédex:', () => {

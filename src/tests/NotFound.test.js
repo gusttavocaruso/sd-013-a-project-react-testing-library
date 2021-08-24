@@ -17,6 +17,6 @@ describe('NotFound.js', () => {
     render(<NotFound />);
 
     const error404Gif = screen.getByRole('img');
-    expect(error404Gif.src).toContain('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+    expect(error404Gif).toContain('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
