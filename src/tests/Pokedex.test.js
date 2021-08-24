@@ -75,7 +75,6 @@ describe('Testes da Pokedex', () => {
     const ButtonNormal = screen.getByRole('button',
       { name: /Normal/ });
     expect(ButtonNormal).toBeInTheDocument();
-    expect(ButtonNormal).toBeInTheDocument();
     const ButtonDragon = screen.getByRole('button',
       { name: /Dragon/ });
     expect(ButtonDragon).toBeInTheDocument();
