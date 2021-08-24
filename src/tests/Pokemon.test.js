@@ -10,13 +10,14 @@ describe('Testa o componente Pokemon.js', () => {
     renderWithRouter(<App />);
 
     const pokeName = screen.getByTestId('pokemon-name');
-    expect(pokeName).toBeInTheDocument();
+    expect(pokeName).toHaveTextContent(pokemons[0].name);
 
     const pokeType = screen.getByTestId('pokemon-type');
     expect(pokeType).toHaveTextContent(pokemons[0].type);
 
-    const pokeWeight = screen.getByText(/average weight/i);
-    expect(pokeWeight).toBeInTheDocument();
+    const pokeWeight = screen.getByTestId('pokemon-weight');
+    expect(pokeWeight).toHaveTextContent(pokemons[0].averageWeight.value);
+    expect(pokeWeight).toHaveTextContent(pokemons[0].averageWeight.measurementUnit);
 
     const pokeImg = screen.getAllByRole('img');
     expect(pokeImg[0]).toHaveAttribute('src', pokemons[0].image);
