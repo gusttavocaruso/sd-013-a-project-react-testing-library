@@ -38,4 +38,19 @@ describe('Testa se o card é renderizado com as informações corretas do Pokém
     userEvent.click(pokeLink2);
     expect(history.location.pathname).toBe(pathName);
   });
+
+  it('Verifica o pókemon consegue ser favoritado', () => {
+    const { history } = renderWithRouter(<App />);
+    history.push(pathName);
+
+    const pokeFav = screen.getByText('Pokémon favoritado?');
+    userEvent.click(pokeFav);
+
+    history.push('/');
+    const pokeStar = screen.getByAltText('Pikachu is marked as favorite');
+    
+    expect(pokeStar).toHaveAttribute('src', '/star-icon.svg');
+    expect(pokeStar).toBeInTheDocument();
+  });
+
 });
