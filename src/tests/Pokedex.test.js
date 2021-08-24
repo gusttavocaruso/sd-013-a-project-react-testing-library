@@ -54,11 +54,14 @@ describe('Test Pokedex.js', () => {
   });
 
   it('should contain all buttons to filter Pokémons by its types', () => {
-    const buttons = screen.getAllByTestId('pokemon-type-button');
+    const buttonsType = screen.getAllByTestId('pokemon-type-button');
 
     POKEMON_TYPES.forEach((type, idx) => {
-      expect(POKEMON_TYPES[idx]).toBe(buttons[idx].textContent);
+      expect(POKEMON_TYPES[idx]).toBe(buttonsType[idx].textContent);
     });
+
+    clickButton('All');
+    expect(getH2('Encountered pokémons')).toBeInTheDocument();
   });
 
   it('should only exibit filtered Pokémons', () => {
