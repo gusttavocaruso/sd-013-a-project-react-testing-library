@@ -31,21 +31,23 @@ describe('Teste se é renderizado um card com as infos de determinado pokémon',
   test('se o nome correto do Pokémon é mostrado na tela', () => {
     renderWithRouter(<Pokemon pokemon={ pokemonMock } isFavorite={ {} } />);
 
-    const pokemonName = screen.getByTestId('pokemon-name');
+    const pokemonName = screen.getByText(pokemonMock.name);
     expect(pokemonName).toBeInTheDocument();
   });
 
   test('se o tipo correto do Pokémon é mostrado na tela', () => {
     renderWithRouter(<Pokemon pokemon={ pokemonMock } isFavorite={ {} } />);
 
-    const pokemonType = screen.getByText(pokemonMock.type); // usei getByText porque o stryker recebia uma string vazia
+    const pokemonType = screen.getByText(pokemonMock.type);
     expect(pokemonType).toBeInTheDocument();
   });
 
   test('se o peso do Pokémon é mostrado em um formato específico', () => {
     renderWithRouter(<Pokemon pokemon={ pokemonMock } isFavorite={ {} } />);
 
-    const pokemonWeight = screen.getByTestId('pokemon-weight');
+    const { value, measurementUnit } = pokemonMock.averageWeight;
+    const pokemonWeight = screen.getByText(`Average weight: ${value} ${measurementUnit}`);
+
     expect(pokemonWeight).toBeInTheDocument();
   });
 
