@@ -4,12 +4,12 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import renderWithRouter from './renderWithRouter';
-import pokemon from '../data';
+import pokemons from '../data';
 import App from '../App';
 
 // Código feito com a ajuda de Felipe Neves
 describe('Teste o componente <Pokemon.js />', () => {
-  const { id } = pokemon[0];
+  const { id } = pokemons[0];
   test('Teste se é renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
 
@@ -51,7 +51,7 @@ describe('Teste o componente <Pokemon.js />', () => {
 });
 
 describe('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
-  const { name } = pokemon[0];
+  const { name } = pokemons[0];
   test('O ícone deve ser uma imagem "/sta-icon.svg"', () => {
     renderWithRouter(<App />);
 
