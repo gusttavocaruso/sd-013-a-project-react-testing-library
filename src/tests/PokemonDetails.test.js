@@ -90,6 +90,6 @@ describe('PokemonDetails.js tests', () => {
     }));
 
     const getEkansMap = screen.getByAltText('Ekans location').src;
-    expect(getEkansMap).toBe('https://cdn2.bulbagarden.net/upload/e/ec/Johto_Goldenrod_City_Map.png')
+    expect(getEkansMap).toBe('https://cdn2.bulbagarden.net/upload/e/ec/Johto_Goldenrod_City_Map.png');
   });
 });
