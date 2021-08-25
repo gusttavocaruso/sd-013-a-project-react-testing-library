@@ -16,8 +16,8 @@ describe('NotFound.js', () => {
   test('Teste se página mostra a imagem `https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif`.', () => {
     render(<NotFound />);
 
-    const error404Gif = screen
+    const NotFondError = screen
       .getByAltText('Pikachu crying because the page requested was not found');
-    expect(error404Gif.src).toContain('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+    expect(NotFondError.src).toContain('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
