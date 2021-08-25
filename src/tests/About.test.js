@@ -2,6 +2,8 @@
 // https://www.w3.org/TR/html-aria/#docconformance
 // https://stackoverflow.com/questions/60509527/jestreact-native-testing-library-how-to-test-an-image-src
 
+// Requisito 2
+
 import React from 'react';
 import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
