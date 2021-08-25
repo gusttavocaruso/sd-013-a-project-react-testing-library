@@ -29,5 +29,3 @@ describe('Testando FavoritePokemons.js', () => {
     expect(searchPokemon).toBeInTheDocument();
   });
 });
-
-
