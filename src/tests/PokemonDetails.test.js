@@ -78,7 +78,7 @@ describe('PokemonDetails.js tests', () => {
 
   it('pegar mapa pokemom ekans', () => {
     renderWithRouter(<App />);
-    const { type, foundAt } = pokemons[3];
+    const { type } = pokemons[3];
 
     const getPoisonButton = screen.getByRole('button', {
       name: type,
