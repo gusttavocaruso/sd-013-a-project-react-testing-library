@@ -2,9 +2,14 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
+import pokemons from '../data';
 import App from '../App';
 
 describe('PokemonDetails.js tests', () => {
+  const {
+    name,
+    foundAt,
+  } = pokemons[0];
   it('Teste se as informações detalhadas do Pokémon selecionado renderizam', () => {
     renderWithRouter(<App />);
 
@@ -13,7 +18,7 @@ describe('PokemonDetails.js tests', () => {
     });
     userEvent.click(getLinkDetails);
 
-    const getText = screen.getByText(/pikachu details/i);
+    const getText = screen.getByText(`${name} Details`);
     expect(getText).toBeInTheDocument();
     expect(getLinkDetails).not.toBeInTheDocument();
 
@@ -38,7 +43,7 @@ describe('PokemonDetails.js tests', () => {
     userEvent.click(getLinkDetails);
 
     const getNewH2 = screen.getByRole('heading', {
-      name: /game locations of pikachu/i,
+      name: `Game Locations of ${name}`,
       level: 2,
     });
     expect(getNewH2).toBeInTheDocument();
@@ -49,7 +54,8 @@ describe('PokemonDetails.js tests', () => {
     const location2 = screen.getByText(/kanto power plant/i);
     expect(location2).toBeInTheDocument();
 
-    const getMap1 = screen.getByAltText(/Pikachu location/i);
-    expect(getMap1).toBeInTheDocument();
+    const getMap = screen.getAllByAltText(`${name} location`);
+    expect(getMap).toBeDefined();
+    expect(getMap.length).toEqual(foundAt.length);
   });
 });
