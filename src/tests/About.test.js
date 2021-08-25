@@ -10,7 +10,7 @@ describe('Teste se a página About contém as informações sobre a Pokédex.', 
       name: /About Pokédex/,
       level: 2,
     });
-    expect(aboutText).toBeInTheDocument('About Pokédex');
+    expect(aboutText).toBeInTheDocument();
   });
 });
 
