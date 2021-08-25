@@ -95,16 +95,20 @@ describe('Testa o componente "Pokedex".', () => {
     const botaoAll = screen.getByTestId('');
     expect(botaoAll).toBeInTheDocument();
 
-    userEvent.click(botaoAll);
-
     const botaoProximo = screen.getByRole('button', {
       name: /próximo pokémon/i,
     });
     expect(botaoProximo).toBeInTheDocument();
 
-    userEvent.click(botaoProximo);
+    userEvent.click(botaoAll);
 
-    const proxPoke = screen.getByTestId('pokemon-type');
-    expect(proxPoke).toHaveTextContent(/fire/i);
+    const pokeName = screen.getByTestId(pokemonName);
+    pokemons.forEach((pokemon) => {
+      expect(pokeName).toHaveTextContent(pokemon.name);
+
+      userEvent.click(botaoProximo);
+
+      expect(botaoAll).toBeInTheDocument();
+    });
   });
 });
