@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import NotFound from '../components/NotFound';
 
-describe('Quarto requisito', () => {
+describe('<NotFound /> Tests Sections', () => {
   beforeEach(() => {
     renderWithRouter(<NotFound />);
   });

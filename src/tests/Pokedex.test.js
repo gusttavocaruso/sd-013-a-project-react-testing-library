@@ -1,1 +1,3 @@
-test('', () => {});
+describe('<Pokedex /> Tests Section', () => {
+
+});
