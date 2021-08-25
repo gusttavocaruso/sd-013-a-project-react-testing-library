@@ -1,10 +1,13 @@
+// Código realizado com ajuda de Matheus Duarte que postou no Notios da BeeDevs
+
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
+import pokemons from '../data';
+import { Pokemon } from '../components';
 
-// const nextPokemon = 'Próximo pokémon';
 const pathName = '/pokemons/25';
 
 describe('Testa se o card é renderizado com as informações corretas do Pokémon', () => {
@@ -33,10 +36,15 @@ describe('Testa se o card é renderizado com as informações corretas do Pokém
   });
 
   test('Click button', () => {
-    const { history } = renderWithRouter(<App />);
+    const { id } = pokemons[0];
+    // Pego o primeiro pokemon do array pokemons de data quando ele ainda ñ está favoritado ainda com history zerado
+    const { history } = renderWithRouter(
+      <Pokemon isFavorite={ false } pokemon={ pokemons[0] } />,
+    );
+
     const pokeLink2 = screen.getByRole('link', { name: 'More details' });
     userEvent.click(pokeLink2);
-    expect(history.location.pathname).toBe(pathName);
+    expect(history.location.pathname).toBe(`/pokemons/${id}`);
   });
 
   it('Verifica o pókemon consegue ser favoritado', () => {
