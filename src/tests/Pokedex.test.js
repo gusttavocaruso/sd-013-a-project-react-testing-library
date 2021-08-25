@@ -93,7 +93,7 @@ describe('Testa o componente "Pokedex".', () => {
 
     // Código feito com a ajuda de Felipe Neves
     const botaoAll = screen.getByTestId('');
-    expect(botaoAll).toBeInTheDocument();
+    expect(botaoAll).toHaveTextContent(/all/i);
 
     const botaoProximo = screen.getByRole('button', {
       name: /próximo pokémon/i,
