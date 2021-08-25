@@ -31,6 +31,10 @@ describe('Testa componente "Pokedex.js"', () => {
   it('verifica se existem todos os botões de filtro', () => {
     renderWithRouter(<App />);
 
+    const getAllButtons = screen.getAllByTestId('pokemon-type-button');
+    const number = 7;
+    expect(getAllButtons.length).toBe(number);
+
     const allButtons = screen.getByRole('button', {
       name: /all/i,
     });
