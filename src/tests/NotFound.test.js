@@ -5,8 +5,8 @@ import NotFound from '../components/NotFound';
 
 afterEach(cleanup);
 
-describe('not found`s tests', () => {
-  it('tests if there is a h2 with "Page requested not found" on it', () => {
+describe('notfound.js` tests', () => {
+  it('tests if there are a h2 with "Page requested not found" on it', () => {
     renderWithRouter(<NotFound />);
     const h2 = screen.getByRole('heading', {
       name: /Page requested not found/,

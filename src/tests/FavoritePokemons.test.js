@@ -7,7 +7,7 @@ import App from '../App';
 
 afterEach(cleanup);
 
-describe('favorite pokemon`s tests', () => {
+describe('favoritepokemon.js` tests', () => {
   it('tests if "No favorite pokemon found" is on the screen', () => {
     renderWithRouter(<FavoritePokemons />);
     const message = screen.getByText('No favorite pokemon found');
