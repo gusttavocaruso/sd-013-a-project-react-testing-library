@@ -92,7 +92,7 @@ describe('Testa o componente "Pokedex".', () => {
     renderWithRouter(<App />);
 
     // Código feito com a ajuda de Felipe Neves
-    const botaoAll = screen.getByText(/all/i);
+    const botaoAll = screen.getByTestId('');
     expect(botaoAll).toHaveTextContent(/all/i);
     expect(botaoAll).toBeInTheDocument();
 
