@@ -115,8 +115,8 @@ describe('Teste se existe um ícone de estrela nos Pokémons favoritados.', () =
   test('se a imagem da estrela tem o atributo alt especifico', () => {
     renderWithRouter(<Pokemon pokemon={ pokemonMock } isFavorite={ {} } />);
 
-    const pokemonImage = screen.getByAltText(/is marked as favorite/i);
     const pokemonName = pokemonMock.name;
+    const pokemonImage = screen.getByAltText(/is marked as favorite/i);
 
     expect(pokemonImage).toHaveAttribute('alt', `${pokemonName} is marked as favorite`);
   });
