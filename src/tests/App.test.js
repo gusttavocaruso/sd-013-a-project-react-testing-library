@@ -32,5 +32,5 @@ describe('App.js tests', () => {
     userEvent.click(favoriteLink);
     expect(history.location.pathname).toBe('/favorites');
   });
-  // test broken lint
+  // test broken lint again
 });
