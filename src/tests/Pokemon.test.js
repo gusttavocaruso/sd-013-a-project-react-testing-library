@@ -46,7 +46,7 @@ describe('Tests component "Pokemon"', () => {
     fireEvent.click(check);
 
     expect(check.checked).toBeTruthy();
-    const icon = screen.getByAltText(/ *is marked as favorite/i);
+    const icon = screen.getByAltText(/Pikachu is marked as favorite/i);
     expect(icon).toHaveAttribute('src', '/star-icon.svg');
   });
 });
