@@ -1,10 +1,30 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { NotFound } from '../components';
 
 describe('NotFound.js', () => {
   test('Verifica se contém um heading `h2` `Page requested not found 😭`', () => {
     render(<NotFound />);
+
+    const notFond = screen.getByRole('heading', {
+      name: /Page requested not found/i,
+      level: 2,
+    });
+    expect(notFond).toBeInTheDocument();
+  });
+
+  test('Renderiza mensagen de página não encontrada', () => {
+    const historyMock = createMemoryHistory();
+
+    render(
+      <Router history={ historyMock }>
+        <NotFound />
+      </Router>,
+    );
+
+    historyMock.push('/rota-quebrada');
 
     const notFond = screen.getByRole('heading', {
       name: /Page requested not found/i,
