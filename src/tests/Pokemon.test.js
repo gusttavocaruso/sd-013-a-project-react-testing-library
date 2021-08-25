@@ -47,7 +47,7 @@ describe('Testa se o card é renderizado com as informações corretas do Pokém
     expect(history.location.pathname).toBe(`/pokemons/${id}`);
   });
 
-  it('Verifica o pókemon consegue ser favoritado', () => {
+  test('Verifica o pókemon consegue ser favoritado', () => {
     const { history } = renderWithRouter(<App />);
     history.push(pathName);
 
