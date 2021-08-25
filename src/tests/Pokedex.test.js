@@ -38,4 +38,44 @@ describe('Teste 5 - Pokedex.js', () => {
     const favorites = screen.getAllByRole('link', { name: /more details/i });
     expect(favorites).toHaveLength(1);
   });
+
+  test('Deve existir um botão para cada tipo de Pokémon, sem repetição.', () => {
+    const typesPokemons = [];
+    pokemons.forEach((pokemon, index) => {
+      if (typesPokemons.includes(pokemon.type) === false) {
+        typesPokemons.push(pokemons.type);
+        if (typesPokemons.includes(pokemon.type) === true) {
+          const regex = new RegExp(`/${typesPokemons[index]}/`, 'i');
+          expect(screen.getByRole('button', {
+            name: regex,
+          })).toBeInTheDocument();
+        }
+      }
+    });
+  });
+
+  test('A partir de um tipo, a Pokédex deve mostrar pokémons daquele tipo;', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
+    const buttonFilter = screen.getByRole('button', { name: /fire/i });
+    fireEvent.click(buttonFilter);
+    expect(screen.getAllByText(/fire/i)).toHaveLength(2);
+    const buttonNext = screen.getByRole('button', { name: /próximo pokémon/i });
+    fireEvent.click(buttonNext);
+    expect(screen.getAllByText(/fire/i)).toHaveLength(2);
+  });
+
+  test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
+    expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /all/i }));
+    expect(screen.getByText(pokemons[0].name)).toBeInTheDocument();
+  });
 });
