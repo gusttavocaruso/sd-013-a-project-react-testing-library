@@ -8,7 +8,7 @@ describe('Quarto requisito: Not Found', () => {
     renderWithRouter(<NotFound />);
   });
   it('Verifica se a página contém uma h2', () => {
-    const heading = screen.getByRole('heading', { name: /Page requested/i });
+    const heading = screen.getByRole('heading', { name: /Page requested not found/i });
     expect(heading).toBeInTheDocument();
   });
   it('Verifica se a img tem a src especificadas', () => {

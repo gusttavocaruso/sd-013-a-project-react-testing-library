@@ -28,11 +28,12 @@ describe('Requisito cinco: Pokédex', () => {
       userEvent.click(nextButton);
       return expect(bicho).not.toHaveTextContent(pokemons[i].name);
     });
-
+    const pokemonsId = screen.getAllByTestId(POKE_NAME);
     pokemons.forEach((pokemon, i) => {
       if (i < pokemons.length - 1) {
         userEvent.click(nextButton);
       }
+      expect(pokemonsId.length).toBe(1);
     });
 
     const lastPokemon = pokemons[pokemons.length - 1].name;
