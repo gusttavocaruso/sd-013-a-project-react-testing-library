@@ -2,49 +2,66 @@ import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import pokemons from '../data';
 
 describe('Testa a pokemonDetails.js', () => {
+  const { name, foundAt, summary } = pokemons[0];
   beforeEach(() => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/pokemons/25');
+    renderWithRouter(<App />);
   });
   test('Testa se as infos detalhadas são mostradas', () => {
-    const getDetails = screen.getByRole('heading', { name: /details/i });
-    const getPokemon = screen.getByRole('heading', {
-      name: /summary/i,
-      level: 2,
-    });
-    const summaryP = screen.getByText(/berries with electricity/i);
-    const getDetailsLink = screen.queryByRole('link', { name: /more details/i });
+    const details = screen.getByRole('link', { name: /more details/i });
+    fireEvent.click(details);
 
-    expect(getDetails).toBeInTheDocument();
-    expect(getPokemon).toBeInTheDocument();
-    expect(summaryP).toBeInTheDocument();
-    expect(getDetailsLink).not.toBeInTheDocument();
+    const headingDetails = screen.getByRole('heading', { name: `${name} Details` });
+    expect(headingDetails).toBeInTheDocument();
+
+    expect(details).not.toBeInTheDocument();
+
+    const headingSummary = screen.getByRole('heading', { name: /summary/i });
+    expect(headingSummary).toBeInTheDocument();
+
+    expect(screen.getByText(summary)).toBeInTheDocument();
   });
   test('Testa se existem os mapas na página', () => {
-    const getHeadingLocal = screen.getByRole('heading', {
-      name: /game locations of/i,
-    });
-    const getLocations = screen.getAllByText(/kanto/i);
-    const getImages = screen.getAllByAltText(/location/i);
-    const url = 'https://cdn2.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png';
-    const url2 = 'https://cdn2.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png';
+    const locations = ['Kanto Viridian Forest', 'Kanto Power Plant'];
+    const details = screen.getByRole('link', { name: /more details/i });
 
-    expect(getHeadingLocal).toBeInTheDocument();
-    expect(getLocations.length).toBe(2);
-    expect(getLocations[0]).toBeInTheDocument();
-    expect(getLocations[1]).toBeInTheDocument();
-    expect(getImages[0].src).toBe(url);
-    expect(getImages[1].src).toBe(url2);
+    fireEvent.click(details);
+
+    const headingLocation = screen.getByRole('heading',
+      { name: `Game Locations of ${name}` });
+    expect(headingLocation).toBeInTheDocument();
+
+    foundAt.forEach((item, index) => {
+      const imgs = screen.getAllByRole('img',
+        { name: `${name} location` });
+
+      expect(imgs[index]).toHaveAttribute('src', item.map);
+    });
+    locations.forEach((item, index) => {
+      expect(screen.getByText(item)).toBeInTheDocument();
+      const imgs = screen.getAllByRole('img',
+        { name: `${name} location` });
+
+      expect(imgs[index]).toHaveAttribute('src', foundAt[index].map);
+    });
   });
   test('Testa se um usuário pode favoritar através dos detalhes', () => {
-    const getFavorite = screen.getByRole('checkbox', /pokémon favoritado?/i);
-    fireEvent.click(getFavorite);
-    expect(getFavorite).toBeInTheDocument();
-    expect(getFavorite.type).toBe('checkbox');
+    const details = screen.getByRole('link', { name: /more details/i });
+    fireEvent.click(details);
 
-    const isFavorited = screen.getByRole('img', { name: /is marked as favorite/i });
-    expect(isFavorited).toBeInTheDocument();
+    const checkBox = screen.getByRole('checkbox', 'Pokémon favoritado?');
+    expect(checkBox).toBeDefined();
+    fireEvent.click(checkBox);
+
+    let favorited = screen.getByRole('img', { name: `${name} is marked as favorite` });
+    expect(favorited).toHaveAttribute('src', '/star-icon.svg');
+    fireEvent.click(checkBox);
+
+    favorited = screen.queryByRole('img', { name: `${name} is marked as favorite` });
+    expect(favorited).not.toBeInTheDocument();
+
+    expect(screen.getByText(/Pokémon favoritado?/i)).toBeInTheDocument();
   });
 });

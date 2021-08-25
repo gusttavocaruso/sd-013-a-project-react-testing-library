@@ -2,32 +2,23 @@ import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
+import pokemons from '../data';
 
 describe('Testa a Pokemon.js e suas funcionalidades.', () => {
-  test('Testa se é renderizado o pokemon e seus detalhes', () => {
+  const {
+    name,
+    type,
+    averageWeight: { value, measurementUnit },
+    image,
+  } = pokemons[0];
+  test('Testa se é renderizado os pokemon e seus detalhes', () => {
     renderWithRouter(<App />);
-
-    const getName = screen.getByTestId('pokemon-name');
-    const getType = screen.getByTestId('pokemon-type');
-    const getWeight = screen.getByTestId('pokemon-weight');
-    const getNext = screen.getByText('Próximo pokémon');
-    const getImage = screen.getByRole('img');
-    const url1 = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
-    const url2 = 'https://cdn2.bulbagarden.net/upload/1/18/Spr_5b_023.png';
-
-    expect(getName.innerHTML).toBe('Pikachu');
-    expect(getType.innerHTML).toBe('Electric');
-    expect(getWeight.innerHTML).toBe('Average weight: 6.0 kg');
-    expect(getImage.src).toEqual(url1);
-
-    fireEvent.click(getNext);
-    fireEvent.click(getNext);
-    fireEvent.click(getNext);
-
-    expect(getName.innerHTML).toBe('Ekans');
-    expect(getType.innerHTML).toBe('Poison');
-    expect(getWeight.innerHTML).toBe('Average weight: 6.9 kg');
-    expect(getImage.src).toEqual(url2);
+    expect(screen.getByTestId('pokemon-type')).toHaveTextContent(type);
+    expect(screen.getByTestId('pokemon-name')).toHaveTextContent(name);
+    expect(screen.getByTestId('pokemon-weight')).toHaveTextContent(
+      `Average weight: ${value} ${measurementUnit}`,
+    );
+    expect(screen.getByAltText(`${name} sprite`)).toHaveAttribute('src', image);
   });
   test('Verifica se o botão more details esta funcional', () => {
     const { history } = renderWithRouter(<App />);
