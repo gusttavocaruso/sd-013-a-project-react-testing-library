@@ -58,4 +58,38 @@ describe('PokemonDetails.js tests', () => {
     expect(getMap).toBeDefined();
     expect(getMap.length).toEqual(foundAt.length);
   });
+
+  it('Verifica pokemon favoritado', () => {
+    renderWithRouter(<App />);
+
+    const getLinkDetails = screen.getByRole('link', {
+      name: /details/i,
+    });
+    userEvent.click(getLinkDetails);
+
+    const getCheckbox = screen.getByRole('checkbox', {
+      name: 'Pokémon favoritado?',
+    });
+    expect(getCheckbox).toBeInTheDocument();
+
+    userEvent.click(getCheckbox);
+    expect(getCheckbox).toBeTruthy();
+  });
+
+  it('pegar mapa pokemom ekans', () => {
+    renderWithRouter(<App />);
+    const { type, foundAt } = pokemons[3];
+
+    const getPoisonButton = screen.getByRole('button', {
+      name: type,
+    });
+    userEvent.click(getPoisonButton);
+
+    userEvent.click(screen.getByRole('link', {
+      name: /more details/i,
+    }));
+
+    const getEkansMap = screen.getByAltText('Ekans location').src;
+    expect(getEkansMap).toBe('https://cdn2.bulbagarden.net/upload/e/ec/Johto_Goldenrod_City_Map.png')
+  });
 });
