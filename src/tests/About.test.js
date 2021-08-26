@@ -1,47 +1,32 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { fireEvent, screen } from '@testing-library/dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from '../App';
+import { screen } from '@testing-library/react';
+import renderWithRouter from '../renderWithRouter';
+import About from '../components/About';
 
-describe('Teste 2 - About.js', () => {
-  test('teste se a página contém um heading h2 com o texto About Pokédex', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
-    const aboutClick = screen.getByRole('link', { name: /about/i });
-    fireEvent.click(aboutClick);
-    const h2Text = screen.getByRole('heading', {
+describe('Testa about', () => {
+  test('Testa heading da pagina', () => {
+    const { history } = renderWithRouter(<About />);
+    history.push('/about');
+    const renderH2 = screen.getByRole('heading', {
       name: /about pokédex/i,
       level: 2,
     });
-    expect(h2Text).toBeInTheDocument();
+    expect(renderH2).toBeInTheDocument();
   });
 
-  test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
-    const aboutClick = screen.getByRole('link', { name: /About/i });
-    fireEvent.click(aboutClick);
-
-    const paragraph1 = screen.getByText(/This application simulates a Pokédex/i);
-    const paragraph2 = screen.getByText(/One can filter Pokémons by type/i);
-    expect(paragraph1).toBeInTheDocument();
-    expect(paragraph2).toBeInTheDocument();
+  test('Testa os paragrafos', () => {
+    const { history } = renderWithRouter(<About />);
+    history.push('/about');
+    const renderParagraph1 = screen.getByText(/This application simulates a Pokédex/i);
+    const renderParagraph2 = screen.getByText(/One can filter Pokémons by type/i);
+    expect(renderParagraph1).toBeInTheDocument();
+    expect(renderParagraph2).toBeInTheDocument();
   });
-
-  test('Teste se a página contém a seguinte imagem de uma Pokédex:', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
-    );
-    const image = screen.getByRole('img');
-    expect(image.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+  // Neste ultimo test consultei consultei o codigo do Luiz Furtado T13-A https://github.com/tryber/sd-013-a-project-react-testing-library/blob/dev-luizf-react-testing/src/tests/About.test.js
+  test('Testa a imagem', () => {
+    const { history } = renderWithRouter(<About />);
+    history.push('/about');
+    const renderImg = screen.getByRole('img');
+    expect(renderImg.src).toContain('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });

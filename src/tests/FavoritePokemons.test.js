@@ -10,5 +10,4 @@ describe('Testa favoritePokemons', () => {
     const renderText = screen.getByText('No favorite pokemon found');
     expect(renderText).toBeInTheDocument();
   });
-
 });
