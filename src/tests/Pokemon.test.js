@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
+import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
 
 const POKEMON_NAME = 'pokemon-name';
@@ -41,7 +42,10 @@ describe('Pokemon component:', () => {
   });
 
   it('should redirect to the details when btn more details is clicked', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ false }
+    />);
     const moreDetails = screen.queryByRole('link', { name: MORE_DETAILS });
     userEvent.click(moreDetails);
     const { pathname } = history.location;
@@ -49,13 +53,7 @@ describe('Pokemon component:', () => {
   });
 
   it('should have an favorite icon when a pokemon is favorited', () => {
-    renderWithRouter(<App />);
-    const moreDetails = screen.queryByRole('link', { name: MORE_DETAILS });
-    userEvent.click(moreDetails);
-    const favoriteCheck = screen.queryByRole('checkbox', { name: 'Pokémon favoritado?' });
-    userEvent.click(favoriteCheck);
-    const homeLink = screen.queryByRole('link', { name: 'Home' });
-    userEvent.click(homeLink);
+    renderWithRouter(<Pokemon pokemon={ pokemons[0] } isFavorite />);
     const favorite = screen.getByAltText('Pikachu is marked as favorite');
     expect(favorite).toBeInTheDocument();
     expect(favorite.src).toBe('http://localhost/star-icon.svg');
