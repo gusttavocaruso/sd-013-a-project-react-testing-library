@@ -14,6 +14,6 @@ describe('Teste Pokemon.js', () => {
   expect(screen.getByText(pokemons[0].name)).toBeInTheDocument();
   expect(screen.getAllByText(/Electric/i)).toHaveLength(2);
   // const { averageWeight: { value, measurementUnit } } = pokemons[0];
-  // const regex = new RegExp(`/Average weight: ${value} ${measurementUnit}/`, 'i');
-  // expect(screen.getByText(regex)).toBeInTheDocument();
+  const regex = new RegExp(`/average weight: /`, 'i');
+  expect(screen.getByText(regex)).toBeInTheDocument();
 });
