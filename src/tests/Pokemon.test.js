@@ -1,4 +1,3 @@
-// test('', () => {});
 import React from 'react';
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -60,29 +59,6 @@ describe('<Pokemon /> Section Tests', () => {
     expect(starIcon.alt).toStrictEqual(informations.starAlt);
     expect(starIcon.src).toMatch(informations.starImage);
   });
-
-  /*  it('see if is all corretcly in favorited pokemons', () => {
-    const { history } = renderWithRouter(<App />);
-    const href = screen.getByText('Favorite Pokémons');
-    const name = screen.getByTestId('pokemon-name');
-    const type = screen.getByTestId('pokemon-type');
-    const weight = screen.getByTestId('pokemon-weight');
-    const image = screen.getByRole('img');
-    const alt = screen.getByAltText(/sprite/i);
-    userEvent.click(href);
-
-    const pikachuDetails = screen.getByRole('heading', { name: /favorite pokemons/i, level: 2 });
-    expect(pikachuDetails).toBeInTheDocument();
-    expect(history.location.pathname).toBe('/favorites');
-    expect(name.textContent).toStrictEqual(informations.name);
-    expect(type.textContent).toStrictEqual(informations.type);
-    expect(weight.textContent).toStrictEqual(informations.weight);
-    expect(name.textContent).toStrictEqual(informations.name);
-    expect(href).toBeInTheDocument();
-    expect(href.textContent).toStrictEqual(informations.urlText);
-    expect(image.src).toStrictEqual(informations.pokemonImage);
-    expect(alt).toBeInTheDocument();
-  }); */
 });
 
 /*
