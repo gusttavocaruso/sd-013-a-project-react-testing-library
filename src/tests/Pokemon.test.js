@@ -56,6 +56,6 @@ describe('Pokemon component:', () => {
     userEvent.click(homeLink);
     const favorite = screen.getByAltText('Pikachu is marked as favorite');
     expect(favorite).toBeInTheDocument();
-    expect(favorite.src).toContain('/star-icon.svg');
+    expect(favorite.src).toMatch(/star-icon\.svg/i);
   });
 });
