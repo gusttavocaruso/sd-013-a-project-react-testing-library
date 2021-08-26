@@ -1,22 +1,90 @@
-test('', () => {});
-
-/* import App from '../App';
+// test('', () => {});
+import React from 'react';
+import { cleanup, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import App from '../App';
 import renderWithRouter from './renderWithRouter';
+import { Pokemon } from '../components';
 import pokemons from '../data';
 
+const details = 'More details';
 describe('<Pokemon /> Section Tests', () => {
+  const informations = {
+    name: 'Pikachu',
+    type: 'Electric',
+    weight: 'Average weight: 6.0 kg',
+    pokemonImage: 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
+    pokemonAlt: 'Pikachu sprite',
+    url: '/pokemons/25',
+    urlText: details,
+    starImage: '/star-icon.svg',
+    starAlt: 'Pikachu is marked as favorite',
+  };
+
+  afterEach(cleanup);
+
   it('should contain the right informations in pokemon card', () => {
     renderWithRouter(<App />);
-    const informations = {
-      name: pokemons[0].name,
-      type: pokemons[0].type,
-      weight: `Average weight: ${pokemons[0].weight}`,
-      image: pokemons[0].image,
-      alt: 'Pikachu sprite',
-    };
+    const name = screen.getByTestId('pokemon-name');
+    const type = screen.getByTestId('pokemon-type');
+    const weight = screen.getByTestId('pokemon-weight');
+    const image = screen.getByRole('img');
+    const alt = screen.getByAltText(/sprite/i);
+    const href = screen.getByText(details);
+
+    expect(name.textContent).toStrictEqual(informations.name);
+    expect(type.textContent).toStrictEqual(informations.type);
+    expect(weight.textContent).toStrictEqual(informations.weight);
+    expect(href).toBeInTheDocument();
+    expect(href.textContent).toStrictEqual(informations.urlText);
+    expect(image.src).toStrictEqual(informations.pokemonImage);
+    expect(alt).toBeInTheDocument();
   });
+
+  it('redirect and go details page and see if is favorited', () => {
+    const { history } = renderWithRouter(<App />);
+    const href = screen.getByText(details);
+    userEvent.click(href);
+    const pikachuDetails = screen.getByRole('heading', { name: /pikachu details/i });
+    expect(pikachuDetails).toBeInTheDocument();
+    expect(history.location.pathname).toBe(informations.url);
+  });
+
+  it('check star icon', () => {
+    renderWithRouter(
+      <Pokemon isFavorite pokemon={ pokemons[0] } />,
+    );
+
+    const starIcon = screen.getByAltText(informations.starAlt);
+    expect(starIcon).toBeInTheDocument();
+    expect(starIcon.alt).toStrictEqual(informations.starAlt);
+    expect(starIcon.src).toMatch(informations.starImage);
+  });
+
+  /*  it('see if is all corretcly in favorited pokemons', () => {
+    const { history } = renderWithRouter(<App />);
+    const href = screen.getByText('Favorite Pokémons');
+    const name = screen.getByTestId('pokemon-name');
+    const type = screen.getByTestId('pokemon-type');
+    const weight = screen.getByTestId('pokemon-weight');
+    const image = screen.getByRole('img');
+    const alt = screen.getByAltText(/sprite/i);
+    userEvent.click(href);
+
+    const pikachuDetails = screen.getByRole('heading', { name: /favorite pokemons/i, level: 2 });
+    expect(pikachuDetails).toBeInTheDocument();
+    expect(history.location.pathname).toBe('/favorites');
+    expect(name.textContent).toStrictEqual(informations.name);
+    expect(type.textContent).toStrictEqual(informations.type);
+    expect(weight.textContent).toStrictEqual(informations.weight);
+    expect(name.textContent).toStrictEqual(informations.name);
+    expect(href).toBeInTheDocument();
+    expect(href.textContent).toStrictEqual(informations.urlText);
+    expect(image.src).toStrictEqual(informations.pokemonImage);
+    expect(alt).toBeInTheDocument();
+  }); */
 });
- */
+
 /*
 Teste se é renderizado um card com as informações de determinado pokémon.
 
