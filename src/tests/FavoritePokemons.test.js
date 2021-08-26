@@ -16,7 +16,7 @@ describe('<FavoritePokemons /> Tests Section', () => {
 
   it('should return all favorite pokemons', () => {
     renderWithRouter(<FavoritePokemons pokemons={ pokemons } />);
-    const message = screen.getByText(/pikachu/i);
-    expect(message).toBeInTheDocument();
+    const pikachuIsOnScreen = screen.getByText(/pikachu/i);
+    expect(pikachuIsOnScreen).toBeInTheDocument();
   });
 });
