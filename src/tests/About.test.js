@@ -1,3 +1,5 @@
+// Ajuda para testar se contém a imagem: https://stackoverflow.com/questions/60509527/jestreact-native-testing-library-how-to-test-an-image-src
+
 import React from 'react';
 import { screen } from './index';
 import renderWithRouter from './renderWithRouter';
