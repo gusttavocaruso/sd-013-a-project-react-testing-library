@@ -13,22 +13,19 @@ const MORE_DETAILS = 'More details';
 
 describe('Pokemon component:', () => {
   it('should render a card with info of a determined pokemon', () => {
-    renderWithRouter(<App />);
-    pokemons.forEach((pokemon) => {
-      const cardName = screen.queryByTestId(POKEMON_NAME);
-      const cardType = screen.queryByTestId(POKEMON_TYPE);
-      const cardWeight = screen.queryByTestId(POKEMON_WEIGHT);
-      const cardImg = screen.getByAltText(`${pokemon.name} sprite`);
-      const nextBtn = screen.queryByRole('button', { name: 'Próximo pokémon' });
-      const { value, measurementUnit } = pokemon.averageWeight;
-      expect(cardName.textContent).toBe(pokemon.name);
-      expect(cardType.textContent).toBe(pokemon.type);
-      expect(cardWeight.textContent).toBe(`Average weight: ${value} ${measurementUnit}`);
-      if (cardImg.src) {
-        expect(cardImg).toBeInTheDocument();
-      }
-      userEvent.click(nextBtn);
-    });
+    renderWithRouter(<Pokemon
+      pokemon={ pokemons[0] }
+      isFavorite={ false }
+    />);
+    const cardName = screen.queryByTestId(POKEMON_NAME);
+    const cardType = screen.queryByTestId(POKEMON_TYPE);
+    const cardWeight = screen.queryByTestId(POKEMON_WEIGHT);
+    const cardImg = screen.getByAltText(`${pokemons[0].name} sprite`);
+    const { value, measurementUnit } = pokemons[0].averageWeight;
+    expect(cardName.textContent).toBe(pokemons[0].name);
+    expect(cardType.textContent).toBe(pokemons[0].type);
+    expect(cardWeight.textContent).toBe(`Average weight: ${value} ${measurementUnit}`);
+    expect(cardImg.src).toBe(pokemons[0].image);
   });
 
   it('should have a link to get more details, \'/pokemon/<id>\'', () => {
