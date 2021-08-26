@@ -17,7 +17,7 @@ describe('Pokemon component:', () => {
       const cardName = screen.queryByTestId(POKEMON_NAME);
       const cardType = screen.queryByTestId(POKEMON_TYPE);
       const cardWeight = screen.queryByTestId(POKEMON_WEIGHT);
-      const cardImg = screen.queryByAltText(`${pokemon.name} sprite`);
+      const cardImg = screen.getByAltText(`${pokemon.name} sprite`);
       const nextBtn = screen.queryByRole('button', { name: 'Próximo pokémon' });
       const { value, measurementUnit } = pokemon.averageWeight;
       expect(cardName.textContent).toBe(pokemon.name);
@@ -54,7 +54,7 @@ describe('Pokemon component:', () => {
     userEvent.click(favoriteCheck);
     const homeLink = screen.queryByRole('link', { name: 'Home' });
     userEvent.click(homeLink);
-    const favorite = screen.queryByAltText('Pikachu is marked as favorite');
+    const favorite = screen.getByAltText('Pikachu is marked as favorite');
     expect(favorite).toBeInTheDocument();
     expect(favorite.src).toContain('/star-icon.svg');
   });
