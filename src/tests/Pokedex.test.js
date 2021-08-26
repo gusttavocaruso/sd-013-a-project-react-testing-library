@@ -6,14 +6,19 @@ import App from '../App';
 import pokemons from '../data';
 
 describe('Requisito cinco: Pokédex', () => {
-  beforeEach(() => {
+  beforeEach(() => { // reseta o componente a cada iteração.
     renderWithRouter(<App />);
   });
-  const POKE_NAME = 'pokemon-name';
+  const POKE_NAME = 'pokemon-name'; // o lint estava acusando repetiçao, então atribui a string a constante.
 
   it('Verifica se existe uma h2 com o texto especificado', () => {
-    const heading = screen.getByRole('heading', { name: /Encountered pokémons/i });
-    expect(heading).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { name: /Encountered pokémons/i }); // puxamos o h2 pela role e pelo texto.
+    expect(heading).toBeInTheDocument(); // esperamos que ele esteja no doc
+  });
+
+  it('Verifica se é renderizado o botão com o txt "Próximo Pokémon"', () => {
+    const nextButton = screen.getByText(/Próximo Pokémon/i);
+    expect(nextButton).toBeInTheDocument();
   });
 
   it('Verifica que o próximo Pokémon é exibido quando clicamos no botão', () => {
