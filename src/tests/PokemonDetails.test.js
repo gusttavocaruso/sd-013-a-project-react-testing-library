@@ -65,7 +65,7 @@ describe('Teste o componente <PokemonDetails.js />', () => {
     });
     userEvent.click(favoriteCheck);
 
-    // estrelinha de favoritado 
+    // estrelinha de favoritado
     const star = screen.getByRole('img', {
       name: `${name} is marked as favorite`,
     });
