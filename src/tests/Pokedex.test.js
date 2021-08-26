@@ -35,6 +35,7 @@ clicked and show only one pokémon at a time`, () => {
   });
 
   it('should have filter by type buttons', () => {
+    renderWithRouter(<App />);
     const types = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
     const typeTestId = screen.queryAllByTestId('pokemon-type-button');
     const btnAll = screen.queryByRole('button', { name: 'All' });
@@ -44,14 +45,28 @@ clicked and show only one pokémon at a time`, () => {
       userEvent.click(type);
       const filteredPokemons = pokemons
         .filter((pokemon) => pokemon.type === types[index]);
-      filteredPokemons.forEach((pokemon) => {
+      filteredPokemons.forEach((pokemon, filterIndex) => {
         const pokemonName = screen.queryByTestId(POKEMON_NAME);
         expect(pokemonName.textContent).toBe(pokemon.name);
         const nextBtnIsVisible = screen.getByRole('button', { name: 'Próximo pokémon' });
-        if (nextBtnIsVisible.visible) {
+        if (!nextBtnIsVisible.disabled) {
           userEvent.click(nextBtnIsVisible);
+        }
+        if (filterIndex + 1 === filteredPokemons.length) {
+          expect(pokemonName.textContent).toBe(filteredPokemons[0].name);
         }
       });
     });
+  });
+
+  it('should have a reset filter button', () => {
+    renderWithRouter(<App />);
+    const anyType = screen.queryByRole('button', { name: 'Fire' });
+    const pokemonName = screen.queryByTestId(POKEMON_NAME);
+    userEvent.click(anyType);
+    expect(pokemonName.textContent).toBe('Charmander');
+    const allBtn = screen.queryByRole('button', { name: 'All' });
+    userEvent.click(allBtn);
+    expect(pokemonName.textContent).toBe('Pikachu');
   });
 });
