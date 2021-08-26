@@ -3,7 +3,7 @@ import { screen, userEvent, cleanup } from './index';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import pokemons from '../data';
-import { Pokemon, PokemonDetails } from '../components';
+import { Pokemon } from '../components';
 
 describe('Teste o componente <Pokemon.js />', () => {
   afterEach(cleanup);
