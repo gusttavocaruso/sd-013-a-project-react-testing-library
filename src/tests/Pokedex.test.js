@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, cleanup } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
@@ -7,13 +7,12 @@ import pokemons from '../data';
 
 describe('<Pokedex /> Tests Section', () => {
   beforeEach(() => renderWithRouter(<App />));
+
   // O botão deve conter o texto Próximo pokémon;
   it('should contain correctly text in heading', () => {
     const h2 = screen.getByRole('heading', { name: /encountered pokémons/i });
     expect(h2).toBeInTheDocument();
   });
-
-  afterEach(cleanup);
 
   // O botão deve conter o texto Próximo pokémon;
   it('should contain correctly text in button', () => {
