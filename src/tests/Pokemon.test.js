@@ -11,21 +11,21 @@ describe('testando cards dos pokemons', () => {
     Pokemons.forEach((pokemon) => {
       const { name, type, averageWeight, image } = pokemon;
 
-      const FirstPokeName = screen.getByTestId('pokemon-name');
-      const FirstPokeType = screen.getByTestId('pokemon-type');
-      const FirstPokeWeight = screen.getByTestId('pokemon-weight');
-      const FirstPokeImage = screen.getByRole('img', {
+      const pokemonName = screen.getByTestId('pokemon-name');
+      const pokemonType = screen.getByTestId('pokemon-type');
+      const pokemonWeight = screen.getByTestId('pokemon-weight');
+      const pokemonImage = screen.getByRole('img', {
         name: `${name} sprite`,
       });
 
-      const FirstPokeAvarageW = `${averageWeight.value} ${averageWeight.measurementUnit}`;
-      const FirstPokeWeightValues = `Average weight: ${FirstPokeAvarageW}`;
+      const pokemonAvarageW = `${averageWeight.value} ${averageWeight.measurementUnit}`;
+      const pokemonWeightValues = `Average weight: ${pokemonAvarageW}`;
 
-      expect(FirstPokeName).toHaveTextContent(name);
-      expect(FirstPokeType).toHaveTextContent(type);
-      expect(FirstPokeWeight).toHaveTextContent(FirstPokeWeightValues);
-      expect(FirstPokeImage).toBeInTheDocument();
-      expect(FirstPokeImage).toHaveAttribute('src', image);
+      expect(pokemonName).toHaveTextContent(name);
+      expect(pokemonType).toHaveTextContent(type);
+      expect(pokemonWeight).toHaveTextContent(pokemonWeightValues);
+      expect(pokemonImage).toBeInTheDocument();
+      expect(pokemonImage).toHaveAttribute('src', image);
 
       const nextPokemonBtn = screen.getByRole('button', { name: /próximo pokémon/i });
       fireEvent.click(nextPokemonBtn);
