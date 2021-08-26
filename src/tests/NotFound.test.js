@@ -5,15 +5,15 @@ import { createMemoryHistory } from 'history';
 import { NotFound } from '../components';
 
 describe('NotFound.js', () => {
-  test('Verifica se contém um heading `h2` `Page requested not found 😭`', () => {
-    render(<NotFound />);
+  // test('Verifica se contém um heading `h2` `Page requested not found 😭`', () => {
+  //   render(<NotFound />);
 
-    const notFond = screen.getByRole('heading', {
-      name: /Page requested not found/i,
-      level: 2,
-    });
-    expect(notFond).toBeInTheDocument();
-  });
+  //   const notFond = screen.getByRole('heading', {
+  //     name: /Page requested not found/i,
+  //     level: 2,
+  //   });
+  //   expect(notFond).toBeInTheDocument();
+  // });
 
   test('Renderiza mensagen de página não encontrada', () => {
     const historyMock = createMemoryHistory();
@@ -24,7 +24,7 @@ describe('NotFound.js', () => {
       </Router>,
     );
 
-    historyMock.push('/rota-quebrada');
+    historyMock.push('/rota-que-não-existe');
 
     const notFond = screen.getByRole('heading', {
       name: /Page requested not found/i,

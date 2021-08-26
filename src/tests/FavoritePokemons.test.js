@@ -62,7 +62,7 @@ describe('favoritePokemons.js', () => {
   test('Teste se é exibido na tela a mensagem `No favorite pokemon found`', () => {
     render(
       <BrowserRouter>
-        <FavoritePokemons pokemons={ [] } />
+        <FavoritePokemons />
       </BrowserRouter>,
     );
 
