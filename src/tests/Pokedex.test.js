@@ -18,6 +18,7 @@ describe('<Pokedex /> Tests Section', () => {
   it('should contain correctly text in button', () => {
     const buttonNext = screen.getByTestId('next-pokemon');
     expect(buttonNext).toBeInTheDocument();
+    expect(buttonNext.textContent).toStrictEqual(/Próximo pokémon/i);
 
     const pokemonName = screen.getByTestId('pokemon-name');
     const pokemonNameLength = screen.getAllByTestId('pokemon-name');
@@ -58,6 +59,7 @@ describe('<Pokedex /> Tests Section', () => {
     expect(buttonAll).toBeInTheDocument();
     userEvent.click(buttonAll);
     const buttonNext = screen.getByTestId('next-pokemon');
+    expect(buttonNext.textContent).toStrictEqual(/Próximo pokémon/i);
     userEvent.click(buttonNext);
     const poke = screen.getByText('Charmander');
     expect(poke).toBeInTheDocument();
