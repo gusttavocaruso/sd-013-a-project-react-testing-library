@@ -37,7 +37,7 @@ clicked and show only one pokémon at a time`, () => {
   it('should have filter by type buttons', () => {
     renderWithRouter(<App />);
     const types = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
-    const typeTestId = screen.queryAllByTestId('pokemon-type-button');
+    const typeTestId = screen.getAllByTestId('pokemon-type-button');
     const btnAll = screen.queryByRole('button', { name: 'All' });
     typeTestId.forEach((type, index) => {
       expect(type.textContent).toBe(types[index]);
