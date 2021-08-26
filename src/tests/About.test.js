@@ -3,6 +3,7 @@
 // https://stackoverflow.com/questions/60509527/jestreact-native-testing-library-how-to-test-an-image-src
 
 // Requisito 2
+// Requisito desenvolvido com a ajuda da minha colega Sthefany Caroline Silva de Oliveira
 
 import React from 'react';
 import { screen } from '@testing-library/react';

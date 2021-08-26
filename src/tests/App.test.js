@@ -1,4 +1,5 @@
 // Requisito 1
+// Requisito desenvolvido com a ajuda da minha colega Sthefany Caroline Silva de Oliveira
 
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';

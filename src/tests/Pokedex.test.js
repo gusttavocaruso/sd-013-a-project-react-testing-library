@@ -1,45 +1,43 @@
+// Requisito 5
+// Referência: https://github.com/tryber/sd-013-a-project-react-testing-library/pull/40/files
+
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
-import pokemons from '../data';
-import userEvent from '@testing-library/user-event';
 
 describe('Teste o componente <Pokedex.js />', () => {
-  beforeEach(() => { renderWithRouter(<App />); });
-  const pokemonId = 'pokemon-name';
 
-  it('Teste se página contém um heading h2 com o texto Encountered pokémons', () => {
-    const h2 = screen.getByRole('heading', { name: /Encountered pokémons/i, level: 2 });
+  test('Testa se página contém um heading h2 com o texto Encountered pokémons', () => {
+    renderWithRouter(<App />);
+
+    const h2 = screen.getByRole('heading', { name: /Encountered pokémons/i });
     expect(h2).toBeInTheDocument();
   });
 
-  it('Teste se é exibido o próximo Pokémon d Próximo pokémon é clicado.', () => {
-    // O botão deve conter o texto Próximo pokémon
-    const button = screen.getByTestId('next-pokemon');
+  test('Testa se é exibido o próximo Pokémon quando o botão Próximo é clicado.', () => {
+    renderWithRouter(<App />);
+
+    const button = screen.getByRole('button', { name: /Próximo pokémon/i });
     expect(button).toBeInTheDocument();
-    // Os próximos Pokémons da lista devem ser mostrados, um a um, ao clicar sucessivamente no botão;
-    const pokemonName = screen.getByTestId(pokemonId);
-    expect(pokemonName).toBeInTheDocument();
-    pokemons.map((pokemon, index) => {
-      expect(pokemonName).toHaveTextContent(pokemon.name);
-      userEvent.click(button);
-      return expect(pokemonName).not.toHaveTextContent(pokemons[index].name);
-    });
-    // O primeiro Pokémon da lista deve ser mostrado ao clicar no botão, se estiver no último Pokémon da lista;
-    const pokemonsId = screen.getAllByTestId(pokemonName);
-    pokemons.forEach((pokemon, index) => {
-      if (index < pokemons.length - 1) {
-        userEvent.click(button);
-      }
-      expect(pokemonsId.length).toBe(1);
-    });
+    userEvent.click(button); // testando o click do botão.
+  });
 
-    const lastPokemon = pokemons[pokemons.length - 1].name;
-    expect(pokemonName).toHaveTextContent(lastPokemon);
-    userEvent.click(button);
+  test('Testa se é mostrado um pokemon a cada vez', () => {
+    renderWithRouter(<App />);
 
-    const firstPokemon = pokemons[0].name;
-    expect(pokemonName).toHaveTextContent(firstPokemon);
+    const buttonFilterAll = screen.getByRole('button', { name: /All/i });
+    expect(buttonFilterAll).toBeInTheDocument();
+    userEvent.click(buttonFilterAll); // testando o clique do botao
+  });
+
+  test('Testa se a Pokédex tem os botões de filtro', () => {
+    renderWithRouter(<App />);
+
+    const filterButtons = screen.getAllByTestId('pokemon-type-button'); // Recuperando o elemento pelo data-testid
+    expect(filterButtons[0]).toBeInTheDocument();
+    userEvent.click(filterButtons[0]); // testando os botoes
+    expect(filterButtons[0].innerHTML).toBe('Electric');
   });
 });

@@ -1,4 +1,5 @@
 // Requisito 3
+// Requisito desenvolvido com a ajuda da minha colega Sthefany Caroline Silva de Oliveira
 
 import React from 'react';
 import { screen } from '@testing-library/react';
