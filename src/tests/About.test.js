@@ -13,9 +13,17 @@ describe('Testing About.js', () => {
     const pokedexInformation = screen.getByRole('heading', {
       name: /about pokédex/i, level: 2 });
     expect(pokedexInformation).toBeInTheDocument();
-    // expect(screen.getAllByRole('paragraph')).toHaveLength(2);
-
     expect(screen.getByText(/This application simulates a Pokédex/i)).toBeInTheDocument();
     expect(screen.getByText(/One can filter/i)).toBeInTheDocument();
+  });
+
+  test('', () => {
+    render(
+      <BrowserRouter>
+        <About />
+      </BrowserRouter>,
+    );
+    const image = screen.getByRole('img');
+    expect(image.src).toEqual('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
 });
