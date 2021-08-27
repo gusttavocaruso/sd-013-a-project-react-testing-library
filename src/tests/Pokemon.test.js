@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { BrowserRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
@@ -32,6 +32,19 @@ describe('Teste Pokemon.js', () => {
 
     expect(screen.getByRole('link', { name: /more details/i })).toBeInTheDocument();
 
+    const moreDetails = screen.getByRole('link', { name: /more details/i });
+    fireEvent.click(moreDetails);
+    expect(screen.getByRole('heading', { name: 'Summary', level: 2 }))
+      .toBeInTheDocument();
+  });
+
+  test('A imagem deve ter o alt igual a <pokemon> is marked as favorite', () => {
+    const historyMock = createMemoryHistory();
+    render(
+      <Router history={ historyMock }>
+        <App />
+      </Router>,
+    );
     historyMock.push(`/pokemon/${pokemons[0].id}`);
     const { entries } = historyMock;
     expect(entries[1].pathname).toEqual(`/pokemon/${pokemons[0].id}`);

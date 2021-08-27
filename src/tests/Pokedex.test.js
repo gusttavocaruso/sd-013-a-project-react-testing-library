@@ -40,18 +40,26 @@ describe('Teste 5 - Pokedex.js', () => {
   });
 
   test('Deve existir um botão para cada tipo de Pokémon, sem repetição.', () => {
-    const typesPokemons = [];
-    pokemons.forEach((pokemon, index) => {
-      if (typesPokemons.includes(pokemon.type) === false) {
-        typesPokemons.push(pokemons.type);
-        if (typesPokemons.includes(pokemon.type) === true) {
-          const regex = new RegExp(`/${typesPokemons[index]}/`, 'i');
-          expect(screen.getByRole('button', {
-            name: regex,
-          })).toBeInTheDocument();
-        }
-      }
-    });
+    // const typesPokemons = [];
+    // pokemons.forEach((pokemon, index) => {
+    //   if (typesPokemons.includes(pokemon.type) === false) {
+    //     typesPokemons.push(pokemons.type);
+    //     if (typesPokemons.includes(pokemon.type) === true) {
+    //       const regex = new RegExp(`/${typesPokemons[index]}/`, 'i');
+    //       expect(screen.getByRole('button', {
+    //         name: regex,
+    //       })).toBeInTheDocument();
+    //     }
+    //   }
+    // });
+    expect(screen.getByRole('button', { name: 'All' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Electric' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Bug' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Poison' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Psychic' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Normal' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Dragon' })).toBeInTheDocument();
   });
 
   test('A partir de um tipo, a Pokédex deve mostrar pokémons daquele tipo;', () => {
