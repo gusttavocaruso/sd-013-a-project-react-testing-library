@@ -29,6 +29,7 @@ describe('Testando o component About', () => {
     const imageAbout = screen.getByRole('img');
     const srcImage = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
 
+    expect(imageAbout).toBeInTheDocument();
     // source https://stackoverflow.com/a/61899027/16722994
     expect(imageAbout).toHaveAttribute('src', srcImage);
   });
