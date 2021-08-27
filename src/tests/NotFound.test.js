@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './helpers/renderWithRouter';
 import { NotFound } from '../components';
 
-describe('Testando FavoritePokemons.js', () => {
+describe('Testando NotFound.js', () => {
   beforeEach(() => {
     renderWithRouter(<NotFound />);
   });
