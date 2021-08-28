@@ -29,7 +29,6 @@ describe('Teste o componente <Pokedex.js />', () => {
     const firstPokemon = screen.getByText('Pikachu');
     const pokeTestId = screen.getByTestId(pokeTest);
 
-    expect(buttonNext).toBeInTheDocument(); // testa se há um botao.
     expect(pokeTestId).toBeInTheDocument(); // testa se há um pokemon na tela.
 
     pokemons.map((pokemon) => {
