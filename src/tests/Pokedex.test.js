@@ -14,7 +14,7 @@ describe('Teste o componente <Pokedex.js />', () => {
 
   test('Verifica se é renderizado o botão com txto "Próximo pokémon"', () => {
     renderWithRouter(<App />);
-    const proximo = screen.getByText('Próximo pokémon');
+    const proximo = screen.getByText(/Próximo pokémon/i);
     expect(proximo).toBeInTheDocument();
   });
 
