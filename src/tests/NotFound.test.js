@@ -19,6 +19,6 @@ describe('Teste o componente <NotFound.js />', () => {
     const image = screen.getAllByRole('img')[1];
     const linkImage = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('src', linkImage);
+    expect(image.src).toContain(linkImage);
   });
 });
