@@ -24,6 +24,7 @@ describe('Teste 5 - Pokedex.js', () => {
     );
     const buttonPokemonNext = screen.getByRole('button', { name: /próximo pokémon/i });
     fireEvent.click(buttonPokemonNext);
+    expect(screen.getByRole('button', { name: /próximo pokémon/i })).toBeInTheDocument();
     expect(screen.getByText(pokemons[1].name)).toBeInTheDocument();
   });
 
@@ -52,14 +53,27 @@ describe('Teste 5 - Pokedex.js', () => {
     //     }
     //   }
     // });
-    expect(screen.getByRole('button', { name: 'All' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Electric' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Fire' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Bug' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Poison' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Psychic' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Normal' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Dragon' })).toBeInTheDocument();
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
+    // expect(screen.getByRole('button', { name: new RegExp(/all/, 'i') }))
+    //   .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/electric/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/fire/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/bug/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/poison/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/psychic/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/normal/, 'i') }))
+      .toBeInTheDocument();
+    expect(screen.getByRole('button', { name: new RegExp(/dragon/, 'i') }))
+      .toBeInTheDocument();
   });
 
   test('A partir de um tipo, a Pokédex deve mostrar pokémons daquele tipo;', () => {
@@ -85,5 +99,15 @@ describe('Teste 5 - Pokedex.js', () => {
     expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /all/i }));
     expect(screen.getByText(pokemons[0].name)).toBeInTheDocument();
+  });
+
+  test('test dataTextId', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
+    const textId = screen.getAllByTestId('pokemon-type-button');
+    expect(textId).toBeDefined();
   });
 });
