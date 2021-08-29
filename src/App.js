@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import {
   About,
@@ -71,7 +71,8 @@ class App extends Component {
     const favoritePokemons = pokemons.filter(({ id }) => isPokemonFavoriteById[id]);
 
     return (
-      <Switch>
+      <BrowserRouter>
+        <Switch>
         <Route
           exact
           path="/"
@@ -87,7 +88,8 @@ class App extends Component {
         />
         <Route path="/about" component={ About } />
         <Route component={ NotFound } />
-      </Switch>
+        </Switch>
+      </BrowserRouter>
     );
   }
 
