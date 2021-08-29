@@ -9,6 +9,10 @@ describe('NotFound.js tests', () => {
 
     const notFound = screen.getByText('Page requested not found');
     expect(notFound).toBeInTheDocument();
+  });
+
+  test('if not found renders image', () => {
+    renderWithRouter(<NotFound />);
 
     const image = screen.getByRole(
       'img', { name: 'Pikachu crying because the page requested was not found' },
