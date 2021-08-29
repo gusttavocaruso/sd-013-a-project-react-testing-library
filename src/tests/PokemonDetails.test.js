@@ -45,6 +45,15 @@ describe('Teste PokemonsDetails', () => {
         <App />
       </BrowserRouter>,
     );
-    // expect(screen.getByRole('')).toBeInTheDocument();
+    const checked = screen.getByRole('checkbox');
+    expect(checked).toBeInTheDocument();
+    fireEvent.click(checked);
+    const image = screen.getByAltText(`${pokemons[0].name} is marked as favorite`);
+    expect(image.src).toContain('/star-icon.svg');
+    fireEvent.click(checked);
+    expect(screen.getByLabelText('Pokémon favoritado?')).toBeInTheDocument();
+    const linkFavorite = screen.getByRole('link', { name: /favorite/i });
+    fireEvent.click(linkFavorite);
+    expect(screen.getByText(/no favorite pokemon found/i)).toBeInTheDocument();
   });
 });
