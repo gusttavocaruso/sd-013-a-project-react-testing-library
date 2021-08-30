@@ -78,7 +78,6 @@ describe('Pokedex.js tests', () => {
     userEvent.click(normalType);
 
     userEvent.click(allButton);
-
     const firstAllPokemon = screen.getByTestId(POKEMON_NAME).innerHTML;
     expect(firstAllPokemon).toStrictEqual(pokemons[0].name);
   });
