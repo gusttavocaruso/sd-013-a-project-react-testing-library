@@ -50,25 +50,24 @@ describe('testa componente pokemonDetails', () => {
     expect(pokeImgTwo).toHaveAttribute('src', foundAt[1].map);
   });
   test('o usuário pode favoritar um pokémon através da página de detalhes.', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
 
-    const moreDetails = screen.getByText(/more details/i);
+    const moreDetails = screen.getByRole('link', {
+      name: /more details/i,
+    });
+
     fireEvent.click(moreDetails);
 
-    const favPokeCheckbox = screen.getByRole('checkbox', {
-      name: /pokémon favoritado\?/i,
-    });
-
-    const pikachuName = screen.getByRole('img', {
-      name: /pikachu sprite/i,
-    });
-
+    const favPokeCheckbox = screen.getByRole('checkbox');
     expect(favPokeCheckbox).toBeInTheDocument();
 
     fireEvent.click(favPokeCheckbox);
+    expect(favPokeCheckbox).toBeChecked();
 
-    history.push('/favorites');
+    fireEvent.click(favPokeCheckbox);
+    expect(favPokeCheckbox).not.toBeChecked();
 
-    expect(pikachuName).toBeVisible();
+    expect(screen.getByText(/pokémon favoritado\?/i)).toBeInTheDocument();
+    /* console.log(pathname); */
   });
 });

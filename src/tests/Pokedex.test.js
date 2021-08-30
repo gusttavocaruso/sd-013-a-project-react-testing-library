@@ -35,6 +35,7 @@ describe('Teste o componente <Pokedex.js />', () => {
       expect(pokeTestId).toHaveTextContent(pokemon.name);
       return fireEvent.click(buttonNext);
     });
+
     expect(firstPokemon).toBeInTheDocument(); // testa se o primeiro pokemon está na tela
   });
 
