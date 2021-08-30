@@ -9,7 +9,7 @@ afterEach(cleanup);
 describe('Teste o componente <Pokedex.js />', () => {
   // test-ids
   const pokeTest = 'pokemon-name';
-  const buttonNextId = 'next-pokemon';
+  /* const buttonNextId = 'next-pokemon'; */
   const typesId = 'pokemon-type-button';
 
   test('Teste se página contém um h2 com o texto Encountered pokémons.', () => {
@@ -25,7 +25,10 @@ describe('Teste o componente <Pokedex.js />', () => {
 
   test('clicar no botão "proximo pokemon", mostra um novo pokemon na tela', () => {
     renderWithRouter(<App />);
-    const buttonNext = screen.getByTestId(buttonNextId);
+    const buttonNext = screen.getByRole('button', {
+      name: /Próximo pokémon/i,
+    });
+
     const firstPokemon = screen.getByText('Pikachu');
     const pokeTestId = screen.getByTestId(pokeTest);
 
@@ -36,6 +39,7 @@ describe('Teste o componente <Pokedex.js />', () => {
       return fireEvent.click(buttonNext);
     });
 
+    expect(buttonNext).toBeInTheDocument();
     expect(firstPokemon).toBeInTheDocument(); // testa se o primeiro pokemon está na tela
   });
 
@@ -43,13 +47,16 @@ describe('Teste o componente <Pokedex.js />', () => {
     renderWithRouter(<App />);
 
     const pokemonElement = screen.getAllByTestId(pokeTest);
-    const buttonNext = screen.getByTestId(buttonNextId);
+    const buttonNext = screen.getByRole('button', {
+      name: /Próximo pokémon/i,
+    });
 
     pokemons.map(() => {
       expect(pokemonElement.length).toBe(1);
       return fireEvent.click(buttonNext);
     });
   });
+
   test('Teste se a Pokédex tem os botões de filtro.', () => {
     renderWithRouter(<App />);
 
@@ -71,7 +78,9 @@ describe('Teste o componente <Pokedex.js />', () => {
 
     expect(screen.getByText(/pikachu/i)).toBeInTheDocument();
 
-    const nextButton = screen.getByTestId(buttonNextId);
+    const nextButton = screen.getByRole('button', {
+      name: /Próximo pokémon/i,
+    });
     const allButton = screen.getByText(/all/i);
     expect(allButton).toBeInTheDocument();
 
