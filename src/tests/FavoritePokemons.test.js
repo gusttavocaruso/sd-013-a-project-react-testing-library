@@ -1,13 +1,12 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
-import RenderWithRouter from './RenderWithRouter';
+import renderWithRouter from '../components/renderWithRouter';
 import { FavoritePokemons } from '../components';
 
 describe('FavoritePokemon.js Tests', () => {
   test('test if the message "no fav..." is displayed if there are no favorites', () => {
     // Acess screen elements
-    RenderWithRouter(<FavoritePokemons />);
+    renderWithRouter(<FavoritePokemons />);
     const textNoFavorites = 'No favorite pokemon found';
     const text = screen.getByText(textNoFavorites);
     // Test
@@ -37,7 +36,7 @@ describe('FavoritePokemon.js Tests', () => {
       ],
       summary: 'At full gallop, its four hooves barely touch.',
     }];
-    RenderWithRouter(<FavoritePokemons pokemons={ myPokemon } />);
+    renderWithRouter(<FavoritePokemons pokemons={ myPokemon } />);
     const p1 = screen.getByText('Rapidash');
     expect(p1).toBeInTheDocument();
   });
