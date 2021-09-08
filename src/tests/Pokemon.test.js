@@ -17,7 +17,7 @@ describe('6. Teste o componente <Pokemon.js />', () => {
     expect(pokType).toHaveTextContent(/electric/i);
 
     const pokWeight = screen.getByTestId('pokemon-weight');
-    expect(pokWeight).toHaveTextContent(/6.0 kg/i);
+    expect(pokWeight).toHaveTextContent(/Average weight: 6.0 kg/i);
 
     const pokImage = screen.getByAltText(/pikachu sprite/i);
     const imgUrl = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
