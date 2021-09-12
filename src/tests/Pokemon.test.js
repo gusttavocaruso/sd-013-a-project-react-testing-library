@@ -5,7 +5,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 import Pokemon from '../components/Pokemon';
 
-describe.only('testar o componente Pokemon', () => {
+describe('testar o componente Pokemon', () => {
   test('Renderizando o card com as informações do pokemon', () => {
     renderWithRouter(<App />);
     expect(screen.getByText('Pikachu')).toBeInTheDocument();
