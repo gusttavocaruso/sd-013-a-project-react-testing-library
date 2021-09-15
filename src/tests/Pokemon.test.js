@@ -47,7 +47,7 @@ describe('Pokedex.js tests', () => {
       name: /more details/i,
     });
 
-    expect(details.href).toBe(`http://localhost/pokemons/${ id }`);
+    expect(details.href).toBe(`http://localhost/pokemons/${id}`);
   });
   // Peguei o teste abaixo com o matheus duarte
   test('Verifica se navega até a pagina de detalhes do pokémon', () => {
@@ -76,6 +76,6 @@ describe('Pokedex.js tests', () => {
     });
     expect(icon).toBeInTheDocument();
     expect(icon.src).toMatch(/star-icon.svg/i);
-    expect(icon.alt).toBe(`${pokedex[0].name} is marked as favorite`)
+    expect(icon.alt).toBe(`${pokedex[0].name} is marked as favorite`);
   });
 });
