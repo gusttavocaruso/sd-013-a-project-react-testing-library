@@ -14,8 +14,7 @@ describe('Requisito 1: Teste o componente <App.js />', () => { // descrição do
         <App />
       </BrowserRouter>,
     );
-    // const homeText = screen.getByText('Home');
-    const homeLink = screen.getByRole('link', { // procura o link com o nome home
+    const homeLink = screen.getByRole('link', { // procura o link com o nome 'home'
       name: /home/i,
     });
     expect(homeLink).toBeInTheDocument(); // espera estar no documento
