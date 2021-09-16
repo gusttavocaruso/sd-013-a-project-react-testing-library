@@ -9,7 +9,7 @@ describe('Requisito 3: Teste o componente <FavoritePokemons.js />', () => { // d
     // acessar os elementos da tela
     render(
       <BrowserRouter>
-        {/* renderiza todo o componente App */}
+        {/* renderiza o componente FavoritePokemons */}
         <FavoritePokemons />
       </BrowserRouter>,
     );
