@@ -1,35 +1,43 @@
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import React from 'react';
+import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-);
-
-const home = screen.getByText('Home');
-const about = screen.getByText('About');
-const favorite = screen.getAllByText('Favorite Pokémons');
-
 describe('Testa Home', () => {
-  it('testa o link "Home" se possui o texto "Home"', () => {
-    expect(home.textContent).toBe('Home');
-    const heading = screen.getByRole('heading');
-    expect(heading.textContent).toBe('About Pokédex');
+  beforeEach(() => renderWithRouter(<App />));
+  it('deve renderizar o componente Home', () => {
+    const home = screen.getByText(/Home/);
+    expect(home).toBeInTheDocument();
   });
+
   it('testa o link "Home" se direciona para "/"', () => {
+    const home = screen.getByText(/Home/);
     expect(home.getAttribute('href')).toBe('/');
   });
 });
+
 describe('Testa About', () => {
-  it('testa o link "About" se possui o texto "About"', () => {
-    expect(about.textContent).toBe('About');
-    const heading = screen.getByRole('heading');
-    expect(heading.textContent).toBe('About Pokédex');
+  beforeEach(() => renderWithRouter(<App />));
+  it('deve renderizar o componente About', () => {
+    const about = screen.getByText(/About/);
+    expect(about).toBeInTheDocument();
   });
-  it('testa o link "Home" se direciona para "/"', () => {
-    expect(home.getAttribute('href')).toBe('/');
+
+  it('testa o link "About" se direciona para "/about"', () => {
+    const about = screen.getByText(/About/);
+    expect(about.getAttribute('href')).toBe('/about');
+  });
+});
+
+describe('Testa Favorites', () => {
+  beforeEach(() => renderWithRouter(<App />));
+  it('deve renderizar o componente Favorites', () => {
+    const favorite = screen.getByText(/Favorite Pokémons/);
+    expect(favorite).toBeInTheDocument();
+  });
+
+  it('testa o link "Favorite Pokémons" se direciona para "/favorites"', () => {
+    const favorite = screen.getByText(/Favorite Pokémons/);
+    expect(favorite.getAttribute('href')).toBe('/favorites');
   });
 });
