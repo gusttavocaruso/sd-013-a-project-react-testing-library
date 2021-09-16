@@ -13,7 +13,8 @@ describe('Requisito 3: Teste o componente <FavoritePokemons.js />', () => { // d
         <FavoritePokemons />
       </BrowserRouter>,
     );
-    const noFavoritePokemonText = screen.getByText(/No favorite pokemon found/i);
+    const noFavoritePokemonText = screen.getByText('no favorite pokemon found',
+      { exact: false });
     expect(noFavoritePokemonText).toBeInTheDocument();
   });
 //   test('3.2 - Teste se é exibido todos os cards de pokémons favoritados.', () => {

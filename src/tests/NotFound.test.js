@@ -12,7 +12,7 @@ describe('Requisito 3: Teste o componente <NotFound.js />', () => { // descri√ß√
         <NotFound />
       </BrowserRouter>,
     );
-    const h2 = screen.getByText(/Page requested not found/i);
+    const h2 = screen.getByText('page requested not found', { exact: false });
     expect(h2).toBeInTheDocument();
   });
 
