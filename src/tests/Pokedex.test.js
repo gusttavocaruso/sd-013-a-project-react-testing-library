@@ -36,8 +36,9 @@ describe('Testa o component Pokedex', () => {
     renderWithRouter(<App />);
 
     const button = screen.getByRole('button', { name: /próximo pokémon/i });
-    const buttonElectric = screen.getByRole('button', { name: /electric/i });
-    const buttonFire = screen.getByRole('button', { name: /fire/i });
+    const allButtonTypes = screen.getAllByTestId('pokemon-type-button');
+    const buttonElectric = allButtonTypes.find((btn) => btn.textContent === 'Electric');
+    const buttonFire = allButtonTypes.find((btn) => btn.textContent === 'Fire');
 
     userEvent.click(buttonElectric);
 
