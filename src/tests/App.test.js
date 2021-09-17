@@ -8,17 +8,17 @@ describe('Verifica se a aplicação contém um conjunto fixo de links de navega�
     renderWithRouter(<App />);
   });
   it('O link deve possuir o texto Home.', () => {
-    const homeLink = screen.getAllByText('Home');
+    const homeLink = screen.getByText('Home');
     expect(homeLink).toBeInTheDocument();
   });
 
   it('O segundo link deve possuir o texto About.', () => {
-    const aboutLink = screen.getAllByText('About');
+    const aboutLink = screen.getByText('About');
     expect(aboutLink).toBeInTheDocument();
   });
 
   it('O terceiro link deve possuir o texto Favorite Pokémons.', () => {
-    const favoritePokémonsLink = screen.getAllByText('Favorite Pokémons');
+    const favoritePokémonsLink = screen.getByText('Favorite Pokémons');
     expect(favoritePokémonsLink).toBeInTheDocument();
   });
 });
