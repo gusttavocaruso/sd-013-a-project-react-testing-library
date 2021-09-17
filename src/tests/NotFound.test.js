@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NotFound } from '../components';
 
-describe('Requisito 3: Teste o componente <NotFound.js />', () => { // descrição do teste
+describe('Requisito 4: Teste o componente <NotFound.js />', () => { // descrição do teste
   test('4.1 - Teste se página contém um h2 com o texto Page requested not found', () => { // teste do requisito 1
     // acessar os elementos da tela
     render(
@@ -23,7 +23,7 @@ describe('Requisito 3: Teste o componente <NotFound.js />', () => { // descriç�
         <NotFound />
       </BrowserRouter>,
     );
-    const imgGif = screen.getByRole('img', { name: /Pikachu crying because/i });
+    const imgGif = screen.getByRole('img', { name: /pikachu crying because/i });
     expect(imgGif.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });

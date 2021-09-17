@@ -3,13 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { About } from '../components';
 
-// test('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
-//   render(<About />);
-//   const homeText = screen.getByText('About Pokemon');
-//   expect(homeText).toBeInTheDocument();
-//   expect(homeText.type).toBe();
-// });
-
 describe('Requisito 2: Teste o componente <About.js />', () => { // descrição do teste
   test('2.1 - Teste se a página contém um heading h2 com o texto About Pokédex', () => {
     // acessar os elementos da tela
@@ -20,7 +13,7 @@ describe('Requisito 2: Teste o componente <About.js />', () => { // descrição 
       </BrowserRouter>,
     );
     const homeText = screen.getByRole('heading', { // procura um head com o nome 'about pokedex
-      name: /About Pokédex/i });
+      name: /about pokédex/i });
     expect(homeText).toBeInTheDocument(); // espera estar no documento
     // expect(homeText.type).toBe();
   });
@@ -31,10 +24,10 @@ describe('Requisito 2: Teste o componente <About.js />', () => { // descrição 
         <About />
       </BrowserRouter>,
     );
-    const p1 = screen.getByText(/This application simulates a Pokédex/i); // espera um paragrafo com o seguinte texto
+    const p1 = screen.getByText(/this application simulates a pokédex/i); // espera um paragrafo com o seguinte texto
     expect(p1).toBeInTheDocument('p');
 
-    const p2 = screen.getByText(/One can filter Pokémons by type/i);
+    const p2 = screen.getByText(/one can filter pokémons by type/i);
     expect(p2).toBeInTheDocument('p');
   });
 
