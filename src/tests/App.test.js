@@ -34,7 +34,7 @@ describe('Teste se o topo da aplicação contém links de navegação.', () => {
     const favoritePokemons = screen.getByRole('link', { name: /Favorite Pokémons/ });
     userEvent.click(favoritePokemons);
   });
-  test('Testa se com o path /pokedex é redirecionado para pagína Not Found', () => {
+  test('Testa se com o path /pokedex é redirecionado para página Not Found', () => {
     const { historyMock } = renderWithRouter(<App />);
     historyMock.push('/pokedex');
   });
