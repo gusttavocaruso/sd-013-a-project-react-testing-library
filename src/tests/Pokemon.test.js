@@ -77,9 +77,7 @@ test('Testa se existe um ícone de estrela nos Pokémons favoritados', () => {
   const favorite = screen.getByRole('img', { name: /marked as favorite/i });
   expect(favorite).toBeInTheDocument();
 
-  // Verifico que ela dá match com a src desejada
   expect(favorite.src).toMatch(src);
 
-  // Verifico que ela possui o alt text desejado
   expect(favorite.alt).toBe(`${pokemons[0].name} is marked as favorite`);
 });
