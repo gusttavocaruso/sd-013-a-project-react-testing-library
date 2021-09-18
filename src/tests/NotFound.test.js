@@ -12,7 +12,7 @@ describe('Testa o componente NotFound', () => {
     expect(noFavorite).toBeInTheDocument();
   });
 
-  test('Verifica se contem uma imagem', () => {
+  test('Verifica se contem uma imagem com um src determinado', () => {
     render(<NotFound />);
     const img = screen.getAllByRole('img')[1];
     expect(img.src).toStrictEqual('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
