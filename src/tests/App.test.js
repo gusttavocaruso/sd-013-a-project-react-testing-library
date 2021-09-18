@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import React from 'react';
 import App from '../App';
-import renderWithRoute from './renderWithRoute';
+import renderWithRouter from './renderWithRouter';
 
 // Teste se o topo da aplicação contém um conjunto fixo de links de navegação.
 /*
@@ -9,7 +9,7 @@ Não funcinou com o render, na doc vi uma forma de resolver criando um arquivo a
 */
 describe('Teste se o topo da aplicação contém um conjunto fixo de links', () => {
   it('link home', () => {
-    renderWithRoute(<App />);
+    renderWithRouter(<App />);
     const linkWithHome = screen.getByText(/Home/i);
     const linkWithAbout = screen.getByText(/About/i);
     const linkWithFavoritePokemons = screen.getByText(/Favorite Pokémons/i);
