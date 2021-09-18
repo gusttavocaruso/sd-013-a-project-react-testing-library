@@ -8,7 +8,7 @@ import renderWithRouter from './renderWithRouter';
 describe('Teste do componente PokemonDetails', () => {
   const { name, foundAt } = Pokemons[0];
   const moreDetails = 'More details';
-  it('Teste se as infos detalhadas do Pokémon selecionado são mostradas na tela', () => {
+  it('Teste: as infos detalhadas do Pokémon selecionado são mostradas na tela', () => {
     renderWithRouter(<App />);
     userEvent.click(screen.getByRole('link', { name: moreDetails }));
     const titleDetails = screen.getByRole('heading', {
