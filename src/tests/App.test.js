@@ -7,7 +7,7 @@ describe('Verifica se a aplicação contém um conjunto fixo de links de navega�
   beforeEach(() => {
     renderWithRouter(<App />);
   });
-  it('O link deve possuir o texto Home.', () => {
+  it('O primeiro link deve possuir o texto Home.', () => {
     const homeLink = screen.getByText('Home');
     expect(homeLink).toBeInTheDocument();
   });
