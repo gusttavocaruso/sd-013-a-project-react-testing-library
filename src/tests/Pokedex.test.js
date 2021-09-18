@@ -49,7 +49,7 @@ describe('Testa se é exibido o próximo Pokemon da lista', () => {
   });
 });
 
-describe('', () => {
+describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
   beforeEach(() => {
     render(<BrowserRouter><App /></BrowserRouter>);
   });
@@ -76,8 +76,19 @@ describe('', () => {
     expect('Fire').toEqual(type.innerHTML);
     expect(btnAll).toBeInTheDocument();
   });
+});
 
-  test('Verifica que ao carregar a pagina o filtro é All', () => {
+describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+  beforeEach(() => {
+    render(<BrowserRouter><App /></BrowserRouter>);
+  });
+
+  test('Pokedex mostra os pokemons normalmente quando clicado em All', () => {
+    userEvent.click(screen.getByText('All'));
+    expect(pikachu).toBeInTheDocument();
+  });
+
+  test('Ao carregar a página, o filtro selecionado deverá ser All', () => {
     const pikachu = screen.getByText('Pikachu');
     expect(pikachu).toBeInTheDocument();
   });
