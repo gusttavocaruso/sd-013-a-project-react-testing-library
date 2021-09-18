@@ -19,7 +19,6 @@ describe('Teste o componente Pokedex', () => {
       const firstPokemon = screen.getByTestId(namepokemon).innerHTML;
       const buttonNextPokemon = screen.getByTestId(nextpokemon);
       expect(buttonNextPokemon).toHaveTextContent('Próximo pokémon');
-
       pokemons.forEach(() => userEvent.click(buttonNextPokemon));
       const pokemonAfterTurnAllPokemons = screen.getByTestId(namepokemon).innerHTML;
       expect(firstPokemon).toBe(pokemonAfterTurnAllPokemons);
@@ -28,5 +27,22 @@ describe('Teste o componente Pokedex', () => {
     renderWithRouter(<App />);
     const pokemon = screen.getAllByTestId(namepokemon);
     expect(pokemon).toHaveLength(1);
+  });
+  it('Testa os filtros', () => {
+    renderWithRouter(<App />);
+    const optionsLength = 7;
+    const types = screen.getAllByTestId('pokemon-type-button');
+    expect(types.length).toBe(optionsLength);
+  });
+  it('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+    const all = screen.getByRole('button', {
+      name: /all/i,
+    });
+    expect(all).toBeInTheDocument();
+    userEvent.click(all);
+    userEvent.click(screen.getByText('Próximo pokémon'));
+    const poke = screen.getByText('Charmander');
+    expect(poke).toBeInTheDocument();
   });
 });
