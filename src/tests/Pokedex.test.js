@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import pokemons from '../data';
 import App from '../App';
 
+// algumas logicas e test peguei no notion da turma, Matheus salva <3
+// https://www.notion.so/Gabaritos-e-Solu-es-de-Exerc-cios-de-Programa-o-7651c81ce6624473a1d66ffb0a2bd053?p=332f9886963a4491bf58da84a11f1a6b
 describe('Testa se contém um heading h2 c/ texto Encountered pokémons', () => {
   test('Verifica se contem um h2', () => {
     render(<BrowserRouter><App /></BrowserRouter>);
