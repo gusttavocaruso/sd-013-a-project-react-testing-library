@@ -85,6 +85,7 @@ describe('Teste se a Pokédex contém um botão para resetar o filtro', () => {
 
   test('Pokedex mostra os pokemons normalmente quando clicado em All', () => {
     userEvent.click(screen.getByText('All'));
+    const pikachu = screen.getByText('Pikachu');
     expect(pikachu).toBeInTheDocument();
   });
 
