@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRoute from './renderWithRoute';
-
+//
 describe('Teste do componente App', () => {
   renderWithRoute(<App />);
   it('O primeiro link deve possuir o text Home', () => {
