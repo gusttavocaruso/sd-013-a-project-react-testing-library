@@ -20,14 +20,14 @@ test('tests the name, weight, type and image of the pokemon', () => {
   const type = screen.getByText('Electric');
   expect(type).toBeInTheDocument();
 
-  const pokemonType = screen.getByTestId('pokemonType');
+  const pokemonType = screen.getByTestId('pokemon-type');
   expect(pokemonType).toHaveTextContent('Electric');
 
   const pesoPoke = screen.getByTestId('pokemon-weight');
   expect(pesoPoke).toHaveTextContent('Average weight: 6.0 kg');
 
   const pokemonImage = screen.getByAltText('Pikachu sprite');
-  expect(pokemonImage.src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  expect(pokemonImage.src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
 });
 
 test('test for Links', () => {
