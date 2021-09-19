@@ -9,12 +9,12 @@ describe('Teste do componente App', () => {
     const home = screen.getByText(/Home/i);
     expect(home).toBeInTheDocument('');
   });
-  it('Testa o about', () => {
+  it('Testa o link about', () => {
     renderWithRoute(<App />);
     const about = screen.getByText(/About/i);
     expect(about).toBeInTheDocument('');
   });
-  it('', () => {
+  it('Testa o link Favorite Pokémons', () => {
     renderWithRoute(<App />);
     const FavPokemons = screen.getByText(/Favorite Pokémons/i);
     expect(FavPokemons).toBeInTheDocument('');
