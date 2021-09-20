@@ -7,7 +7,7 @@ const renderWithRouter = (component) => {
   const historyMock = createMemoryHistory();
   return ({
     ...render(
-    <Router history={historyMock}>{component}</Router>), historyMock,
+    <Router history={ historyMock }>{ component }</Router>), historyMock,
   });
 };
 
