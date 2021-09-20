@@ -5,8 +5,8 @@ import App from '../App';
 import renderWithRouter from '../renderWithRouter';
 
 describe('Testing Component App', () => {
+  beforeEach(() => { renderWithRouter(<App />); }); // <= Adicionando esta função para não repetir a chamada do renderWithRouter em cada test;
   test('Teste se é redirecionado para a página inicial.', () => {
-    renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', {
 
       name: /home/i,
@@ -15,7 +15,6 @@ describe('Testing Component App', () => {
   });
 
   test(' Teste se é redirecionado para a página de About.', () => {
-    renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', {
 
       name: /about/i,
@@ -24,7 +23,6 @@ describe('Testing Component App', () => {
   });
 
   test('Teste se é redirecionado para a página de Pokémons Favoritados.', () => {
-    renderWithRouter(<App />);
     const favPokeLink = screen.getByRole('link', {
 
       name: /Favorite pokémons/i,
