@@ -1,9 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
-// import { Pokemon } from '../components';
 
 describe('Requisito 6: Teste o componente <Pokemon.js />', () => { // descrição do teste
   test('6.1 - Teste se é renderizado um card com as informações do pokémon', () => { // teste do requisito 1
@@ -28,19 +27,29 @@ describe('Requisito 6: Teste o componente <Pokemon.js />', () => { // descriçã
     expect(imgPokemon.alt).toBe('Pikachu sprite');
   });
 
-  //   test('6.2 - Teste se o card do Pokémon indicado na Pokédex contém um link', () => {
-  //     const { history } = render(<App />);
-  //     const detailsLink = screen.getByRole('link', { name: /details/i });
-  //     expect(detailsLink).toBeInTheDocument();
+  test('6.3 - Teste se é feito o redirecionamento para a página de detalhes', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
 
-  //     userEvent.click(detailsLink);
-  //     expect(history.location.pathname).toBe('/pokemons/25');
+    const moreDetails = screen.getByRole('link', { name: /more details/i });
+    expect(moreDetails).toBeInTheDocument();
+    userEvent.click(moreDetails);
+    const summary = screen.getByText(/summary/i);
+    expect(summary).toBeInTheDocument();
 
-  //     const favoritePokemon = screen.getByText('pokémon favorito?', { exact: false });
-  //     userEvent.click(favoritePokemon);
+    const checkFavorite = screen.getByRole('checkbox', {
+      name: 'Pokémon favoritado?',
+    });
+    userEvent.click(checkFavorite);
 
-  //     const favoriteIcon = screen.getByRole('img', { name: /is marked as favorite/i });
-  //     expect(favoriteIcon.src).toBe('http://localhost/star-icon.svg');
-  //     expect(favoriteIcon.alt).toBe('Pikachu is marked as favorite');
-  //   });
+    const favoriteIcon = screen.getByRole('img', {
+      name: 'Pikachu is marked as favorite',
+    });
+    // test 6.5 - Teste se existe um ícone de estrela nos Pokémons favoritados
+    expect(favoriteIcon.src).toBe('http://localhost/star-icon.svg');
+    expect(favoriteIcon.alt).toBe('Pikachu is marked as favorite');
+  });
 });
