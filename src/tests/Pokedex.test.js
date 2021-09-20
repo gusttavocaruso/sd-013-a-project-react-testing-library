@@ -77,7 +77,7 @@ describe('Testing component Pokedex:', () => {
   });
 
   test('Testa se exite um botão para resetar o filtro.', () => {
-    const nextPokemon = screen.getByTestId('pokemon-name');
+    const nextPokemon = screen.getByTestId(pokename);
     const allPokemon = screen.getByRole('button', {
       name: /All/i,
     });
