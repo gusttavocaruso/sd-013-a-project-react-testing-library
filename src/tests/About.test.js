@@ -12,10 +12,10 @@ describe('Requisito 2: Teste o componente <About.js />', () => { // descrição 
         <About />
       </BrowserRouter>,
     );
-    const homeText = screen.getByRole('heading', { // procura um head com o nome 'about pokedex
+    const homeText = screen.getByRole('heading', {
       name: /about pokédex/i });
+      // verifica se mostra na tela um heading com o texto 'about pokedex'
     expect(homeText).toBeInTheDocument(); // espera estar no documento
-    // expect(homeText.type).toBe();
   });
 
   test('2.2 - Teste se a página contém dois parágrafos com texto sobre a Pokédex', () => {
@@ -24,9 +24,10 @@ describe('Requisito 2: Teste o componente <About.js />', () => { // descrição 
         <About />
       </BrowserRouter>,
     );
+    // verifica se mostra na tela um p com o texto
     const p1 = screen.getByText(/this application simulates a pokédex/i); // espera um paragrafo com o seguinte texto
     expect(p1).toBeInTheDocument('p');
-
+    // verifica se mostra na tela um p com o texto
     const p2 = screen.getByText(/one can filter pokémons by type/i);
     expect(p2).toBeInTheDocument('p');
   });
@@ -37,6 +38,7 @@ describe('Requisito 2: Teste o componente <About.js />', () => { // descrição 
         <About />
       </BrowserRouter>,
     );
+    // verifica se mostra na tela a imagem de uma pokedex
     const pokedexImg = screen.getByRole('img');
     expect(pokedexImg.src).toBe('https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });

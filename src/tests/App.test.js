@@ -14,16 +14,17 @@ describe('Requisito 1: Teste o componente <App.js />', () => { // descrição do
         <App />
       </BrowserRouter>,
     );
-    const homeLink = screen.getByRole('link', { // procura o link com o nome 'home'
+    // procura o link com o texto 'home'
+    const homeLink = screen.getByRole('link', {
       name: /home/i,
     });
-    expect(homeLink).toBeInTheDocument(); // espera estar no documento
-
+    expect(homeLink).toBeInTheDocument();
+    // procura o link com o texto 'about'
     const aboutLink = screen.getByRole('link', {
       name: /about/i,
     });
     expect(aboutLink).toBeInTheDocument();
-
+    // procura o link com o texto 'favorite pokemons'
     const favoritePokemonsLink = screen.getByRole('link', {
       name: /favorite pokémons/i,
     });
@@ -36,9 +37,11 @@ describe('Requisito 1: Teste o componente <App.js />', () => { // descrição do
         <App />
       </BrowserRouter>,
     );
-    const homeLink = screen.getByRole('link', { // procura o link com o nome home
+    // procura o link com o nome home
+    const homeLink = screen.getByRole('link', {
       name: /home/i,
     });
+    // simula o click no link
     userEvent.click(homeLink);
     expect(homeLink).toBeInTheDocument();
   });
@@ -75,6 +78,7 @@ describe('Requisito 1: Teste o componente <App.js />', () => { // descrição do
         <NotFound />
       </BrowserRouter>,
     );
+    // verifica se mostra na tela um h2 com o texto 'page requested not found'
     const pageNotFound = screen.getByRole('heading', {
       name: /page requested not found/i,
       level: 2,

@@ -13,6 +13,7 @@ describe('Requisito 5: Teste o componente <Pokedex.js />', () => { // descriçã
         <App />
       </BrowserRouter>,
     );
+    // verifica se mostra na tela o h2 com o texto
     const h2 = screen.getByRole('heading', { name: /Encountered pokémons/i });
     expect(h2).toBeInTheDocument();
   });
@@ -25,12 +26,14 @@ describe('Requisito 5: Teste o componente <Pokedex.js />', () => { // descriçã
         <App />
       </BrowserRouter>,
     );
+    // verifica se mostra na tela o botão de proximo
     const btnNextPokemon = screen.getByRole('button', { name: /próximo pokémon/i });
     expect(btnNextPokemon).toBeInTheDocument();
+    // simula o click no botão
     userEvent.click(btnNextPokemon);
   });
 
-  test('5.3 - Teste se é mostrado apenas um Pokémon por vez', () => { // teste do requisito 1
+  test('5.3 - Teste se é mostrado apenas um Pokémon por vez', () => { // teste do requisito 5
     // acessar os elementos da tela
     render(
       <BrowserRouter>
