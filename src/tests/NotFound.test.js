@@ -19,5 +19,6 @@ describe('Testing Component NotFound', () => {
   test('Teste se a página NotFound contém uma imagem do Pikachu chorando.', () => {
     const pikachuImg = screen.getByAltText(/Pikachu/i);
     expect(pikachuImg).toBeInTheDocument();
+    expect(pikachuImg).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
