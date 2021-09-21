@@ -17,7 +17,7 @@ describe('Favorite Pokemon', () => {
     const PAGE_FAVORITES = 'Favorite Pokémons';
     const PAGE_HOME = 'Home';
 
-    fireEvent.click(screen.getByText('Psychic '));
+    fireEvent.click(screen.getByText('Psychic'));
     fireEvent.click(screen.getByText(MORE_DETAILS));
     fireEvent.click(screen.getByText(FAVORITE));
     fireEvent.click(screen.getByText(PAGE_HOME));
