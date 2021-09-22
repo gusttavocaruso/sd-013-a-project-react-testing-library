@@ -27,5 +27,3 @@ describe('1- Testa o componente App.js', () => {
     expect(history.location.pathname).toBe('/favorites');
   });
 });
-
-test('', () => {});
