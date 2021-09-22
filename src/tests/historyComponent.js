@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
 // Passa o componente como parametro e renderiza com a rota e o histórico daquela rota.
+// Resolvido req. de 1 a 7, falta resolver os detalhes do req. 3 e 6.
 // Eu vi um erro no slack do Rodrigo Pova, vou deixar o componente na pasta de teste e na pasta de componente só para garantir.
 
 const historyComponent = (component) => {
