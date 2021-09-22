@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-/*
-   Consultei o repositório do Rafael de Andrade. foi dai q veio a ideia de utilizar os metodos queryByRole e pathname.
-   https://github.com/tryber/sd-013-a-project-react-testing-library/tree/rafhaeldeandrade-react-testing-library
+/**
+  * Consultei o repositório do Rafael de Andrade. foi dai q veio a ideia de utilizar os metodos queryByRole e pathname.
+  * https://github.com/tryber/sd-013-a-project-react-testing-library/tree/rafhaeldeandrade-react-testing-library
  */
 
 // comando para rodar teste: npx stryker run ./stryker/App.conf.json
