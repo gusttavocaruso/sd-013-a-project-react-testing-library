@@ -40,10 +40,6 @@ describe('5- Testa o componente Pokedex.js', () => {
       'Psychic',
     ];
     const buttons = screen.getAllByTestId('pokemon-type-button');
-    const allTypesBtn = screen.getByRole(
-      'button',
-      { name: /all/i },
-    );
     buttons.forEach((button) => {
       expect(pkmnTypes).toContain(button.textContent);
     });
