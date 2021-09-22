@@ -11,4 +11,4 @@ describe('Teste o componente <FavoritePokemons.js />', () => {
   });
 });
 
-// Não fiz o teste do se é exibido todos os cards de pokémons favoritados.
+// Não fiz o teste do "se é exibido todos os cards de pokémons favoritados".
