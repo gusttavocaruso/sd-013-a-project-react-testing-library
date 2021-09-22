@@ -12,7 +12,9 @@ describe('4- Testa o componente NotFound.js', () => {
     expect(heading).toBeInTheDocument();
   });
   test('A página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif.', () => {
-    const img = screen.getByAltText('Pikachu crying because the page requested was not found');
+    const img = screen.getByAltText(
+      'Pikachu crying because the page requested was not found',
+    );
     expect(img.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
