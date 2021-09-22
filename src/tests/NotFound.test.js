@@ -1,6 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { NotFound, renderWithRouter } from '../components';
+import { NotFound } from '../components';
+import renderWithRouter from './renderWithRouter';
 
 describe('4- Testa o componente NotFound.js', () => {
   beforeEach(() => renderWithRouter(<NotFound />));
