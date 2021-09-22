@@ -41,3 +41,5 @@ describe('Testa Favorites', () => {
     expect(favorite.getAttribute('href')).toBe('/favorites');
   });
 });
+
+// a feito com consulta ao repositório https://github.com/tryber/sd-013-a-project-react-testing-library/tree/f38b7d9fd1a21c803077a1221844aeb6051f49dd/src/tests
