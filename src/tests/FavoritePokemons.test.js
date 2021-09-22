@@ -9,7 +9,7 @@ describe('3- Testa o componente FavoritePokemons.js', () => {
     renderWithRouter(<FavoritePokemons />);
     expect(screen.getByText(/No favorite pokemon found/i)).toBeInTheDocument();
   });
-  test('São exibidos todos os cards de pokémons favoritados.', () => {
+  test('São exibidos todos os cards de pokémon favoritados.', () => {
     renderWithRouter(<App />);
     const pkmnDetails = screen.getByRole('link', { name: /more details/i });
     userEvent.click(pkmnDetails);
@@ -17,8 +17,8 @@ describe('3- Testa o componente FavoritePokemons.js', () => {
     const favoriteCheckbox = screen.getByLabelText('Pokémon favoritado?');
     userEvent.click(favoriteCheckbox);
 
-    const favoritePokemons = screen.getByRole('link', { name: /favorite pokémon/i });
-    userEvent.click(favoritePokemons);
+    const favoritePokemon = screen.getByRole('link', { name: /favorite pokémon/i });
+    userEvent.click(favoritePokemon);
 
     const pokemon = screen.getByText('Pikachu');
     expect(pokemon).toBeInTheDocument();
