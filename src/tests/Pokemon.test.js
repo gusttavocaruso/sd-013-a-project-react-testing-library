@@ -15,7 +15,7 @@ describe('Requisito 6: texte do componente Pokemon', () => {
 
   it('Requisito 6.1.1: O nome correto do Pokémon deve ser mostrado na tela', () => {
     /** ======== acessando o elemento ========= */
-    const pokemonName = screen.getByTestId('pokemon-name');
+    const pokemonName = screen.getByText(pokemons[0].name);
 
     /** ======== testando os elementos ========= */
     expect(pokemonName).toBeInTheDocument();
