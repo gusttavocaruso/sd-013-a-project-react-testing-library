@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouter from '../renderWithRouter';
 import pokemons from '../data';
 import Pokemon from '../components/Pokemon';
 import App from '../App';

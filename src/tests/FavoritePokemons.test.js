@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, cleanup } from '@testing-library/react';
 import pokemons from '../data';
-import renderWithRouter from './renderWithRouter';
+import renderWithRouter from '../renderWithRouter';
 import FavoritePokemons from '../components/FavoritePokemons';
 
 /**
