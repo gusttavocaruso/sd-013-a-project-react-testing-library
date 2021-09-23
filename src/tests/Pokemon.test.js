@@ -7,7 +7,7 @@ import Pokemon from '../components/Pokemon';
 import App from '../App';
 
 describe('Requisito 6: texte do componente Pokemon', () => {
-  beforeEach(() => { // reseta o componente a cada iteração.
+  beforeEach(() => {
     renderWithRouter(
       <Pokemon isFavorite pokemon={ pokemons[0] } />,
     );

@@ -10,7 +10,7 @@ import Pokedex from '../components/Pokedex';
  */
 
 describe('Requisito 5: texte do componente Pokedex', () => {
-  beforeEach(() => { // reseta o componente a cada iteração.
+  beforeEach(() => {
     renderWithRouter(
       <Pokedex
         pokemons={ pokemons }

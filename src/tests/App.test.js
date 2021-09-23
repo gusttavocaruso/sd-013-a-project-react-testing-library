@@ -9,8 +9,6 @@ import App from '../App';
   * https://github.com/tryber/sd-013-a-project-react-testing-library/tree/rafhaeldeandrade-react-testing-library
  */
 
-// comando para rodar teste: npx stryker run ./stryker/App.conf.json
-
 describe('Requisito 1: texte do componente App', () => {
   // tive um problema de lint ao tentar usar o beforeEach
   it('Requisito 1.1: testa se os links existem', () => {

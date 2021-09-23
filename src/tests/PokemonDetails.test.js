@@ -72,7 +72,7 @@ describe('Requisito 7: texte do componente PokemonDetails', () => {
     const locations = screen.getAllByAltText(`${pokemons[0].name} location`);
 
     /** ======== testando os elementos =========
-     * A ideia desta lógica é do gabriel gaspar.
+      A ideia desta lógica é do Gabriel Gaspar.
     */
     pokemons[0].foundAt.forEach((location, index) => {
       const srcMatch = locations[index].src === location.map;
