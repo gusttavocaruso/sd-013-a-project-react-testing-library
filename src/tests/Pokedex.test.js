@@ -21,8 +21,11 @@ describe('Requisito 5: texte do componente Pokedex', () => {
   const pokeName = 'pokemon-name';
   const tupeButton = 'pokemon-type-button';
   it('Requisito 5.1: Teste se página contém h2 com o texto Encountered pokémons', () => {
-    /** ======== acessando o elemento ========= */
-    const heading = screen.getByRole('heading', { name: /Encountered pokémons/i }); // puxamos o h2 pela role e pelo texto.
+    /** ======== acessando o elemento =========
+     * a chave 'level: 2' é o que garante qeu o texto encontrado é um h2
+    */
+    const heading = screen
+      .getByRole('heading', { level: 2, name: /Encountered pokémons/i });
 
     /** ======== testando os elementos ========= */
     expect(heading).toBeInTheDocument();
