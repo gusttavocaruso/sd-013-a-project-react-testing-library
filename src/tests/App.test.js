@@ -1,54 +1,91 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter, Router } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import { createMemoryHistory } from 'history';
 import App from '../App';
 
-describe('App.js Test', () => {
-  test('Aplicação contém links de navegação', () => {
-    renderWithRouter(<App />);
+describe('Requisito 1 - App.js', () => {
+  test('Verifica se renderiza o link "Home" e funciona rota', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
+    expect(screen.getByText(/home/i)).toBeInTheDocument();
 
-    const navLinks = screen.getAllByRole('link');
+    const linkHome = screen.getByRole('link', {
+      name: /home/i,
+    });
+    userEvent.click(linkHome);
 
-    expect(navLinks[0]).toHaveTextContent('Home');
-    expect(navLinks[1]).toHaveTextContent('About');
-    expect(navLinks[2]).toHaveTextContent('Favorite Pokémons');
+    const strHeadingHome = screen.getByRole('heading', {
+      name: /pokédex/i,
+      level: 1,
+    });
+    expect(strHeadingHome).toBeInTheDocument();
   });
 
-  test('Aplicação redireciona para "Home" com sucesso', () => {
-    const { history } = renderWithRouter(<App />);
-    const homeBtn = screen.getByText(/home/i);
-    const { pathname } = history.location;
-    userEvent.click(homeBtn);
+  test('Verifica se renderiza o link "About" e funciona rota', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
 
-    expect(pathname).toBe('/');
+    expect(screen.getByText(/about/i)).toBeInTheDocument();
+
+    const linkAbout = screen.getByRole('link', {
+      name: /about/i,
+    });
+    userEvent.click(linkAbout);
+
+    const strHeadingAbout = screen.getByRole('heading', {
+      name: /about/i,
+      level: 2,
+      exact: false,
+    });
+    expect(strHeadingAbout).toBeInTheDocument();
   });
 
-  test('Aplicação redireciona para "About" com sucesso', () => {
-    const { history } = renderWithRouter(<App />);
-    const aboutBtn = screen.getByText(/about/i);
-    userEvent.click(aboutBtn);
+  test('Verifica se renderiza o link "Favorite Pokemons" e funciona rota', () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+    );
 
-    const { pathname } = history.location;
+    expect(screen.getByText(/favorite/i)).toBeInTheDocument();
 
-    expect(pathname).toBe('/about');
+    const linkFavPokemons = screen.getByRole('link', {
+      name: /favorite/i,
+      exact: false,
+    });
+    userEvent.click(linkFavPokemons);
+
+    const strHeadingFavPokemons = screen.getByRole('heading', {
+      name: /favorite/i,
+      level: 2,
+      exact: false,
+    });
+    expect(strHeadingFavPokemons).toBeInTheDocument();
   });
 
-  test('Aplicação redireciona para "Favorite Pokémons" com sucesso', () => {
-    const { history } = renderWithRouter(<App />);
-    const favBtn = screen.getByText(/favorite pokémons/i);
-    userEvent.click(favBtn);
+  test('Verifica se renderiza página não encontrada', () => {
+    const historyMock = createMemoryHistory();
+    render(
+      <Router history={ historyMock }>
+        <App />
+      </Router>,
+    );
 
-    const { pathname } = history.location;
+    historyMock.push('/rota-que-nao-existe');
 
-    expect(pathname).toBe('/favorites');
-  });
-
-  test('Aplicação rediciona para "PageNotFound" com sucesso', () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/unkwon-url');
-    const notFound = screen.getByText(/not found/i);
-
-    expect(notFound).toBeInTheDocument();
+    const strHeadingNotFound = screen.getByRole('heading', {
+      name: /not found/i,
+      level: 2,
+      exact: false,
+    });
+    expect(strHeadingNotFound).toBeInTheDocument();
   });
 });
