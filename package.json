@@ -60,5 +60,5 @@
     "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-testing-library": "^4.10.0"
   },
-  "homepage": "https:\/\/lanaiconceicao.github.io/react-testing-library"
+  "homepage": "https://lanaiconceicao.github.io/react-testing-library"
 }
