@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.3",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "gh-pages": "^3.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -21,7 +22,9 @@
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint:styles": "npx stylelint '**/*.css'",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx"
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,5 +59,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-testing-library": "^4.10.0"
-  }
+  },
+  "homepage": "https:\/\/lanaiconceicao.github.io/react-testing-library"
 }
